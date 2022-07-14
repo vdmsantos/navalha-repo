@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/data_sources/data_source.dart';
-import 'package:projeto_1/model/user_model.dart';
-import 'package:projeto_1/presenter/page_1/page_1.dart';
 
 class Home_page extends StatefulWidget {
   const Home_page({super.key});
@@ -36,17 +33,17 @@ class _MyWidgetState extends State<Home_page> {
       height: size.height,
       color: Colors.black,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               border: Border(
                   bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
             ),
             // padding: EdgeInsets.only(top: 20, right: 15, left: 15),
-            padding: EdgeInsets.only(top: 22, left: 25, right: 15),
+            padding: const EdgeInsets.only(top: 22, left: 25, right: 15),
             child: Container(
-              padding: EdgeInsets.all(13),
+              padding: const EdgeInsets.all(13),
               color: Colors.black,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,49 +52,42 @@ class _MyWidgetState extends State<Home_page> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text('Bom dia!',
+                      Text('Bom dia,',
                           style: TextStyle(fontSize: 13, color: Colors.grey)),
                       Text('Vinícius',
                           style: TextStyle(fontSize: 23, color: Colors.white))
                     ],
                   ),
-                  Column(
-                    children: const [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Icon(
-                        size: 45,
-                        Icons.menu,
-                        color: Colors.white,
-                      ),
-                    ],
+                  Icon(
+                    size: 45,
+                    Icons.menu_outlined,
+                    color: Colors.white,
                   )
                 ],
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20, left: 30),
-            child: Row(
-              children: [
-                SizedBox(
-                    width: 100, height: 100, child: Image.asset(LogoBarber)),
-                SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Text(
-                    'Não perca mais tempo na fila do barbeiro, agende o seu por aqui e agora',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                )
-              ],
-            ),
-          )
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 20, left: 30),
+          //   child: Row(
+          //     children: [
+          //       SizedBox(
+          //           width: 100, height: 100, child: Image.asset(LogoBarber)),
+          //       const SizedBox(
+          //         width: 15,
+          //       ),
+          //       const Expanded(
+          //         child: Text(
+          //           'Não perca mais tempo na fila do barbeiro, agende o seu por aqui e agora',
+          //           style: TextStyle(color: Colors.white),
+          //         ),
+          //       ),
+          //       const SizedBox(
+          //         width: 50,
+          //       )
+          //     ],
+          //   ),
+          // )
         ],
       ),
     ));

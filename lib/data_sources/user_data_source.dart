@@ -15,9 +15,10 @@ class UserDataAccess {
     userMap = userObj.toMap();
 
     await database.rawInsert(
-        'INSERT INTO TBUSUARIO(id , name, email,senha,datanasc,cidade,endereco)' +
-            'VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO TBUSUARIO(id , name, email,senha,datanasc,cidade,endereco)'
+        'VALUES(?,?,?,?,?,?,?)',
         [
+          299,
           userMap['_name'],
           userMap['_email'],
           userMap['_password'],
