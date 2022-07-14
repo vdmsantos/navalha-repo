@@ -21,14 +21,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          fit: StackFit.expand,
           children: [
-            Image.asset('assets/images/LogoBarber.png', scale: 1),
+            Image.asset(
+              'assets/images/fundofinal2.jfif',
+              fit: BoxFit.fill,
+            ),
+            Image.asset(
+              'assets/images/4.png',
+            ),
           ],
         ),
       ),
