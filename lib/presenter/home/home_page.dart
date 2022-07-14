@@ -40,7 +40,6 @@ class _MyWidgetState extends State<Home_page> {
               border: Border(
                   bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
             ),
-            // padding: EdgeInsets.only(top: 20, right: 15, left: 15),
             padding: const EdgeInsets.only(top: 22, left: 25, right: 15),
             child: Container(
               padding: const EdgeInsets.all(13),
@@ -51,11 +50,11 @@ class _MyWidgetState extends State<Home_page> {
                   Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text('Bom dia,',
                           style: TextStyle(fontSize: 13, color: Colors.grey)),
                       Text('Vinícius',
-                          style: TextStyle(fontSize: 23, color: Colors.white))
+                          style: TextStyle(fontSize: 23, color: Colors.white)),
                     ],
                   ),
                   Icon(
@@ -67,27 +66,6 @@ class _MyWidgetState extends State<Home_page> {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 20, left: 30),
-          //   child: Row(
-          //     children: [
-          //       SizedBox(
-          //           width: 100, height: 100, child: Image.asset(LogoBarber)),
-          //       const SizedBox(
-          //         width: 15,
-          //       ),
-          //       const Expanded(
-          //         child: Text(
-          //           'Não perca mais tempo na fila do barbeiro, agende o seu por aqui e agora',
-          //           style: TextStyle(color: Colors.white),
-          //         ),
-          //       ),
-          //       const SizedBox(
-          //         width: 50,
-          //       )
-          //     ],
-          //   ),
-          // )
         ],
       ),
     ));
