@@ -11,11 +11,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // Future.delayed(const Duration(seconds: 3)).then((value) {
-    //   Navigator.of(context).push(
-    //     MaterialPageRoute(builder: (context) => const Home_page()),
-    //   );
-    // });
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const Home_page()),
+      );
+    });
     super.initState();
   }
 
@@ -24,21 +24,18 @@ class _SplashScreenState extends State<SplashScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/fundofinal2.jfif"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Image.asset(
+          'assets/images/4.png',
+        ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/images/fundofinal2.jfif',
-              fit: BoxFit.fill,
-            ),
-            Image.asset(
-              'assets/images/4.png',
-            ),
-          ],
-        ),
       ),
     );
   }
