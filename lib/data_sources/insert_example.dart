@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/data_sources/data_source.dart';
 import 'package:projeto_1/model/user_model.dart';
-import 'package:projeto_1/presenter/page_1/page_1.dart';
+import 'package:projeto_1/presenter/barbershop_page/page_1.dart';
 
-import '../page_2/page_2.dart';
+import '../presenter/calendar_page/page_2.dart';
 
-class Page1 extends StatefulWidget {
-  const Page1({super.key});
+class InsetExample extends StatefulWidget {
+  const InsetExample({super.key});
 
   @override
-  State<Page1> createState() => _MyWidgetState();
+  State<InsetExample> createState() => _MyWidgetState();
 }
 
 //vitor
@@ -23,7 +23,7 @@ class Page1 extends StatefulWidget {
 
 */
 
-class _MyWidgetState extends State<Page1> {
+class _MyWidgetState extends State<InsetExample> {
   final nameControler = TextEditingController();
   final emailControler = TextEditingController();
   final senhaControler = TextEditingController();

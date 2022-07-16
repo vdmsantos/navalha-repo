@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/presenter/page_5/page_5.dart';
+import 'package:projeto_1/presenter/baber_page/page_3.dart';
 
-class page4 extends StatefulWidget {
-  const page4({super.key});
+class page2 extends StatefulWidget {
+  const page2({super.key});
 
   @override
-  State<page4> createState() => _MyWidgetState();
+  State<page2> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<page4> {
+class _MyWidgetState extends State<page2> {
   @override
   Widget build(BuildContext context) {
     //vitor - screensize var .
@@ -17,12 +17,12 @@ class _MyWidgetState extends State<page4> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Page 4'),
+        title: const Text('Page 2'),
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const page5()));
+                    MaterialPageRoute(builder: (context) => const page3()));
               },
               icon: const Icon(Icons.arrow_circle_right_sharp))
         ],
