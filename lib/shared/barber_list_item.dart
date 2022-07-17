@@ -1,31 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:icon_decoration/icon_decoration.dart';
 
-class BarberListItem extends StatelessWidget {
-  BarberListItem({
+class BarberListItem extends StatefulWidget {
+  const BarberListItem({
+    required this.barberShopName,
+    this.star = 5,
+    this.topColor = const Color.fromARGB(255, 24, 24, 24),
+    this.bottomCollor = const Color.fromARGB(255, 34, 34, 34),
     Key? key,
+    required this.berbercutPrice,
+    required this.haircutPrice,
+    required this.distance,
   }) : super(key: key);
 
-  final Color background = Color.fromARGB(255, 24, 24, 24);
-  final Color fill = Color.fromARGB(255, 34, 34, 34);
+  final double berbercutPrice;
+  final double haircutPrice;
+  final String barberShopName;
+  final Color topColor;
+  final Color bottomCollor;
+  final int star;
+  final double distance;
+
+  @override
+  State<BarberListItem> createState() => _BarberListItemState();
+}
+
+class _BarberListItemState extends State<BarberListItem> {
+  List<Widget> starList = [];
+
+  @override
+  initState() {
+    super.initState();
+    setStarList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final double fillPercent = 32.00; //
+    double fillPercent = 32.00; //
 
     final double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.0, fillStop, fillStop, 1.0];
 
     final List<Color> gradient = [
-      background,
-      background,
-      fill,
-      fill,
+      widget.topColor,
+      widget.topColor,
+      widget.bottomCollor,
+      widget.bottomCollor,
     ];
     return Container(
       height: 130,
-      padding: EdgeInsets.only(top: 15, right: 15, left: 15),
-      width: MediaQuery.of(context).size.width - 70,
+      padding: const EdgeInsets.only(top: 15, right: 10, left: 15),
+      width: 320,
       decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: gradient,
@@ -34,21 +59,21 @@ class BarberListItem extends StatelessWidget {
             begin: Alignment.topCenter,
           ),
           borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(255, 24, 24, 24)),
+          color: const Color.fromARGB(255, 24, 24, 24)),
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               Text(
-                'Packers barbearia',
-                style: TextStyle(
+                widget.barberShopName,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               )
             ],
           ),
-          SizedBox(height: 11),
+          const SizedBox(height: 11),
           Row(
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
@@ -72,34 +97,34 @@ class BarberListItem extends StatelessWidget {
               )
             ],
           ),
-           SizedBox(
+          const SizedBox(
             height: 2,
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'R\$',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 3,
               ),
               Text(
-                '25,',
+                '${widget.haircutPrice.toInt()},',
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: const [
                   SizedBox(
                     height: 5,
                   ),
@@ -113,29 +138,29 @@ class BarberListItem extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
-              Text(
+              const Text(
                 'R\$',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 3,
               ),
               Text(
-                '30,',
-                style: TextStyle(
+                '${widget.berbercutPrice.toInt()},',
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: const [
                   SizedBox(
                     height: 5,
                   ),
@@ -155,39 +180,41 @@ class BarberListItem extends StatelessWidget {
             padding: EdgeInsets.only(top: 15),
             child: Row(
               children: [
-                Icon(Icons.location_on_outlined, color: Colors.white),
-                SizedBox(
+                const Icon(Icons.location_on_outlined, color: Colors.white),
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
-                  '25 km',
+                  '${widget.distance} km',
                   style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
-                SizedBox(
-                  width: 70,
+                const SizedBox(
+                  width: 95,
                 ),
-                Icon(Icons.star, color: Colors.white, shadows: []),
-                Icon(Icons.star, color: Colors.white),
-                DecoratedIcon(
-                  icon: Icon(Icons.star, color: fill),
-                  decoration: IconDecoration(
-                      border: IconBorder(color: Colors.white, width: 1)),
-                ),
-                DecoratedIcon(
-                  icon: Icon(Icons.star, color: fill),
-                  decoration: IconDecoration(
-                      border: IconBorder(color: Colors.white, width: 1)),
-                ),
-                DecoratedIcon(
-                  icon: Icon(Icons.star, color: fill),
-                  decoration: IconDecoration(
-                      border: IconBorder(color: Colors.white, width: 1)),
-                ),
+                for (int i = 0; i <= 4; i++) starList[i],
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  void setStarList() {
+    for (var i = 1; i <= 5; i++) {
+      if (i <= widget.star) {
+        starList.add(
+          const Icon(Icons.star, color: Colors.white, shadows: []),
+        );
+      } else {
+        starList.add(
+          DecoratedIcon(
+            icon: Icon(Icons.star, color: widget.bottomCollor),
+            decoration: const IconDecoration(
+                border: IconBorder(color: Colors.white, width: 1)),
+          ),
+        );
+      }
+    }
   }
 }

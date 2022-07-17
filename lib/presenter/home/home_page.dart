@@ -25,7 +25,7 @@ class _MyWidgetState extends State<Home_page> {
       width: size.width,
       height: size.height,
       // color: Colors.black,
-      child: BodyHome(),
+      child: const BodyHome(),
     ));
   }
 }

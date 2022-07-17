@@ -31,11 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
             fit: BoxFit.cover,
           ),
         ),
+        child: Image.asset(
+          'assets/images/logo_navalha2.png',
+        ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: Image.asset(
-          'assets/images/4.png',
-        ),
       ),
     );
   }
