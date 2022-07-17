@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sqflite: ^2.0.3
   icon_decoration: ^1.0.1
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:

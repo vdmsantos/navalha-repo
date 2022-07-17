@@ -179,19 +179,26 @@ class _BarberListItemState extends State<BarberListItem> {
           Padding(
             padding: EdgeInsets.only(top: 15),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.location_on_outlined, color: Colors.white),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '${widget.distance} km',
-                  style: TextStyle(fontSize: 12, color: Colors.white),
-                ),
+                Column(children: [
+                  Row(children: [
+                    const Icon(Icons.location_on_outlined, color: Colors.white),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '${widget.distance} km',
+                      style: TextStyle(fontSize: 12, color: Colors.white),
+                    ),
+                  ])
+                ]),
                 const SizedBox(
                   width: 95,
                 ),
-                for (int i = 0; i <= 4; i++) starList[i],
+                Column(children: [
+                  Row(children: [for (int i = 0; i <= 4; i++) starList[i]])
+                ]),
               ],
             ),
           )
