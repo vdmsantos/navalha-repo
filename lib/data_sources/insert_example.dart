@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/data_sources/data_source.dart';
 import 'package:projeto_1/model/user_model.dart';
-import 'package:projeto_1/presenter/barbershop_page/page_1.dart';
 
 import '../presenter/calendar_page/page_2.dart';
 
@@ -33,10 +32,7 @@ class _MyWidgetState extends State<InsetExample> {
 
   @override
   Widget build(BuildContext context) {
-    //vitor - screensize var .
-    var size = MediaQuery.of(context).size;
-
-    var DAOfactory = DataAccess();
+    var daofactory = DataAccess();
 
     return Scaffold(
       appBar: AppBar(
@@ -45,10 +41,10 @@ class _MyWidgetState extends State<InsetExample> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => page2()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Page2()));
               },
-              icon: Icon(Icons.arrow_circle_right_sharp))
+              icon: const Icon(Icons.arrow_circle_right_sharp))
         ],
       ),
       body: Container(
@@ -125,8 +121,8 @@ class _MyWidgetState extends State<InsetExample> {
                   print(userModel.toString());
                   print(userModel.toMap());
                   print(userModel.toJson());
-                  DAOfactory.userData.insert(userModel);
-                  DAOfactory.userData.select();
+                  daofactory.userData.insert(userModel);
+                  daofactory.userData.select();
                 },
                 height: 50,
                 child: const Text('Cadastrar'),
