@@ -18,7 +18,7 @@ class _MyWidgetState extends State<Page1> {
         IconButton(
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Page2()));
+                  .push(MaterialPageRoute(builder: (context) => const Page2()));
             },
             icon: const Icon(Icons.arrow_circle_right_sharp))
       ]),
@@ -33,7 +33,7 @@ class _MyWidgetState extends State<Page1> {
                 verticalOffset: 50.0,
                 child: FadeInAnimation(
                   child: Container(
-                    color: Color.fromARGB(255, 172, 43, 43),
+                    color: const Color.fromARGB(255, 172, 43, 43),
                     height: 100,
                   ),
                 ),

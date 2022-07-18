@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/presenter/home/widgets/body_home.dart';
 
-class Home_page extends StatefulWidget {
-  const Home_page({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home_page> createState() => _MyWidgetState();
+  State<HomePage> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Home_page> {
+class _MyWidgetState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     //vitor - screensize var .

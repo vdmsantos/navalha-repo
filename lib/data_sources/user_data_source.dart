@@ -30,7 +30,7 @@ class UserDataAccess {
   }
 
   void update() async {
-    int count = await database.rawUpdate(
+     await database.rawUpdate(
       'UPDATE TDUSUARIO SET  name = ?,email = ?,senha = ?,datanasc = ?,cidade = ?,endereco = ?',
       [
         userMap['_name'],

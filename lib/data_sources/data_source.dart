@@ -19,7 +19,7 @@ class DataAccess {
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute(
-          'CREATE TABLE TBUSUARIO (id INTEGER PRIMARY KEY ,' +
+          'CREATE TABLE TBUSUARIO (id INTEGER PRIMARY KEY ,' 
               'name TEXT, email TEXT, senha TEXT,datanasc TEXT,cidade TEXT,endereco TEXT)',
         );
       },

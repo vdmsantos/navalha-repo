@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class page3 extends StatefulWidget {
-  const page3({super.key});
+class Page3 extends StatefulWidget {
+  const Page3({super.key});
 
   @override
-  State<page3> createState() => _MyWidgetState();
+  State<Page3> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<page3> {
+class _MyWidgetState extends State<Page3> {
   @override
   Widget build(BuildContext context) {
-    //vitor - screensize var .
-    var size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +27,6 @@ class _MyWidgetState extends State<page3> {
       body: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
-          children: [],
         ),
       ),
     );

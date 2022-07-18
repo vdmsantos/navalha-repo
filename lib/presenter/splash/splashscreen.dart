@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const Home_page()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     });
     super.initState();
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    
 
     return Scaffold(
       body: Container(
@@ -31,11 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
             fit: BoxFit.cover,
           ),
         ),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Image.asset(
           'assets/images/logo_navalha2.png',
         ),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
       ),
     );
   }

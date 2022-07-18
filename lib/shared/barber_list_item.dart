@@ -177,7 +177,7 @@ class _BarberListItemState extends State<BarberListItem> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -189,7 +189,7 @@ class _BarberListItemState extends State<BarberListItem> {
                     ),
                     Text(
                       '${widget.distance} km',
-                      style: TextStyle(fontSize: 12, color: Colors.white),
+                      style: const TextStyle(fontSize: 12, color: Colors.white),
                     ),
                   ])
                 ]),
