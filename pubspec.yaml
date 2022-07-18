@@ -39,6 +39,9 @@ dependencies:
   sqflite: ^2.0.3
   icon_decoration: ^1.0.1
   flutter_staggered_animations: ^1.0.0
+  animated_bottom_navigation_bar: ^1.0.1
+  circle_bottom_navigation_bar: ^1.0.0
+  fancy_bottom_navigation: ^0.3.3
 
 dev_dependencies:
   flutter_test:

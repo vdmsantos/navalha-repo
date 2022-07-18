@@ -1,31 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Page3 extends StatefulWidget {
-  const Page3({super.key});
-
-  @override
-  State<Page3> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<Page3> {
-  int currentIndex = 0;
-  @override
-  Widget build(BuildContext context) {
-    setBottomBarIndex(index) {
-      setState(() {
-        currentIndex = index;
-      });
-      print(currentIndex);
-    }
-
-    final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Colors.white.withAlpha(55),
-      body: BottomNavigatorBarber(),
-    );
-  }
-}
-
 class BottomNavigatorBarber extends StatefulWidget {
   const BottomNavigatorBarber({
     Key? key,
