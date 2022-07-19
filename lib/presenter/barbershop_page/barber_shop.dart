@@ -4,14 +4,14 @@ import 'package:projeto_1/shared/topcontainer_stars_pattern.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 
-class Page1 extends StatefulWidget {
-  const Page1({super.key});
+class BarberShopPage extends StatefulWidget {
+  const BarberShopPage({super.key});
 
   @override
-  State<Page1> createState() => _MyWidgetState();
+  State<BarberShopPage> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Page1> {
+class _MyWidgetState extends State<BarberShopPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

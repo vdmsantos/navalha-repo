@@ -56,7 +56,7 @@ class TopBarWidget extends StatelessWidget {
               //   MaterialPageRoute(builder: (context) => const Page1()),
               // );
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => CalendarPage()),
+                MaterialPageRoute(builder: (context) => BarberShopPage()),
               );
             },
             child: Icon(
