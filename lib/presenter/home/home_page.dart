@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/presenter/home/widgets/body_home%20copy.dart';
 import 'package:projeto_1/presenter/home/widgets/body_home.dart';
 
 import '../../shared/scaffold_pattern.dart';
@@ -13,6 +14,6 @@ class HomePage extends StatefulWidget {
 class _MyWidgetState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const ScaffoldPattern(bodyPage: BodyHome());
+    return const ScaffoldPattern(bodyPage: BodyHome1());
   }
 }
