@@ -25,7 +25,10 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
 
     return Scaffold(
         key: _scaffoldKey,
-        endDrawer: DrawerWidget(name: 'Vinicius', photoProfile: barberPhoto),
+        endDrawer: const DrawerWidget(
+          name: 'Vinicius',
+          photoProfile: profile,
+        ),
         backgroundColor: const Color.fromARGB(255, 24, 24, 24),
         floatingActionButton: SizedBox(
           height: 90,
@@ -111,48 +114,44 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             topLeft: Radius.circular(25), bottomLeft: Radius.circular(20)),
       ),
       backgroundColor: const Color.fromARGB(255, 44, 44, 44),
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // const ArrowLeft(),
-                    ProfilePhoto(widget: widget),
-                    // const SizedBox(width: 50),
-                  ],
-                ),
-                NameUser(widget: widget),
-              ],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ProfilePhoto(widget: widget),
+                  NameUser(widget: widget),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const ContainerDrawer1(
+                    textTopic: 'Editar cadastro',
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ContainerDrawer1(
+                    textTopic: 'Minha agenda',
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ContainerDrawer1(
+                    textTopic: 'Redes sociais',
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ContainerDrawer1(
+                    textTopic: 'Sair',
+                  ),
+                ],
+              ),
             ),
-          ),
-          const ContainerDrawer1(
-            textTopic: 'Editar cadastro',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const ContainerDrawer1(
-            textTopic: 'Minha agenda',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const ContainerDrawer1(
-            textTopic: 'Redes sociais',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const ContainerDrawer1(
-            textTopic: 'Sair',
-          ),
-          const SizedBox(
-            height: 150,
           ),
           const DarkLightMode(),
         ],
@@ -172,7 +171,7 @@ class ProfilePhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 50,
+      radius: 80,
       backgroundColor: const Color.fromARGB(255, 66, 66, 66),
       child: Image.asset(
         widget.photoProfile,
@@ -212,7 +211,7 @@ class NameUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 5),
       child: Text(
         widget.name,
         style: const TextStyle(
