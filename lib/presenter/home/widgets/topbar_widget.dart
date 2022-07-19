@@ -56,7 +56,7 @@ class TopBarWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Page1()),
               );
             },
-            child: const Icon(
+            child: Icon(
               size: 35,
               Icons.menu_open_outlined,
               color: Colors.white,
