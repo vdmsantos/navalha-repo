@@ -1,7 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:projeto_1/presenter/barbershop_page/page_1.dart';
+
+import 'package:projeto_1/presenter/barbershop_page/barber_shop.dart';
 import 'package:projeto_1/shared/barber_list_item.dart';
+
+import 'container_filter.dart';
+import 'image_container.dart';
+import 'topbar_widget.dart';
 
 class BodyHome extends StatelessWidget {
   const BodyHome({
@@ -19,64 +25,11 @@ class BodyHome extends StatelessWidget {
         verticalOffset: 200.0,
         child: FadeInAnimation(
             child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+          height: size.height,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Container(
-              padding: const EdgeInsets.only(
-                  top: 25, left: 40, right: 40, bottom: 8),
-              decoration: const BoxDecoration(
-                color: Colors.black,
-                border: Border(
-                    bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
-              ),
-              // padding: const EdgeInsets.all(2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('Bom dia,',
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text('Vinícius',
-                          style: TextStyle(
-                              fontSize: 21,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Page1()),
-                      );
-                    },
-                    child: Icon(
-                      size: 45,
-                      Icons.menu_outlined,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                  top: 15, bottom: 10, left: 18, right: 18),
-              height: 205,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(45),
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/container_background.png"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            const TopBarWidget(userName: 'Vinícius'),
+            const ImageContainer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Column(
@@ -96,69 +49,21 @@ class BodyHome extends StatelessWidget {
                   const SizedBox(height: 7),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 34, 34, 34),
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 35,
-                          child: Center(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              SizedBox(
-                                width: 7,
-                              ),
-                              Text(
-                                'Preço',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down_sharp,
-                                color: Colors.white,
-                              )
-                            ],
-                          )),
-                        ),
+                        child: ContainerFilterIcon(filterName: 'Preço'),
                       ),
                       SizedBox(
                         width: 15,
                       ),
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 34, 34, 34),
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 35,
-                          child: const Center(
-                              child: Text(
-                            'Avaliação',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ),
+                        child: ContainerFilterIcon(filterName: 'Avaliação'),
                       ),
                       SizedBox(
                         width: 15,
                       ),
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 34, 34, 34),
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 35,
-                          child: const Center(
-                              child: Text(
-                            'Distância',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ),
+                        child: ContainerFilterIcon(filterName: 'Distância'),
                       ),
                     ],
                   )
