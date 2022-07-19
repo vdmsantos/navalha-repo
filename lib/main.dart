@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 import 'package:projeto_1/presenter/splash/splashscreen.dart';
 
+// void main() {
+//   initializeDateFormatting().then( (_) =>
+//   runApp(const MyApp())z);
+// }
+
 void main() {
-  runApp(const MyApp());
+  initializeDateFormatting().then(
+    (_) => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

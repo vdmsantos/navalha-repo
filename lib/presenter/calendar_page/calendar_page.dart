@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:projeto_1/core/assets.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 import 'widgets/utils_calendar.dart';
-
-void main() {
-  initializeDateFormatting().then(
-    (_) => runApp(
-      const MaterialApp(
-        title: 'Calendar',
-        home: CalendarPage(),
-        debugShowCheckedModeBanner: false,
-      ),
-    ),
-  );
-}
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -56,7 +45,7 @@ class _CalendarPageState extends State<CalendarPage> {
             const TopContainerPattern(
                 title: 'Agendar Horário',
                 name: 'Barbeiro',
-                profile: 'barberPhoto'),
+                profile: barberPhoto),
             TableCalendar(
               locale: 'pt_BR',
               calendarBuilders: CalendarBuilders(

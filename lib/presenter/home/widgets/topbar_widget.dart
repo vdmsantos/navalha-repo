@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 
 import '../../barbershop_page/barber_shop.dart';
 
@@ -51,8 +52,11 @@ class TopBarWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(builder: (context) => const Page1()),
+              // );
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Page1()),
+                MaterialPageRoute(builder: (context) => CalendarPage()),
               );
             },
             child: Icon(

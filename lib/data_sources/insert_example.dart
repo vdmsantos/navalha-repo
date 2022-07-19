@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_1/data_sources/data_source.dart';
 import 'package:projeto_1/model/user_model.dart';
 
-import '../presenter/calendar_page/page_2.dart';
+import '../presenter/calendar_page/calendar_page.dart';
 
 class InsetExample extends StatefulWidget {
   const InsetExample({super.key});
@@ -41,8 +41,8 @@ class _MyWidgetState extends State<InsetExample> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const CalendarPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CalendarPage()));
               },
               icon: const Icon(Icons.arrow_circle_right_sharp))
         ],
