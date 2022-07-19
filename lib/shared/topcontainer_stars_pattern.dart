@@ -52,7 +52,7 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     IconButton(
@@ -72,7 +72,7 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       child: Text(
-                        'asdasd',
+                        widget.title,
                         style: const TextStyle(
                           fontSize: 25,
                           color: Colors.white,
@@ -102,7 +102,7 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
                 ),
               ),
               child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [for (int i = 0; i <= 4; i++) starList[i]],
@@ -137,10 +137,10 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
       } else {
         starList.add(
           DecoratedIcon(
-            decoration: IconDecoration(shadows: [
-              BoxShadow(
-                  color: Color.fromARGB(255, 128, 128, 128), blurRadius: 3)
-            ]),
+            // decoration: IconDecoration(shadows: [
+            //   BoxShadow(
+            //       color: Color.fromARGB(255, 128, 128, 128), blurRadius: 3)
+            // ]),
             icon: Icon(Icons.star, color: bottomCollor),
             // decoration: const IconDecoration(
             //     border: IconBorder(color: Colors.white, width: 2)),

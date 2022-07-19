@@ -24,22 +24,24 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
         new GlobalKey<ScaffoldState>();
 
     return Scaffold(
-        
         key: _scaffoldKey,
-        drawer: DrawerWidget(name: 'Vinicius', photoProfile: barberPhoto),
+        endDrawer: DrawerWidget(name: 'Vinicius', photoProfile: barberPhoto),
         backgroundColor: const Color.fromARGB(255, 24, 24, 24),
         floatingActionButton: SizedBox(
-          height: 70,
-          width: 80,
+          height: 90,
+          width: 90,
           child: FloatingActionButton(
+            elevation: 50,
             focusColor: Colors.grey,
-            backgroundColor: const Color.fromARGB(255, 34, 34, 34),
+            backgroundColor: const Color.fromARGB(255, 42, 42, 42),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const HomePage()),
               );
             },
-            child: const Icon(Icons.home, size: 30),
+            child: const Text('NAVALHA',
+                style: TextStyle(fontFamily: 'Bevan', fontSize: 12)),
+            // child: const Icon(Icons.home, size: 30),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -48,10 +50,13 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
             rightCornerRadius: 32,
             backgroundColor: const Color.fromARGB(255, 24, 24, 24),
             icons: const [
+              Icons.account_circle_outlined,
               Icons.settings,
-              Icons.schedule,
+              Icons.home,
+              Icons.calendar_month_outlined,
             ],
-            iconSize: 30,
+            iconSize: 27,
+            inactiveColor: Colors.white,
             activeColor: Colors.white,
             borderColor: const Color.fromARGB(255, 28, 28, 28),
             borderWidth: 0.9,
@@ -59,7 +64,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
             gapLocation: GapLocation.center,
             notchSmoothness: NotchSmoothness.verySmoothEdge,
             onTap: (index) {
-              _scaffoldKey.currentState!.openDrawer();
+              _scaffoldKey.currentState!.openEndDrawer();
               // setState(() {
               //   print('object');
               // });
@@ -101,59 +106,56 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20), bottomRight: Radius.circular(20)),
+            topLeft: Radius.circular(25), bottomLeft: Radius.circular(20)),
       ),
       backgroundColor: const Color.fromARGB(255, 44, 44, 44),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(width: 45),
-                      ProfilePhoto(widget: widget),
-                      const ArrowLeft()
-                    ],
-                  ),
-                  NameUser(widget: widget),
-                ],
-              ),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // const ArrowLeft(),
+                    ProfilePhoto(widget: widget),
+                    // const SizedBox(width: 50),
+                  ],
+                ),
+                NameUser(widget: widget),
+              ],
             ),
-            const ContainerDrawer1(
-              textTopic: 'Editar cadastro',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ContainerDrawer1(
-              textTopic: 'Minha agenda',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ContainerDrawer1(
-              textTopic: 'Redes sociais',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ContainerDrawer1(
-              textTopic: 'Sair',
-            ),
-            const SizedBox(
-              height: 250,
-            ),
-            const DarkLightMode(),
-          ],
-        ),
+          ),
+          const ContainerDrawer1(
+            textTopic: 'Editar cadastro',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const ContainerDrawer1(
+            textTopic: 'Minha agenda',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const ContainerDrawer1(
+            textTopic: 'Redes sociais',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const ContainerDrawer1(
+            textTopic: 'Sair',
+          ),
+          const SizedBox(
+            height: 150,
+          ),
+          const DarkLightMode(),
+        ],
       ),
     );
   }
@@ -170,7 +172,7 @@ class ProfilePhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 45,
+      radius: 50,
       backgroundColor: const Color.fromARGB(255, 66, 66, 66),
       child: Image.asset(
         widget.photoProfile,
@@ -187,10 +189,11 @@ class ArrowLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      padding: const EdgeInsets.only(left: 30, bottom: 60),
+      // hoverColor: ,
+      // padding: const EdgeInsets.only(bottom: 60),
       onPressed: () {},
       icon: const Icon(
-        Icons.arrow_back_ios_new,
+        Icons.arrow_forward_ios_rounded,
         color: Colors.white,
         size: 30,
       ),

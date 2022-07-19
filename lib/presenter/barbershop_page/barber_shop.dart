@@ -28,18 +28,14 @@ class _MyWidgetState extends State<Page1> {
               flexibleSpace: FlexibleSpaceBar(
                 // title: Text('Goa', textScaleFactor: 1),
                 background: TopContainerPatternStar(
-                    star: 2, title: 'asdasd', profile: barberPhoto),
+                    star: 2, title: 'The gentleman', profile: barberPhoto),
               ),
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return Container(
-                    
-                    // decoration: BoxDecoration(
-                    //     image: DecorationImage(image: AssetImage(fundoGeral))),
-                    // color: Colors.red,
-                    height: 900,
+                    height: 600,
                     width: 50,
                   );
                 },

@@ -12,9 +12,8 @@ class TopBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
-      padding: const EdgeInsets.only(top: 25, left: 40, right: 25, bottom: 8),
+      padding: const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 8),
       decoration: const BoxDecoration(
         // color: Colors.black,
         border:
@@ -56,7 +55,7 @@ class TopBarWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Page1()),
               );
             },
-            child: const Icon(
+            child: Icon(
               size: 35,
               Icons.menu_open_outlined,
               color: Colors.white,
