@@ -42,7 +42,7 @@ class _MyWidgetState extends State<InsetExample> {
           IconButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const Page2()));
+                    MaterialPageRoute(builder: (context) => const CalendarPage()));
               },
               icon: const Icon(Icons.arrow_circle_right_sharp))
         ],
