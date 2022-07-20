@@ -15,10 +15,10 @@ class UserDataAccess {
     userMap = userObj.toMap();
 
     await database.rawInsert(
-        'INSERT INTO TBCLIENTE(id,name,email,password,cep,cpf)'
-        'VALUES(?,?,?,?,?,?)',
+        'INSERT INTO TBCLIENTE(name,email,password,cep,cpf)'
+        'VALUES(?,?,?,?,?)',
         [
-          52,
+          // 52,
           userMap['_name'],
           userMap['_email'],
           userMap['_password'],
