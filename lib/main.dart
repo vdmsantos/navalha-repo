@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:projeto_1/presenter/barbershop_page/barber_shop.dart';
 import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 import 'package:projeto_1/presenter/splash/splashscreen.dart';
 

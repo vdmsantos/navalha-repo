@@ -20,8 +20,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
         key: _scaffoldKey,
@@ -111,7 +110,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     return Drawer(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25), bottomLeft: Radius.circular(20)),
+          topLeft: Radius.circular(25),
+          bottomLeft: Radius.circular(20),
+        ),
       ),
       backgroundColor: const Color.fromARGB(255, 44, 44, 44),
       child: Column(

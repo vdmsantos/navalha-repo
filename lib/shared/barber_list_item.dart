@@ -50,7 +50,7 @@ class _BarberListItemState extends State<BarberListItem> {
     return Container(
       height: 130,
       padding: const EdgeInsets.only(top: 15, right: 10, left: 15),
-      width: 320,
+      width: double.maxFinite,
       decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: gradient,
