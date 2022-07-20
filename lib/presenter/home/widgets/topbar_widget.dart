@@ -16,10 +16,10 @@ class TopBarWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 8),
       decoration: const BoxDecoration(
-        // color: Colors.black,
-        border:
-            Border(bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
-      ),
+          // color: Colors.black,
+          // border:
+          //     Border(bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
+          ),
       // padding: const EdgeInsets.all(2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
