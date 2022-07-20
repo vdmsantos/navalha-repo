@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     scale: 1,
                   ),
                   Container(
-                    height: 50,
+                    height: 70,
                     width: 350,
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(36, 36, 36, 1),
@@ -54,12 +54,11 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             );
                           },
-                          child: const Text(
-                            "Sou cliente",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          child: const Text("Sou cliente",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20)),
                         ),
                       ],
                     ),
@@ -68,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 25,
                   ),
                   Container(
-                    height: 50,
+                    height: 70,
                     width: 350,
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(36, 36, 36, 1),
@@ -91,7 +90,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             "Sou uma Barbearia",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
                           ),
                         ),
                       ],

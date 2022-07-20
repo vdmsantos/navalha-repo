@@ -55,6 +55,7 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -62,23 +63,26 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Container(
-                        height: 50,
+                        height: 70,
                         width: 350,
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(36, 36, 36, 1),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10,top: 10),
                           child: TextField(
                             controller: emailControler,
-                            style: const TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
                     const SizedBox(
                       width: 350,
@@ -87,24 +91,28 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Container(
-                        height: 50,
+                        height: 70,
                         width: 350,
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(36, 36, 36, 1),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10,top: 10),
                           child: TextField(
                             controller: nameControler,
-                            style: const TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),

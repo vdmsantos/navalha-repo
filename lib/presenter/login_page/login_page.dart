@@ -30,23 +30,24 @@ class _LoginState extends State<Login> {
                 scale: 1,
               ),
               Container(
-                height: 50,
+                height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(36, 36, 36, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 10, top: 10),
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
+                      border: InputBorder.none,
                       hintText: "E-mail",
                       hintStyle: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromRGBO(85, 85, 85, 1),fontSize: 20
                       ),
                     ),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,fontSize: 18),
                   ),
                 ),
               ),
@@ -54,22 +55,23 @@ class _LoginState extends State<Login> {
                 height: 25,
               ),
               Container(
-                height: 50,
+                height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(36, 36, 36, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 10, top: 10),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Senha",
+                      border: InputBorder.none,
                       hintStyle: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromRGBO(85, 85, 85, 1),fontSize: 20
                       ),
                     ),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,fontSize: 18),
                     obscureText: true,
                   ),
                 ),
@@ -114,7 +116,7 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               Container(
-                height: 40,
+                height: 50,
                 width: 100,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(36, 36, 36, 1),
@@ -126,7 +128,7 @@ class _LoginState extends State<Login> {
                     Text(
                       "Entrar",
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Colors.white, fontWeight: FontWeight.bold,fontSize: 16),
                     ),
                   ],
                 ),
