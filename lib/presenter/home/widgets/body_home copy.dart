@@ -19,13 +19,13 @@ class BodyHome1 extends StatelessWidget {
       const TopBarWidget(userName: 'Viníciusw'),
       Container(
         width: size.width,
-        height: size.height - 150,
+        height: size.height - 200,
         child: CustomScrollView(
           shrinkWrap: true,
           slivers: [
             const SliverAppBar(
               backgroundColor: Colors.black,
-              expandedHeight: 250,
+              expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 background: const ImageContainer(),
               ),
@@ -34,7 +34,7 @@ class BodyHome1 extends StatelessWidget {
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return Container(
-                    height: 520,
+                    height: size.height - 270,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 18),
                       child: Column(

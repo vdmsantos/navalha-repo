@@ -9,7 +9,7 @@ class ImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 15, bottom: 10, left: 18, right: 18),
-      height: 205,
+      height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(45),
         image: const DecorationImage(

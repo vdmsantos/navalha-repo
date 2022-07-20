@@ -15,30 +15,28 @@ class UserDataAccess {
     userMap = userObj.toMap();
 
     await database.rawInsert(
-        'INSERT INTO TBUSUARIO(id , name, email,senha,datanasc,cidade,endereco)'
-        'VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO TBCLIENTE(id,name,email,password,cep,cpf)'
+        'VALUES(?,?,?,?,?,?)',
         [
-          299,
+          5,
           userMap['_name'],
           userMap['_email'],
           userMap['_password'],
-          userMap['_datanasc'],
-          userMap['_cidade'],
-          userMap['_endereco']
+          userMap['_cep'],
+          userMap['_cpf']
         ]);
     print('inserindo ${userMap.toString()}');
   }
 
   void update() async {
-     await database.rawUpdate(
-      'UPDATE TDUSUARIO SET  name = ?,email = ?,senha = ?,datanasc = ?,cidade = ?,endereco = ?',
+    await database.rawUpdate(
+      'UPDATE TBCLIENTE SET  name = ?,email = ?,password = ?,cep = ?,cpf = ?',
       [
         userMap['_name'],
         userMap['_email'],
         userMap['_password'],
-        userMap['_datanasc'],
-        userMap['_cidade'],
-        userMap['_endereco']
+        userMap['_cep'],
+        userMap['_cpf']
       ],
     );
 
@@ -46,13 +44,13 @@ class UserDataAccess {
   }
 
   void select() async {
-    List<Map> list = await database.rawQuery('SELECT * FROM TBUSUARIO');
+    List<Map> list = await database.rawQuery('SELECT * FROM TBCLIENTE');
     print(list);
   }
 
   void delete(int id) async {
     await database.rawDelete(
-      'DELETE FROM TDUSUARIO WHERE id = ?',
+      'DELETE FROM TBCLIENTE WHERE id = ?',
       [id],
     );
     print('deletando id $id');

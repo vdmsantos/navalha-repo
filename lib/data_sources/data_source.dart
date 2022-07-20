@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 class DataAccess {
   late Database database;
-  late UserDataAccess userData;
+  late UserDataAccess clientdao;
 
   DataAccess() {
     init();
@@ -11,7 +11,7 @@ class DataAccess {
 
   void init() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}demo.db';
+    String path = '${databasesPath}demo1.db';
 
     database = await openDatabase(
       path,
@@ -19,11 +19,11 @@ class DataAccess {
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute(
-          'CREATE TABLE TBUSUARIO (id INTEGER PRIMARY KEY ,' 
-              'name TEXT, email TEXT, senha TEXT,datanasc TEXT,cidade TEXT,endereco TEXT)',
+          'CREATE TABLE TBCLIENTE (id INTEGER PRIMARY KEY ,'
+          'name TEXT, email TEXT, password TEXT,cep TEXT,cpf TEXT)',
         );
       },
     );
-    userData = UserDataAccess(database);
+    clientdao = UserDataAccess(database);
   }
 }

@@ -112,17 +112,17 @@ class _MyWidgetState extends State<InsetExample> {
                 color: Colors.black,
                 onPressed: () {
                   var userModel = UsuarioModel(
-                      nameControler.text,
-                      emailControler.text,
-                      senhaControler.text,
-                      datanascControler.text,
-                      cidadeControler.text,
-                      enderecoControler.text);
+                    nameControler.text,
+                    emailControler.text,
+                    senhaControler.text,
+                    datanascControler.text,
+                    cidadeControler.text,
+                  );
                   print(userModel.toString());
                   print(userModel.toMap());
                   print(userModel.toJson());
-                  daofactory.userData.insert(userModel);
-                  daofactory.userData.select();
+                  daofactory.clientdao.insert(userModel);
+                  daofactory.clientdao.select();
                 },
                 height: 50,
                 child: const Text('Cadastrar'),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/home/home_page.dart';
+import 'package:projeto_1/presenter/login_page/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const Login()),
       );
     });
     super.initState();
@@ -21,20 +23,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/fundofinal2.jfif"),
+            image: AssetImage(fundoGeral),
             fit: BoxFit.cover,
           ),
         ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Image.asset(
-          'assets/images/logo_navalha2.png',
+          logoGeral,
         ),
       ),
     );
