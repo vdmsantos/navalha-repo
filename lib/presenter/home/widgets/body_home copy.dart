@@ -35,11 +35,11 @@ class BodyHome1 extends StatelessWidget {
                 (_, int index) {
                   return Container(
                     height: size.height - 270,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                      child: Column(
-                        children: [
-                          Row(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 22),
+                          child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: const [
                                 Icon(Icons.filter_alt_rounded,
@@ -51,8 +51,11 @@ class BodyHome1 extends StatelessWidget {
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold)),
                               ]),
-                          const SizedBox(height: 7),
-                          Row(
+                        ),
+                        const SizedBox(height: 7),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const [
                               Expanded(
@@ -74,67 +77,67 @@ class BodyHome1 extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 12),
-                              child: RefreshIndicator(
-                                displacement: 25,
-                                strokeWidth: 3,
-                                triggerMode: RefreshIndicatorTriggerMode.onEdge,
-                                backgroundColor:
-                                    const Color.fromARGB(255, 34, 34, 34),
-                                color: Colors.white,
-                                onRefresh: () => _reloadListItem(),
-                                child: ListView(
-                                  physics: const BouncingScrollPhysics(),
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Packers Barbearia',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 7,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                  ],
-                                ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: RefreshIndicator(
+                              displacement: 25,
+                              strokeWidth: 3,
+                              triggerMode: RefreshIndicatorTriggerMode.onEdge,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 34, 34, 34),
+                              color: Colors.white,
+                              onRefresh: () => _reloadListItem(),
+                              child: ListView(
+                                physics: const BouncingScrollPhysics(),
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 15, left: 15, bottom: 15),
+                                    child: BarberListItem(
+                                        star: 2,
+                                        distance: 25.6,
+                                        barberShopName: 'Outsider barber',
+                                        berbercutPrice: 25,
+                                        haircutPrice: 20),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 15, left: 15, bottom: 15),
+                                    child: BarberListItem(
+                                        star: 2,
+                                        distance: 25.6,
+                                        barberShopName: 'Packers Barbearia',
+                                        berbercutPrice: 25,
+                                        haircutPrice: 20),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 15, left: 15, bottom: 15),
+                                    child: BarberListItem(
+                                        star: 2,
+                                        distance: 25.6,
+                                        barberShopName: 'Outsider barber',
+                                        berbercutPrice: 25,
+                                        haircutPrice: 20),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 15, left: 15, bottom: 15),
+                                    child: BarberListItem(
+                                        star: 7,
+                                        distance: 25.6,
+                                        barberShopName: 'Outsider barber',
+                                        berbercutPrice: 25,
+                                        haircutPrice: 20),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   );
                 },
