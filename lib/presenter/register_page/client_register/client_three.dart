@@ -143,7 +143,6 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                               onPressed: () {
                                 widget.userParams['password'] =
                                     passwordControler.text;
-                                print(widget.userParams['password']);
 
                                 var userModel = UsuarioModel(
                                   widget.userParams['name'],

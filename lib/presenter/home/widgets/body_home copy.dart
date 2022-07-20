@@ -16,7 +16,7 @@ class BodyHome1 extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      const TopBarWidget(userName: 'Viníciusw'),
+      const TopBarWidget(userName: 'Vinícius'),
       Container(
         width: size.width,
         height: size.height - 200,

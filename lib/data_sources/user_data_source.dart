@@ -18,7 +18,7 @@ class UserDataAccess {
         'INSERT INTO TBCLIENTE(id,name,email,password,cep,cpf)'
         'VALUES(?,?,?,?,?,?)',
         [
-          5,
+          52,
           userMap['_name'],
           userMap['_email'],
           userMap['_password'],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 
 import '../../barbershop_page/barber_shop.dart';
+import '../../confirmation_page/confirmation_page.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
@@ -16,10 +17,10 @@ class TopBarWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 8),
       decoration: const BoxDecoration(
-        // color: Colors.black,
-        border:
-            Border(bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
-      ),
+          // color: Colors.black,
+          // border:
+          //     Border(bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
+          ),
       // padding: const EdgeInsets.all(2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +57,7 @@ class TopBarWidget extends StatelessWidget {
               //   MaterialPageRoute(builder: (context) => const Page1()),
               // );
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => BarberShopPage()),
+                MaterialPageRoute(builder: (context) => ConfirmationPage()),
               );
             },
             child: Icon(
