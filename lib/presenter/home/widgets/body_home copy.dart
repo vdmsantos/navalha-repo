@@ -17,13 +17,15 @@ class BodyHome1 extends StatelessWidget {
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       const TopBarWidget(userName: 'Vinícius'),
-      Container(
+      SizedBox(
         width: size.width,
         height: size.height - 200,
         child: CustomScrollView(
-          shrinkWrap: true,
+          // shrinkWrap: true,
           slivers: [
             const SliverAppBar(
+              automaticallyImplyLeading: false,
+              actions: <Widget>[SizedBox()],
               backgroundColor: Colors.black,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
