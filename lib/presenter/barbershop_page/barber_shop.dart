@@ -36,17 +36,20 @@ class _MyWidgetState extends State<BarberShopPage> {
           slivers: <Widget>[
             const SliverAppBar(
               backgroundColor: Color.fromARGB(255, 0, 0, 0),
-              expandedHeight: 260,
+              expandedHeight: 220,
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
-                    star: 2, title: 'The gentleman', profile: barberPhoto),
+                  star: 2,
+                  title: 'The gentleman',
+                  profile: barberPhoto,
+                ),
               ),
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return SizedBox(
-                    height: 600,
+                    height: 450,
                     width: 50,
                     child: Column(
                       children: [
@@ -54,7 +57,7 @@ class _MyWidgetState extends State<BarberShopPage> {
                           height: 10,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -68,20 +71,22 @@ class _MyWidgetState extends State<BarberShopPage> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: (currentIndex == 0)
-                                            ? Color.fromARGB(255, 0, 0, 0)
-                                            : Color.fromARGB(255, 34, 34, 34),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: (currentIndex == 0)
-                                                ? const Color.fromARGB(
-                                                    255, 255, 255, 255)
-                                                : const Color.fromARGB(
-                                                    0, 94, 94, 94),
-                                            spreadRadius: 1,
-                                          ),
-                                        ],
-                                        borderRadius: BorderRadius.circular(5)),
+                                      color: (currentIndex == 0)
+                                          ? const Color.fromARGB(255, 0, 0, 0)
+                                          : const Color.fromARGB(
+                                              255, 34, 34, 34),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: (currentIndex == 0)
+                                              ? const Color.fromARGB(
+                                                  255, 255, 255, 255)
+                                              : const Color.fromARGB(
+                                                  0, 94, 94, 94),
+                                          spreadRadius: 1,
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
                                     height: 35,
                                     child: Center(
                                       child: Row(
@@ -118,14 +123,16 @@ class _MyWidgetState extends State<BarberShopPage> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: (currentIndex == 1)
-                                            ? Color.fromARGB(255, 0, 0, 0)
-                                            : Color.fromARGB(255, 34, 34, 34),
+                                            ? const Color.fromARGB(255, 0, 0, 0)
+                                            : const Color.fromARGB(
+                                                255, 34, 34, 34),
                                         boxShadow: [
                                           BoxShadow(
                                             color: (currentIndex == 1)
                                                 ? const Color.fromARGB(
                                                     255, 255, 255, 255)
-                                                : Color.fromARGB(0, 94, 94, 94),
+                                                : const Color.fromARGB(
+                                                    0, 94, 94, 94),
                                             spreadRadius: 1,
                                           ),
                                         ],
@@ -165,20 +172,22 @@ class _MyWidgetState extends State<BarberShopPage> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: (currentIndex == 2)
-                                            ? Color.fromARGB(255, 0, 0, 0)
-                                            : Color.fromARGB(255, 34, 34, 34),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: (currentIndex == 2)
-                                                ? const Color.fromARGB(
-                                                    255, 255, 255, 255)
-                                                : const Color.fromARGB(
-                                                    0, 94, 94, 94),
-                                            spreadRadius: 1,
-                                          ),
-                                        ],
-                                        borderRadius: BorderRadius.circular(5)),
+                                      color: (currentIndex == 2)
+                                          ? const Color.fromARGB(255, 0, 0, 0)
+                                          : const Color.fromARGB(
+                                              255, 34, 34, 34),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: (currentIndex == 2)
+                                              ? const Color.fromARGB(
+                                                  255, 255, 255, 255)
+                                              : const Color.fromARGB(
+                                                  0, 94, 94, 94),
+                                          spreadRadius: 1,
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
                                     height: 35,
                                     child: Center(
                                       child: Row(
@@ -211,7 +220,12 @@ class _MyWidgetState extends State<BarberShopPage> {
                           ),
                         ),
                         if (currentIndex == 0)
-                          const ContainerDetailsBarberShop(),
+                          const ContainerDetailsBarberShop(
+                            andress:
+                                'Rua Antônio da veiga, 416 - Victor Konder - Blumenau- SC',
+                            hoursOpen: 'Das 08:00 até 21:00',
+                            phone: '(47) 9 9999-9999',
+                          ),
                         if (currentIndex == 1) const ListServices(),
                         if (currentIndex == 2) const ListProfessionals(),
                       ],
@@ -235,22 +249,35 @@ class ListProfessionals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        children: const [
-          ContainerProfissionals(),
-          ContainerProfissionals(),
-          ContainerProfissionals(),
-          ContainerProfissionals(),
-        ],
+    return MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: Expanded(
+        child: ListView(
+          children: const [
+            SizedBox(height: 20),
+            ContainerProfissionals(name: 'Lucas', photoProfile: barber6),
+            ContainerProfissionals(name: 'Vitor', photoProfile: barber7),
+            ContainerProfissionals(name: 'Maria', photoProfile: barber1),
+            ContainerProfissionals(name: 'Guilherme', photoProfile: barber4),
+            ContainerProfissionals(name: 'Fellipe', photoProfile: barber5),
+            ContainerProfissionals(name: 'Vinícius', photoProfile: barber2),
+            SizedBox(height: 40)
+          ],
+        ),
       ),
     );
   }
 }
 
 class ContainerProfissionals extends StatelessWidget {
+  final String name;
+  final String photoProfile;
+
   const ContainerProfissionals({
     Key? key,
+    required this.name,
+    required this.photoProfile,
   }) : super(key: key);
 
   @override
@@ -275,19 +302,22 @@ class ContainerProfissionals extends StatelessWidget {
                 color: Color.fromARGB(255, 44, 44, 44),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(20),
+                  bottomRight: Radius.circular(77),
                   topLeft: Radius.circular(100),
                   topRight: Radius.circular(77),
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 25),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
-                      'Cristiano',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ],
@@ -298,9 +328,12 @@ class ContainerProfissionals extends StatelessWidget {
                 left: 18,
               ),
               child: CircleAvatar(
-                  radius: 45,
-                  backgroundColor: const Color.fromARGB(255, 24, 24, 24),
-                  child: Image.asset('assets/images/profile.png')),
+                radius: 35,
+                backgroundColor: const Color.fromARGB(255, 68, 68, 68),
+                child: Image.asset(
+                  photoProfile,
+                ),
+              ),
             ),
           ],
         ),
@@ -316,28 +349,37 @@ class ListServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        children: const [
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-          ContainerListServices(),
-        ],
+    return MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: Expanded(
+        flex: 1,
+        child: ListView(
+          children: const [
+            SizedBox(height: 20),
+            ContainerListServices(price: '35,00', service: 'Corte tesoura'),
+            ContainerListServices(price: '25,00', service: 'Corte máquina'),
+            ContainerListServices(price: '30,00', service: 'Barba'),
+            ContainerListServices(price: '60,00', service: 'Cabelo e barba'),
+            ContainerListServices(price: '15,00', service: 'Hidratação'),
+            ContainerListServices(price: '55,00', service: 'Combo pai e filho'),
+            ContainerListServices(price: '40,00', service: 'Tingimento cabelo'),
+            SizedBox(height: 40),
+          ],
+        ),
       ),
     );
   }
 }
 
 class ContainerListServices extends StatelessWidget {
+  final String service;
+  final String price;
+
   const ContainerListServices({
     Key? key,
+    required this.service,
+    required this.price,
   }) : super(key: key);
 
   @override
@@ -346,30 +388,42 @@ class ContainerListServices extends StatelessWidget {
       margin: const EdgeInsets.only(left: 18, right: 18, bottom: 10),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 24, 24, 24),
-          borderRadius: BorderRadius.circular(10)),
+        color: const Color.fromARGB(255, 24, 24, 24),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Corte tesoura',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+            Text(
+              service,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
             SizedBox(
               child: Row(
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     'R\$',
-                    style: TextStyle(color: Colors.white, fontSize: 9),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 9,
+                    ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    '35,00',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 5,
+                    ),
+                    child: Text(
+                      price,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -382,33 +436,40 @@ class ContainerListServices extends StatelessWidget {
 }
 
 class ContainerDetailsBarberShop extends StatelessWidget {
+  final String andress;
+  final String phone;
+  final String hoursOpen;
+
   const ContainerDetailsBarberShop({
     Key? key,
+    required this.andress,
+    required this.phone,
+    required this.hoursOpen,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 18, right: 18, top: 40),
+      margin: const EdgeInsets.only(left: 18, right: 18, top: 20),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.maxFinite,
       decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 24, 24, 24),
-          borderRadius: BorderRadius.circular(10)),
+        color: const Color.fromARGB(255, 24, 24, 24),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
         children: [
-          const RowDetails(
+          RowDetails(
             firstString: 'Endereço:',
-            secondString:
-                'Rua Antônio da veiga, 416 - Victor Konder - Blumenau- SC',
+            secondString: andress,
           ),
-          const RowDetails(
+          RowDetails(
             firstString: 'Fone:',
-            secondString: '(47) 9 9999-9999',
+            secondString: phone,
           ),
-          const RowDetails(
+          RowDetails(
             firstString: 'Aberto:',
-            secondString: 'Das 08:00 até 21:00',
+            secondString: hoursOpen,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -424,7 +485,9 @@ class ContainerDetailsBarberShop extends StatelessWidget {
                   onTap: () {},
                   child: const Text(
                     'Ver no mapa',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
@@ -470,7 +533,10 @@ class _RowDetailsState extends State<RowDetails> {
             flex: 2,
             child: Text(
               widget.secondString,
-              style: const TextStyle(color: Colors.white, fontSize: 13),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
             ),
           ),
         ],
@@ -491,8 +557,9 @@ class _ContainerServicesState extends State<ContainerServices> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 34, 34, 34),
-          borderRadius: BorderRadius.circular(5)),
+        color: const Color.fromARGB(255, 34, 34, 34),
+        borderRadius: BorderRadius.circular(5),
+      ),
       height: 35,
       child: Center(
         child: Row(
@@ -503,8 +570,10 @@ class _ContainerServicesState extends State<ContainerServices> {
             ),
             Text(
               'Serviços',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

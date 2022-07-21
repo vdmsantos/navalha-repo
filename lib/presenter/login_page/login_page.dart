@@ -118,7 +118,9 @@ class _LoginState extends State<Login> {
                 onTap: () {
                   // showCustomDialog(context);
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage(scaffoldKeymed: null,)));
+                      builder: (context) => const HomePage(
+                            scaffoldKeymed: null,
+                          )));
                 },
                 child: Container(
                   height: 50,

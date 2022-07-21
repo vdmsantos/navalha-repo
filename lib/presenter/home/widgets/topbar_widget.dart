@@ -53,7 +53,7 @@ class TopBarWidget extends StatelessWidget {
             onTap: () {
               Scaffold.of(context).openDrawer();
             },
-            child: const Icon(
+            child: Icon(
               size: 35,
               Icons.menu_open_outlined,
               color: Colors.white,
