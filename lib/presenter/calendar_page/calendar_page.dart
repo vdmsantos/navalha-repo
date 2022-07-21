@@ -3,7 +3,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:table_calendar/table_calendar.dart';
-
+import '../../confirmation_page/confirmation_page.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 import 'widgets/utils_calendar.dart';
@@ -192,12 +192,17 @@ class _CalendarPageState extends State<CalendarPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   MaterialButton(
-                    color: const Color.fromARGB(255, 66, 66, 66),
+                    color: const Color.fromARGB(255, 42, 42, 42),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      side: const BorderSide(color: Colors.white),
+                      // side: const BorderSide(color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const ConfirmationPage()),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: const [

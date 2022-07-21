@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
         decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage(fundoGeral),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         )),
         child: Column(
           children: [

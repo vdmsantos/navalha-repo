@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_1/presenter/barbershop_page/barber_shop.dart';
 import '../../core/assets.dart';
 import '../../shared/topcontainer_stars_pattern.dart';
+import '../presenter/login_page/login_page.dart';
 
 class BodyConfirmation extends StatelessWidget {
   const BodyConfirmation({
@@ -59,7 +60,7 @@ class BodyConfirmation extends StatelessWidget {
                               children: [
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: const [
                                     Text(
                                       "Confirmar agendamento",
                                       style: TextStyle(
@@ -139,12 +140,12 @@ class BodyConfirmation extends StatelessWidget {
                                   children: [
                                     MaterialButton(
                                       onPressed: () {
-                                        //Navigator.push(
-                                        //  context,
-                                        // MaterialPageRoute(
-                                        // builder: ((context) => const Login()),
-                                        // ),
-                                        //  );
+                                        Navigator.push(
+                                         context,
+                                        MaterialPageRoute(
+                                        builder: ((context) => const Login()),
+                                        ),
+                                         );
                                       },
                                       child: const Text(
                                         "Confirmar",
