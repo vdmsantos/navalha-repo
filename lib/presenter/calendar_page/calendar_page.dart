@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:projeto_1/core/assets.dart';
-import 'package:projeto_1/presenter/confirmation_page/confirmation_page.dart';
 import 'package:table_calendar/table_calendar.dart';
-
+import '../../confirmation_page/confirmation_page.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 import 'widgets/utils_calendar.dart';

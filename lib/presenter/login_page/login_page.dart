@@ -118,12 +118,12 @@ class _LoginState extends State<Login> {
               ),
               GestureDetector(
                 onTap: () {
-                  daofactory.clientdao.select();
+                  // daofactory.clientdao.select();
                   // showCustomDialog(context);
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  // builder: (context) => const HomePage(
-                  // scaffoldKeymed: null,
-                  // )));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const HomePage(
+                            scaffoldKeymed: null,
+                          )));
                 },
                 child: Container(
                   height: 50,

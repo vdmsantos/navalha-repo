@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:projeto_1/presenter/login_page/login_page.dart';
 
 class AlertDialogBarber {
-  static void showCustomDialog(BuildContext context) {
+  AlertDialogBarber({
+    required this.textbutton,
+    required this.text,
+  });
+  final String textbutton;
+  final String text;
+
+  void showCustomDialog(BuildContext context) {
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
@@ -25,15 +33,16 @@ class AlertDialogBarber {
                   size: 80,
                   color: Colors.white,
                 ),
-                const Padding(
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Text('Cadastro realizado com sucesso!',
+                  child: Text(text,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           decoration: TextDecoration.none)),
                 ),
                 Container(
+                    width: 100,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(100)),
                     child: ElevatedButton(
@@ -44,8 +53,9 @@ class AlertDialogBarber {
                                 builder: (context) => const Login()));
                       },
                       child: Text(
-                        'Confirmar',
-                        style: TextStyle(color: Colors.black),
+                        textbutton,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       style: ButtonStyle(
                           backgroundColor:

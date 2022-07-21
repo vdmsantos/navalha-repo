@@ -157,15 +157,6 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                                 print(userModel.toJson());
                                 daofactory.clientdao.insert(userModel);
                                 daofactory.clientdao.select();
-
-                                AlertDialogBarber.showCustomDialog(context);
-
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: ((context) => const Login()),
-                                //   ),
-                                // );
                               },
                               child: const Text(
                                 "Próximo",
