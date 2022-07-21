@@ -215,7 +215,7 @@ class BodyEditingProfile extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 const SizedBox(

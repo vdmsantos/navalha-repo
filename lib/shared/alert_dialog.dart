@@ -23,7 +23,7 @@ class AlertDialogBarber {
             height: 240,
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-                color: Color.fromRGBO(36, 36, 36, 1),
+                color: const Color.fromRGBO(36, 36, 36, 1),
                 borderRadius: BorderRadius.circular(40)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,7 +36,7 @@ class AlertDialogBarber {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(text,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           decoration: TextDecoration.none)),
@@ -52,11 +52,6 @@ class AlertDialogBarber {
                             MaterialPageRoute(
                                 builder: (context) => const Login()));
                       },
-                      child: Text(
-                        textbutton,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.greenAccent),
@@ -64,7 +59,12 @@ class AlertDialogBarber {
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
-                                      side: BorderSide()))),
+                                      side: const BorderSide()))),
+                      child: Text(
+                        textbutton,
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
                     ))
               ],
             ),

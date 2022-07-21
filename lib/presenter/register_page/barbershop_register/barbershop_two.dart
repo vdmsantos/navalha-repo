@@ -29,54 +29,14 @@ class _BarberShopRegisterTwoState extends State<BarberShopRegisterTwo> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 50),
-                        child: SizedBox(
-                          width: 350,
-                          child: Text(
-                            "Insira seu CNPJ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(36, 36, 36, 1),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 8.0, right: 8,top:10),
-                            child: TextField(
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                              maxLength: 14,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const SizedBox(
+                Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 50),
+                      child: SizedBox(
                         width: 350,
                         child: Text(
-                          "Insira seu CEP",
+                          "Insira seu CNPJ",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -84,32 +44,70 @@ class _BarberShopRegisterTwoState extends State<BarberShopRegisterTwo> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(36, 36, 36, 1),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 8.0, right: 8,top: 10),
-                            child: TextField(
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                              maxLength: 8,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: InputBorder.none,
-                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Container(
+                        height: 70,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(36, 36, 36, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 8.0, right: 8,top:10),
+                          child: TextField(
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18),
+                            maxLength: 14,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              counterText: "",
+                              border: InputBorder.none,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      width: 350,
+                      child: Text(
+                        "Insira seu CEP",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Container(
+                        height: 70,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(36, 36, 36, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 8.0, right: 8,top: 10),
+                          child: TextField(
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18),
+                            maxLength: 8,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              counterText: "",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
 
                 //Botao proximo daqui pra baixo

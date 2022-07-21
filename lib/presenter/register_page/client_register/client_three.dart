@@ -1,12 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/model/user_model.dart';
-import 'package:projeto_1/shared/alert_dialog.dart';
 
 import '../../../data_sources/data_source.dart';
-import '../../login_page/login_page.dart';
 
 class ClientRegisterThree extends StatefulWidget {
   const ClientRegisterThree({
@@ -72,7 +69,7 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                           padding: const EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
                             controller: passwordControler,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: const TextStyle(color: Colors.white, fontSize: 18),
                             obscureText: true,
                             decoration: const InputDecoration(
                               border: InputBorder.none,

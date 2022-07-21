@@ -28,50 +28,14 @@ class _BarberShopRegisterOneState extends State<BarberShopRegisterOne> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 50),
-                        child: SizedBox(
-                          width: 350,
-                          child: Text(
-                            "Insira o nome da barbearia",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(36, 36, 36, 1),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 10,top: 10),
-                            child: TextField(
-                              style: TextStyle(color: Colors.white,fontSize: 18),
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const SizedBox(
+                Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 50),
+                      child: SizedBox(
                         width: 350,
                         child: Text(
-                          "Insira seu e-mail",
+                          "Insira o nome da barbearia",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -79,29 +43,63 @@ class _BarberShopRegisterOneState extends State<BarberShopRegisterOne> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(36, 36, 36, 1),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 10,top: 10),
-                            child: TextField(
-                              style: TextStyle(color: Colors.white,fontSize: 18),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Container(
+                        height: 70,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(36, 36, 36, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10,top: 10),
+                          child: TextField(
+                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      width: 350,
+                      child: Text(
+                        "Insira seu e-mail",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Container(
+                        height: 70,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(36, 36, 36, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10,top: 10),
+                          child: TextField(
+                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
 
                 //Botao proximo daqui pra baixo

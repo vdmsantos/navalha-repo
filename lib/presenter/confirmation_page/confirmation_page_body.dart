@@ -1,15 +1,21 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
-import 'package:projeto_1/presenter/barbershop_page/barber_shop.dart';
+
 import '../../core/assets.dart';
+import '../../shared/alert_dialog.dart';
+import '../../shared/row_details.dart';
 import '../../shared/topcontainer_stars_pattern.dart';
-import '../presenter/login_page/login_page.dart';
-import '../shared/alert_dialog.dart';
+import '../schedule_page/widgets/row_details_schedule.dart';
 
 class BodyConfirmation extends StatelessWidget {
   const BodyConfirmation({
     Key? key,
+    required this.selectedDay,
+    required this.selectedHour,
   }) : super(key: key);
+
+  final selectedDay;
+  final selectedHour;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class BodyConfirmation extends StatelessWidget {
     AlertDialogBarber dialog = AlertDialogBarber(
         text: 'Horário agendado com sucesso!', textbutton: 'Ok');
 
-    return Container(
+    return SizedBox(
       height: size.height,
       width: size.width,
       child: CustomScrollView(
@@ -78,9 +84,10 @@ class BodyConfirmation extends StatelessWidget {
                                   firstString: 'Serviços:',
                                   secondString: 'Barba - Corte Máquina',
                                 ),
-                                const RowDetails(
+                                RowDetailsSchedule(
                                   firstString: 'Horário:',
-                                  secondString: '10/06/2022 as 08:30',
+                                  dateString: selectedDay,
+                                  hourString: selectedHour,
                                 ),
                               ],
                             ),

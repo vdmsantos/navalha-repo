@@ -1,10 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_1/core/assets.dart';
-import 'package:projeto_1/presenter/home/home_page.dart';
-import 'dart:math' as math;
-import '../presenter/calendar_page/calendar_page.dart';
+
+import '../core/assets.dart';
 import '../presenter/editing_profile/editing_profile_page.dart';
+import '../presenter/home/home_page.dart';
+import '../presenter/schedule_page/schedule_page.dart';
 
 class ScaffoldPattern extends StatefulWidget {
   const ScaffoldPattern({
@@ -100,19 +102,14 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
             case 2:
               {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const CalendarPage()),
+                  MaterialPageRoute(builder: (context) => const SchedulePage()),
                 );
                 break;
               }
 
             default:
           }
-          // setIndex(index);
-          // print(_bottomNavIndex);
         },
-        // activeIndex: 10,
-
-        //other params
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -121,9 +118,6 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
             fit: BoxFit.cover,
           ),
         ),
-        // width: size.width,
-        // height: size.height,
-        // color: Colors.black,
         child: widget.bodyPage,
       ),
     );
@@ -175,7 +169,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const ContainerDrawer1(
+                  const ContainerDrawerSchedule(
                     textTopic: 'Minha agenda',
                   ),
                   const SizedBox(
@@ -229,8 +223,6 @@ class ArrowLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      // hoverColor: ,
-      // padding: const EdgeInsets.only(bottom: 60),
       onPressed: () {},
       icon: const Icon(
         Icons.arrow_forward_ios_rounded,
@@ -314,7 +306,59 @@ class ContainerDrawer1 extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => EditingProfilePage()),
+            builder: ((context) => const EditingProfilePage()),
+          ),
+        );
+      },
+      child: Ink(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 44, 44, 44),
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(100, 0, 0, 0),
+              blurRadius: 5,
+              spreadRadius: 1,
+            ),
+          ],
+        ),
+        child: ListTile(
+          title: Center(
+            child: Text(textTopic,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 3,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    )
+                  ],
+                )),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ContainerDrawerSchedule extends StatelessWidget {
+  final String textTopic;
+
+  const ContainerDrawerSchedule({
+    Key? key,
+    required this.textTopic,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const SchedulePage()),
           ),
         );
       },

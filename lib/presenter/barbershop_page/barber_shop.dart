@@ -4,6 +4,7 @@ import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 import 'package:projeto_1/shared/topcontainer_stars_pattern.dart';
 
+import '../../shared/row_details.dart';
 import '../../shared/scaffold_pattern.dart';
 
 class BarberShopPage extends StatefulWidget {
@@ -253,12 +254,15 @@ class ListProfessionals extends StatelessWidget {
         child: ListView(
           children: const [
             SizedBox(height: 20),
-            ContainerProfissionals(name: 'Lucas', photoProfile: barber6),
-            ContainerProfissionals(name: 'Vitor', photoProfile: barber7),
-            ContainerProfissionals(name: 'Maria', photoProfile: barber1),
-            ContainerProfissionals(name: 'Guilherme', photoProfile: barber4),
-            ContainerProfissionals(name: 'Fellipe', photoProfile: barber5),
-            ContainerProfissionals(name: 'Vinícius', photoProfile: barber2),
+            ContainerProfissionals(barberName: 'Lucas', photoProfile: barber6),
+            ContainerProfissionals(barberName: 'Vitor', photoProfile: barber7),
+            ContainerProfissionals(barberName: 'Maria', photoProfile: barber1),
+            ContainerProfissionals(
+                barberName: 'Guilherme', photoProfile: barber4),
+            ContainerProfissionals(
+                barberName: 'Fellipe', photoProfile: barber5),
+            ContainerProfissionals(
+                barberName: 'Vinícius', photoProfile: barber2),
             SizedBox(height: 40)
           ],
         ),
@@ -268,12 +272,12 @@ class ListProfessionals extends StatelessWidget {
 }
 
 class ContainerProfissionals extends StatelessWidget {
-  final String name;
+  final String barberName;
   final String photoProfile;
 
   const ContainerProfissionals({
     Key? key,
-    required this.name,
+    required this.barberName,
     required this.photoProfile,
   }) : super(key: key);
 
@@ -284,7 +288,10 @@ class ContainerProfissionals extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => const CalendarPage()),
+            builder: ((context) => CalendarPage(
+                  iconBarberSelect: photoProfile,
+                  nameBarberSelect: barberName,
+                )),
           ),
         );
       },
@@ -310,7 +317,7 @@ class ContainerProfissionals extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
-                      name,
+                      barberName,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 25,
@@ -488,52 +495,6 @@ class ContainerDetailsBarberShop extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RowDetails extends StatefulWidget {
-  final String firstString;
-  final String secondString;
-
-  const RowDetails({
-    Key? key,
-    required this.firstString,
-    required this.secondString,
-  }) : super(key: key);
-
-  @override
-  State<RowDetails> createState() => _RowDetailsState();
-}
-
-class _RowDetailsState extends State<RowDetails> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              widget.firstString,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Text(
-              widget.secondString,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-              ),
             ),
           ),
         ],

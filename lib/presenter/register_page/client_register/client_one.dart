@@ -65,8 +65,8 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                       child: Container(
                         height: 70,
                         width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(36, 36, 36, 1),
                           borderRadius: BorderRadius.only(),
                         ),
                         child: Padding(

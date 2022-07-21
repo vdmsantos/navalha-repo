@@ -42,7 +42,7 @@ dependencies:
   circle_bottom_navigation_bar: ^1.0.0
   table_calendar: ^3.0.6
   intl: ^0.17.0
-  device_preview: ^1.1.0
+  
 
 dev_dependencies:
   flutter_test:
