@@ -1,21 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/presenter/login_page/login_page.dart';
 
-class AlertDialog {
-  void showCustomDialog(BuildContext context) {
+class AlertDialogBarber {
+  static void showCustomDialog(BuildContext context) {
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
       barrierDismissible: true,
       barrierColor: Colors.black.withOpacity(0.5),
-      transitionDuration:const Duration(milliseconds: 700),
+      transitionDuration: const Duration(milliseconds: 700),
       pageBuilder: (_, __, ___) {
         return Center(
           child: Container(
             height: 240,
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(40)),
-            child: const SizedBox.expand(child: FlutterLogo()),
+                color: Color.fromRGBO(36, 36, 36, 1),
+                borderRadius: BorderRadius.circular(40)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Icon(
+                  Icons.check_circle,
+                  size: 80,
+                  color: Colors.white,
+                ),
+                const Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text('Cadastro realizado com sucesso!',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          decoration: TextDecoration.none)),
+                ),
+                Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()));
+                      },
+                      child: Text(
+                        'Confirmar',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.greenAccent),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      side: BorderSide()))),
+                    ))
+              ],
+            ),
           ),
         );
       },

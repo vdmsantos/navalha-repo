@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'package:projeto_1/core/assets.dart';
@@ -7,7 +5,6 @@ import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 import 'package:projeto_1/shared/topcontainer_stars_pattern.dart';
 
 import '../../shared/scaffold_pattern.dart';
-import '../../shared/topcontainer_pattern.dart';
 
 class BarberShopPage extends StatefulWidget {
   const BarberShopPage({super.key});

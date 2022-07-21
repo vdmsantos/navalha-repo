@@ -67,9 +67,9 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
           backgroundColor: const Color.fromARGB(255, 24, 24, 24),
           icons: const [
             Icons.account_circle_outlined,
-            Icons.settings,
             Icons.calendar_month_outlined,
             Icons.notifications_none_outlined,
+            Icons.settings,
           ],
           iconSize: 27,
           activeIndex: _bottomNavIndex,
@@ -81,7 +81,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
           onTap: (index) {
             // scaffoldKey.currentState!.openEndDrawer();
 
-            if (index == 1) {
+            if (index == 3) {
               scaffoldKey.currentState!.openEndDrawer();
             }
             switch (index) {
@@ -91,13 +91,8 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
                   print('falta implementar a pagina');
                   break;
                 }
-              case 1:
-                {
-                  scaffoldKey.currentState!.openEndDrawer();
 
-                  break;
-                }
-              case 2:
+              case 1:
                 {
                   Navigator.of(context).push(
                     MaterialPageRoute(

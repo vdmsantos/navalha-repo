@@ -27,6 +27,7 @@ class BodyHome extends StatelessWidget {
           width: size.width,
           height: double.maxFinite,
           child: CustomScrollView(
+            shrinkWrap: true,
             // shrinkWrap: true,
             slivers: [
               const SliverAppBar(
@@ -35,7 +36,7 @@ class BodyHome extends StatelessWidget {
                 backgroundColor: Colors.black,
                 expandedHeight: 200,
                 flexibleSpace: FlexibleSpaceBar(
-                  background: const ImageContainer(),
+                  background: ImageContainer(),
                 ),
               ),
               SliverList(
@@ -87,9 +88,10 @@ class BodyHome extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 12),
+                          MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            child: Expanded(
                               child: RefreshIndicator(
                                 displacement: 25,
                                 strokeWidth: 3,
@@ -98,50 +100,73 @@ class BodyHome extends StatelessWidget {
                                     const Color.fromARGB(255, 34, 34, 34),
                                 color: Colors.white,
                                 onRefresh: () => _reloadListItem(),
-                                child: ListView(
-                                  physics: const BouncingScrollPhysics(),
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Packers Barbearia',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 2,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15, left: 15, bottom: 15),
-                                      child: BarberListItem(
-                                          star: 7,
-                                          distance: 25.6,
-                                          barberShopName: 'Outsider barber',
-                                          berbercutPrice: 25,
-                                          haircutPrice: 20),
-                                    ),
-                                  ],
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 15),
+                                  child: ListView(
+                                    physics: const BouncingScrollPhysics(),
+                                    children: const [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 2,
+                                            distance: 25.6,
+                                            barberShopName: 'Outsider barber',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 2,
+                                            distance: 25.6,
+                                            barberShopName: 'Packers Barbearia',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 2,
+                                            distance: 25.6,
+                                            barberShopName: 'Outsider barber',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 2,
+                                            distance: 25.6,
+                                            barberShopName: 'Outsider barber',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 2,
+                                            distance: 25.6,
+                                            barberShopName: 'Outsider barber',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 7,
+                                            distance: 25.6,
+                                            barberShopName: 'Outsider barber',
+                                            berbercutPrice: 25,
+                                            haircutPrice: 20),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

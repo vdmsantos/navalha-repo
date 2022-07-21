@@ -9,15 +9,16 @@ import 'package:projeto_1/presenter/splash/splashscreen.dart';
 //   runApp(const MyApp())z);
 // }
 
-void main() {
-  initializeDateFormatting().then(
-    (_) => runApp(const MyApp()),
-  );
-}
-
 // void main() {
-// runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+//   initializeDateFormatting().then(
+//     (_) => runApp(const MyApp()),
+//   );
 // }
+
+void main() {
+  runApp(DevicePreview(
+      enabled: !kReleaseMode, builder: (context) => const MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

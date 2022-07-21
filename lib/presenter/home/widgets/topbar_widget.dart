@@ -51,9 +51,15 @@ class TopBarWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Scaffold.of(context).openDrawer();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DrawerWidget(
+                            name: 'Vitor',
+                            photoProfile: barberPhoto,
+                          )));
             },
-            child: const Icon(
+            child: Icon(
               size: 35,
               Icons.menu_open_outlined,
               color: Colors.white,

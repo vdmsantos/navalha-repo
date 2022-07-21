@@ -43,6 +43,18 @@ class UserDataAccess {
     print('update ${userMap.toString()}');
   }
 
+  Future<bool> isRegistered(String email, String password) async {
+    List<Map> list = await database.rawQuery(
+        'SELECT * FROM TBCLIENTE WHERE EMAIL = ? AND PASSWORD = ?',
+        [email.toUpperCase(), password.toUpperCase()]);
+
+    if (list.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void select() async {
     List<Map> list = await database.rawQuery('SELECT * FROM TBCLIENTE');
     print(list);

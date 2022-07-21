@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/core/assets.dart';
+import 'package:projeto_1/data_sources/data_source.dart';
 import 'package:projeto_1/presenter/home/home_page.dart';
 import 'package:projeto_1/presenter/register_page/register_page.dart';
 
@@ -11,6 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var daofactory = DataAccess();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,9 +118,12 @@ class _LoginState extends State<Login> {
               ),
               GestureDetector(
                 onTap: () {
+                  daofactory.clientdao.select();
                   // showCustomDialog(context);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage(scaffoldKeymed: null,)));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  // builder: (context) => const HomePage(
+                  // scaffoldKeymed: null,
+                  // )));
                 },
                 child: Container(
                   height: 50,
@@ -147,42 +152,4 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-}
-
-void showCustomDialog(BuildContext context) {
-  showGeneralDialog(
-    context: context,
-    barrierLabel: "Barrier",
-    barrierDismissible: true,
-    barrierColor: Colors.black.withOpacity(0.5),
-    transitionDuration: const Duration(milliseconds: 700),
-    pageBuilder: (_, __, ___) {
-      return Center(
-        child: Container(
-          height: 240,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 56, 55, 55),
-              borderRadius: BorderRadius.circular(40)),
-          child: const SizedBox.expand(child: FlutterLogo()),
-        ),
-      );
-    },
-    transitionBuilder: (_, anim, __, child) {
-      Tween<Offset> tween;
-      if (anim.status == AnimationStatus.reverse) {
-        tween = Tween(begin: const Offset(-1, 0), end: Offset.zero);
-      } else {
-        tween = Tween(begin: const Offset(1, 0), end: Offset.zero);
-      }
-
-      return SlideTransition(
-        position: tween.animate(anim),
-        child: FadeTransition(
-          opacity: anim,
-          child: child,
-        ),
-      );
-    },
-  );
 }
