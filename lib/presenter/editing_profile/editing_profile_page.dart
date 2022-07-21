@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/shared/scaffold_pattern.dart';
+
+import '../../shared/scaffold_pattern.dart';
 import 'editing_profile_body.dart';
 
 class EditingProfilePage extends StatefulWidget {

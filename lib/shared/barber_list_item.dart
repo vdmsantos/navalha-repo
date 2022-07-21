@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icon_decoration/icon_decoration.dart';
-import 'package:projeto_1/presenter/barbershop_page/barber_shop.dart';
+import '../presenter/barbershop/barber_shop.dart';
 
 class BarberListItem extends StatefulWidget {
   const BarberListItem({

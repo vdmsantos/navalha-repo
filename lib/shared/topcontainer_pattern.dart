@@ -83,7 +83,7 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
               width: double.maxFinite,
               height: 60,
               decoration: const BoxDecoration(
-                color: const Color.fromARGB(255, 42, 42, 42),
+                color: Color.fromARGB(255, 42, 42, 42),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(35),
                 ),
