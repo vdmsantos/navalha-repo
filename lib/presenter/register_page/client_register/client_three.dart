@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/model/user_model.dart';
+import 'package:projeto_1/shared/alert_dialog.dart';
 
 import '../../../data_sources/data_source.dart';
 import '../../login_page/login_page.dart';
@@ -156,13 +157,6 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                                 print(userModel.toJson());
                                 daofactory.clientdao.insert(userModel);
                                 daofactory.clientdao.select();
-
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => const Login()),
-                                  ),
-                                );
                               },
                               child: const Text(
                                 "Próximo",

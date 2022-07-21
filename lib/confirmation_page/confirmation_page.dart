@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/presenter/confirmation_page/confirmation_body.dart';
-import 'package:projeto_1/presenter/home/widgets/body_home.dart';
 import '../../shared/scaffold_pattern.dart';
+import 'confirmation_page_body.dart';
 
 class ConfirmationPage extends StatefulWidget {
   const ConfirmationPage({super.key});

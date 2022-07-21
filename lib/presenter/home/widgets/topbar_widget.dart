@@ -1,10 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:projeto_1/core/assets.dart';
-import 'package:projeto_1/shared/scaffold_pattern.dart';
-
-import '../../confirmation_page/confirmation_page.dart';
+import '../../../core/assets.dart';
+import '../../../shared/scaffold_pattern.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
@@ -51,7 +48,13 @@ class TopBarWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Scaffold.of(context).openDrawer();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DrawerWidget(
+                            name: 'Vitor',
+                            photoProfile: barberPhoto,
+                          )));
             },
             child: Icon(
               size: 35,

@@ -11,7 +11,7 @@ class ImageContainer extends StatelessWidget {
       margin: const EdgeInsets.only(top: 15, bottom: 10, left: 18, right: 18),
       height: 150,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(45),
+        borderRadius: BorderRadius.circular(25),
         image: const DecorationImage(
           image: AssetImage("assets/images/container_background.png"),
           fit: BoxFit.cover,
