@@ -142,21 +142,22 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                widget.userParams['password'] =
-                                    passwordControler.text;
+                                // widget.userParams['password'] =
+                                //     passwordControler.text;
 
-                                var userModel = UsuarioModel(
-                                  widget.userParams['name'],
-                                  widget.userParams['email'],
-                                  widget.userParams['password'],
-                                  widget.userParams['cpf'],
-                                  widget.userParams['cep'],
-                                );
-                                print(userModel.toString());
-                                print(userModel.toMap());
-                                print(userModel.toJson());
-                                daofactory.clientdao.insert(userModel);
+                                // var userModel = UsuarioModel(
+                                //   widget.userParams['name'],
+                                //   widget.userParams['email'],
+                                //   widget.userParams['password'],
+                                //   widget.userParams['cpf'],
+                                //   widget.userParams['cep'],
+                                // );
+                                // // print(userModel.toString());
+                                // // print(userModel.toMap());
+                                // // print(userModel.toJson());
+                                // daofactory.clientdao.insert(userModel);
                                 daofactory.clientdao.select();
+                                // daofactory.clientdao.delete(1);
                               },
                               child: const Text(
                                 "Próximo",

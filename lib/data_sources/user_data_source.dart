@@ -49,21 +49,22 @@ class UserDataAccess {
         [email.toUpperCase(), password.toUpperCase()]);
 
     if (list.isNotEmpty) {
+      print('encontrou o cabloco');
       return true;
     } else {
+      print('não encontrou o cabloco');
       return false;
     }
   }
 
   void select() async {
     List<Map> list = await database.rawQuery('SELECT * FROM TBCLIENTE');
-    print(list);
+    print('ESSA É A LISTA PORRA $list');
   }
 
   void delete(int id) async {
     await database.rawDelete(
-      'DELETE FROM TBCLIENTE WHERE id = ?',
-      [id],
+      'DELETE  FROM TBCLIENTE',
     );
     print('deletando id $id');
   }

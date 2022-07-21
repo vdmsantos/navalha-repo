@@ -109,8 +109,8 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
-                                            star: 2,
-                                            distance: 25.6,
+                                            star: 5,
+                                            distance: 4.6,
                                             barberShopName: 'Outsider barber',
                                             berbercutPrice: 25,
                                             haircutPrice: 20),
@@ -119,8 +119,8 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
-                                            star: 2,
-                                            distance: 25.6,
+                                            star: 4,
+                                            distance: 10.6,
                                             barberShopName: 'Packers Barbearia',
                                             berbercutPrice: 25,
                                             haircutPrice: 20),
@@ -129,9 +129,21 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
-                                            star: 2,
-                                            distance: 25.6,
-                                            barberShopName: 'Outsider barber',
+                                            star: 5,
+                                            distance: 0.4,
+                                            barberShopName:
+                                                'Black dog barbershop',
+                                            berbercutPrice: 30,
+                                            haircutPrice: 25),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, left: 15, bottom: 15),
+                                        child: BarberListItem(
+                                            star: 4,
+                                            distance: 2.6,
+                                            barberShopName:
+                                                'El Chape Barbearia',
                                             berbercutPrice: 25,
                                             haircutPrice: 20),
                                       ),
@@ -139,9 +151,9 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
-                                            star: 2,
-                                            distance: 25.6,
-                                            barberShopName: 'Outsider barber',
+                                            star: 3,
+                                            distance: 2.50,
+                                            barberShopName: 'Royal Barbershop',
                                             berbercutPrice: 25,
                                             haircutPrice: 20),
                                       ),
@@ -149,17 +161,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
-                                            star: 2,
-                                            distance: 25.6,
-                                            barberShopName: 'Outsider barber',
-                                            berbercutPrice: 25,
-                                            haircutPrice: 20),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            right: 15, left: 15, bottom: 15),
-                                        child: BarberListItem(
-                                            star: 7,
+                                            star: 3,
                                             distance: 25.6,
                                             barberShopName: 'Outsider barber',
                                             berbercutPrice: 25,

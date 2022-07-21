@@ -67,13 +67,14 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                         width: 350,
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.only(),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 10),
+                          padding: const EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
                             controller: emailControler,
-                            style: const TextStyle(color: Colors.white,fontSize: 18),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 18),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                             ),
@@ -105,10 +106,11 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 10),
+                          padding: const EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
                             controller: nameControler,
-                            style:const TextStyle(color: Colors.white,fontSize: 18),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,

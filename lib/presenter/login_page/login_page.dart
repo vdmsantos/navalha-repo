@@ -12,6 +12,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailControler = TextEditingController();
+  TextEditingController passwordControler = TextEditingController();
+
   var daofactory = DataAccess();
   @override
   Widget build(BuildContext context) {
@@ -118,12 +121,12 @@ class _LoginState extends State<Login> {
               ),
               GestureDetector(
                 onTap: () {
-                  // daofactory.clientdao.select();
-                  // showCustomDialog(context);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage(
-                            scaffoldKeymed: null,
-                          )));
+                  daofactory.clientdao.select();
+                  daofactory.clientdao.isRegistered('email',
+                      'password'); // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (context) => const HomePage(
+                  //           scaffoldKeymed: null,
+                  //         )));
                 },
                 child: Container(
                   height: 50,
