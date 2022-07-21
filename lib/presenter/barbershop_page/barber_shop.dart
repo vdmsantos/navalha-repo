@@ -47,7 +47,7 @@ class _MyWidgetState extends State<BarberShopPage> {
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return SizedBox(
-                    height: 450,
+                    height: 520,
                     width: 50,
                     child: Column(
                       children: [
@@ -257,13 +257,10 @@ class ListProfessionals extends StatelessWidget {
             ContainerProfissionals(barberName: 'Lucas', photoProfile: barber6),
             ContainerProfissionals(barberName: 'Vitor', photoProfile: barber7),
             ContainerProfissionals(barberName: 'Maria', photoProfile: barber1),
-            ContainerProfissionals(
-                barberName: 'Guilherme', photoProfile: barber4),
-            ContainerProfissionals(
-                barberName: 'Fellipe', photoProfile: barber5),
-            ContainerProfissionals(
-                barberName: 'Vinícius', photoProfile: barber2),
-            SizedBox(height: 40)
+            ContainerProfissionals(barberName: 'Guilherme', photoProfile: barber4),
+            ContainerProfissionals(barberName: 'Fellipe', photoProfile: barber5),
+            ContainerProfissionals(barberName: 'Vinícius', photoProfile: barber2),
+            SizedBox(height: 50)
           ],
         ),
       ),
@@ -368,7 +365,7 @@ class ListServices extends StatelessWidget {
             ContainerListServices(price: '15,00', service: 'Hidratação'),
             ContainerListServices(price: '55,00', service: 'Combo pai e filho'),
             ContainerListServices(price: '40,00', service: 'Tingimento cabelo'),
-            SizedBox(height: 40),
+            SizedBox(height: 100),
           ],
         ),
       ),
