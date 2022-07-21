@@ -102,7 +102,7 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
                 ),
               ),
               child: Padding(
-                  padding:const EdgeInsets.symmetric(horizontal: 50),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [for (int i = 0; i <= 4; i++) starList[i]],
@@ -113,7 +113,7 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
         Positioned(
           top: 112,
           child: CircleAvatar(
-            backgroundColor:const Color.fromARGB(255, 42, 42, 42),
+            backgroundColor: const Color.fromARGB(255, 42, 42, 42),
             radius: 75,
             child: SizedBox(
               child: Image(
