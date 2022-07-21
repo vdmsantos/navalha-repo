@@ -24,10 +24,13 @@ class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: isFavorite ? Colors.black : const Color.fromARGB(255, 66, 66, 66),
+      color: isFavorite ? Colors.black : const Color.fromARGB(255, 42, 42, 42),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: const BorderSide(color: Colors.white),
+        // side: const BorderSide(color: Colors.white),
+        side: !isFavorite
+            ? const BorderSide(color: Colors.black)
+            : const BorderSide(color: Colors.white),
       ),
       onPressed: () {
         setState(() => isFavorite = !isFavorite);

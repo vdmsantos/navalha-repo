@@ -25,7 +25,7 @@ class BodyConfirmation extends StatelessWidget {
         slivers: <Widget>[
           const SliverAppBar(
             backgroundColor: Color.fromARGB(255, 0, 0, 0),
-            expandedHeight: 200.0,
+            expandedHeight: 260.0,
             flexibleSpace: FlexibleSpaceBar(
               // title: Text('Goa', textScaleFactor: 1),
               background: TopContainerPatternStar(
@@ -87,21 +87,21 @@ class BodyConfirmation extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
                               Text(
-                              "Total:",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                                "Total:",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
                               Text(
-                              "RS30,00",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
+                                "RS30,00",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
                             ],
                           ),
                         ),

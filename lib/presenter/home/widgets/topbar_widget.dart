@@ -1,27 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 
-import '../../barbershop_page/barber_shop.dart';
+import 'package:projeto_1/core/assets.dart';
+import 'package:projeto_1/shared/scaffold_pattern.dart';
+
 import '../../confirmation_page/confirmation_page.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
     Key? key,
+    required this.scaffoldKey,
     required this.userName,
   }) : super(key: key);
-
+  final GlobalKey? scaffoldKey;
   final String userName;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 8),
-      decoration: const BoxDecoration(
-          // color: Colors.black,
-          // border:
-          //     Border(bottom: BorderSide(width: 0.5, color: Color(0xFFFFFFFF))),
-          ),
-      // padding: const EdgeInsets.all(2),
+      decoration: const BoxDecoration(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -53,14 +51,9 @@ class TopBarWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(builder: (context) => const Page1()),
-              // );
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ConfirmationPage()),
-              );
+              Scaffold.of(context).openDrawer();
             },
-            child: Icon(
+            child: const Icon(
               size: 35,
               Icons.menu_open_outlined,
               color: Colors.white,

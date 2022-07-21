@@ -73,7 +73,7 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           padding: const EdgeInsets.only(left: 10,top: 10),
                           child: TextField(
                             controller: emailControler,
-                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            style: const TextStyle(color: Colors.white,fontSize: 18),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                             ),
@@ -108,7 +108,7 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           padding: const EdgeInsets.only(left: 10,top: 10),
                           child: TextField(
                             controller: nameControler,
-                            style: TextStyle(color: Colors.white,fontSize: 18),
+                            style:const TextStyle(color: Colors.white,fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,

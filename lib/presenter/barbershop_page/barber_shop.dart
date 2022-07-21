@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:projeto_1/core/assets.dart';
+import 'package:projeto_1/presenter/calendar_page/calendar_page.dart';
 import 'package:projeto_1/shared/topcontainer_stars_pattern.dart';
 
 import '../../shared/scaffold_pattern.dart';
@@ -256,7 +257,12 @@ class ContainerProfissionals extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Chamou a pagina do barbeiro');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const CalendarPage()),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 5),
@@ -271,7 +277,7 @@ class ContainerProfissionals extends StatelessWidget {
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(20),
                   topLeft: Radius.circular(100),
-                  topRight: Radius.circular(20),
+                  topRight: Radius.circular(77),
                 ),
               ),
               child: Row(

@@ -83,7 +83,7 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
               width: double.maxFinite,
               height: 60,
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 66, 66, 66),
+                color: const Color.fromARGB(255, 42, 42, 42),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(35),
                 ),
@@ -110,7 +110,7 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
         Positioned(
           top: 112,
           child: CircleAvatar(
-            backgroundColor: Color.fromARGB(255, 42, 42, 42),
+            backgroundColor: const Color.fromARGB(255, 42, 42, 42),
             radius: 75,
             child: SizedBox(
               child: Image(

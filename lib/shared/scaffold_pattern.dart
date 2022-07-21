@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/home/home_page.dart';
 import 'dart:math' as math;
-import '../presenter/barbershop_page/barber_shop.dart';
+
+import '../presenter/calendar_page/calendar_page.dart';
 
 class ScaffoldPattern extends StatefulWidget {
   const ScaffoldPattern({
@@ -17,13 +18,20 @@ class ScaffoldPattern extends StatefulWidget {
 }
 
 class _ScaffoldPatternState extends State<ScaffoldPattern> {
+  var _bottomNavIndex = 0;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final _scaffoldKey = GlobalKey<ScaffoldState>();
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+
+    void setIndex(int index) {
+      setState(() {
+        _bottomNavIndex = index;
+      });
+    }
 
     return Scaffold(
-        key: _scaffoldKey,
+        key: scaffoldKey,
         endDrawer: const DrawerWidget(
           name: 'Vinicius',
           photoProfile: profile,
@@ -37,44 +45,76 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
             focusColor: Colors.grey,
             backgroundColor: const Color.fromARGB(255, 42, 42, 42),
             onPressed: () {
+              setIndex(9);
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        HomePage(scaffoldKeymed: scaffoldKey)),
               );
             },
             child: const Text('NAVALHA',
-                style: TextStyle(fontFamily: 'Bevan', fontSize: 12)),
+                style: TextStyle(
+                    fontFamily: 'Bevan',
+                    fontSize: 12,
+                    color: Color.fromARGB(255, 255, 255, 255))),
             // child: const Icon(Icons.home, size: 30),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar(
-            leftCornerRadius: 32,
-            rightCornerRadius: 32,
-            backgroundColor: const Color.fromARGB(255, 24, 24, 24),
-            icons: const [
-              Icons.account_circle_outlined,
-              Icons.settings,
-              Icons.home,
-              Icons.calendar_month_outlined,
-            ],
-            iconSize: 27,
-            inactiveColor: Colors.white,
-            activeColor: Colors.white,
-            borderColor: const Color.fromARGB(255, 28, 28, 28),
-            borderWidth: 0.9,
-            activeIndex: 1,
-            gapLocation: GapLocation.center,
-            notchSmoothness: NotchSmoothness.verySmoothEdge,
-            onTap: (index) {
-              _scaffoldKey.currentState!.openEndDrawer();
-              // setState(() {
-              //   print('object');
-              // });
-              // Scaffold.of(context).openDrawer();
-            }
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+          icons: const [
+            Icons.account_circle_outlined,
+            Icons.settings,
+            Icons.calendar_month_outlined,
+            Icons.notifications_none_outlined,
+          ],
+          iconSize: 27,
+          activeIndex: _bottomNavIndex,
+          inactiveColor: Colors.white,
+          activeColor: Colors.white,
+          borderWidth: 0.9,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          onTap: (index) {
+            // scaffoldKey.currentState!.openEndDrawer();
 
-            //other params
-            ),
+            if (index == 1) {
+              scaffoldKey.currentState!.openEndDrawer();
+            }
+            switch (index) {
+              case 0:
+                {
+                  //TODO chamar pagina perfil
+                  print('falta implementar a pagina');
+                  break;
+                }
+              case 1:
+                {
+                  scaffoldKey.currentState!.openEndDrawer();
+
+                  break;
+                }
+              case 2:
+                {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => const CalendarPage()),
+                  );
+                  break;
+                }
+
+              default:
+            }
+            // setIndex(index);
+            // print(_bottomNavIndex);
+          },
+          // activeIndex: 10,
+
+          //other params
+        ),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
