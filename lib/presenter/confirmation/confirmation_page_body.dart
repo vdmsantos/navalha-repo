@@ -21,7 +21,11 @@ class BodyConfirmation extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     AlertDialogBarber dialog = AlertDialogBarber(
-        text: 'Horário agendado com sucesso!', textbutton: 'Ok');
+        iconColor: Colors.green,
+        buttonColor: Colors.greenAccent,
+        icon: Icons.check_circle,
+        text: 'Horário agendado com sucesso!',
+        textbutton: 'Ok');
 
     return SizedBox(
       height: size.height,

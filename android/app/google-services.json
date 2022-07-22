@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "485786462467",
+    "project_id": "navalha-app",
+    "storage_bucket": "navalha-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485786462467:android:a9a1b98a4c902485f7a136",
+        "android_client_info": {
+          "package_name": "com.example.projeto_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485786462467-2lapt62hu2vgnul4542krm5137899rhb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projeto_1",
+            "certificate_hash": "59825e8a0edfa5cbd23732e236f94c878b4c2cd1"
+          }
+        },
+        {
+          "client_id": "485786462467-j6ob3fpee17rq0f7f099hnmi60g12i3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6YXaUFiVy1CC_j9eCakMfPXIikHcf-W8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485786462467-j6ob3fpee17rq0f7f099hnmi60g12i3b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

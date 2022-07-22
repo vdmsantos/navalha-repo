@@ -146,8 +146,10 @@ class _ClientRegisterTwoState extends State<ClientRegisterTwo> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                widget.userParams['cpf'] = cpfControler.text;
-                                widget.userParams['cep'] = cepControler.text;
+                                widget.userParams['cpf'] =
+                                    cpfControler.text.toUpperCase();
+                                widget.userParams['cep'] =
+                                    cepControler.text.toUpperCase();
 
                                 Navigator.push(
                                   context,

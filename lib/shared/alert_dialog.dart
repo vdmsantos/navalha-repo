@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../presenter/login/login_page.dart';
@@ -6,9 +7,17 @@ class AlertDialogBarber {
   AlertDialogBarber({
     required this.textbutton,
     required this.text,
+    required this.icon,
+    required this.buttonColor,
+    this.page,
+    required this.iconColor,
   });
   final String textbutton;
   final String text;
+  final IconData icon;
+  final Color buttonColor;
+  final Widget? page;
+  final Color iconColor;
 
   void showCustomDialog(BuildContext context) {
     showGeneralDialog(
@@ -28,10 +37,10 @@ class AlertDialogBarber {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Icon(
-                  Icons.check_circle,
-                  size: 80,
-                  color: Colors.white,
+                Icon(
+                  icon,
+                  size: 100,
+                  color: iconColor,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -47,19 +56,20 @@ class AlertDialogBarber {
                         BoxDecoration(borderRadius: BorderRadius.circular(100)),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()));
+                        if (page != null) {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => page!));
+                        }
                       },
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.greenAccent),
+                              MaterialStateProperty.all(buttonColor),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
-                                      side: const BorderSide()))),
+                                      side: const BorderSide(
+                                          color: Colors.transparent)))),
                       child: Text(
                         textbutton,
                         style: const TextStyle(

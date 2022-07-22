@@ -142,8 +142,10 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                userParams['name'] = nameControler.text;
-                                userParams['email'] = emailControler.text;
+                                userParams['name'] =
+                                    nameControler.text.toUpperCase();
+                                userParams['email'] =
+                                    emailControler.text.toUpperCase();
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

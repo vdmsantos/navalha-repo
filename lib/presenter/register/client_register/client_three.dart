@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:projeto_1/core/assets.dart';
+import 'package:projeto_1/presenter/login/login_page.dart';
 
 import '../../../infra/data_sources/data_source.dart';
+import '../../../infra/model/user_model.dart';
+import '../../../shared/alert_dialog.dart';
 
 class ClientRegisterThree extends StatefulWidget {
   const ClientRegisterThree({
@@ -139,21 +142,31 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                // widget.userParams['password'] =
-                                //     passwordControler.text;
+                                widget.userParams['password'] =
+                                    passwordControler.text.toUpperCase();
 
-                                // var userModel = UsuarioModel(
-                                //   widget.userParams['name'],
-                                //   widget.userParams['email'],
-                                //   widget.userParams['password'],
-                                //   widget.userParams['cpf'],
-                                //   widget.userParams['cep'],
-                                // );
-                                // // print(userModel.toString());
-                                // // print(userModel.toMap());
-                                // // print(userModel.toJson());
-                                // daofactory.clientdao.insert(userModel);
+                                var userModel = UsuarioModel(
+                                  widget.userParams['name'],
+                                  widget.userParams['email'],
+                                  widget.userParams['password'],
+                                  widget.userParams['cpf'],
+                                  widget.userParams['cep'],
+                                );
+                                // print(userModel.toString());
+                                // print(userModel.toMap());
+                                // print(userModel.toJson());
+                                daofactory.clientdao.insert(userModel);
                                 daofactory.clientdao.select();
+
+                                AlertDialogBarber(
+                                        page: const Login(),
+                                        buttonColor: Colors.greenAccent,
+                                        icon:
+                                            Icons.check_circle_outline_outlined,
+                                        textbutton: 'Ok',
+                                        text: 'Cadastro realizado com sucesso!',
+                                        iconColor: Colors.green)
+                                    .showCustomDialog(context);
                                 // daofactory.clientdao.delete(1);
                               },
                               child: const Text(

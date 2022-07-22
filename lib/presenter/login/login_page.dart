@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/shared/alert_dialog.dart';
 import '../../core/assets.dart';
 import '../../infra/data_sources/data_source.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -122,14 +124,23 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               GestureDetector(
-                onTap: () {
-                  daofactory.clientdao.select();
-                  daofactory.clientdao.isRegistered(
-                      emailControler.text, passwordControler.text);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage(
-                            scaffoldKeymed: null,
-                          )));
+                onTap: () async {
+                  if (await daofactory.clientdao.isRegistered(
+                      emailControler.text, passwordControler.text)) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const HomePage(
+                              scaffoldKeymed: null,
+                            )));
+                  } else {
+                    AlertDialogBarber(
+                            buttonColor: Colors.red,
+                            icon: Icons.error,
+                            textbutton: 'Ok',
+                            text: 'Login inválido, tente novamente',
+                            iconColor: Colors.redAccent)
+                        .showCustomDialog(context);
+                  }
+                  // daofactory.clientdao.delete(1);
                 },
                 child: Container(
                   height: 50,
