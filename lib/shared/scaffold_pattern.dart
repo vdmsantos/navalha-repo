@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../core/assets.dart';
 import '../infra/model/user_model.dart';
@@ -70,8 +71,8 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
         rightCornerRadius: 32,
         backgroundColor: const Color.fromARGB(255, 24, 24, 24),
         icons: const [
-          Icons.account_circle_outlined,
-          Icons.notifications_none_outlined,
+          Icons.account_circle_rounded,
+          LineIcons.instagram,
           Icons.calendar_month_outlined,
           Icons.settings,
         ],
