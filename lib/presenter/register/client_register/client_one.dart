@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/presenter/register/client_register/client_register_controller.dart';
-import '../../../core/assets.dart';
 
+import '../../../core/assets.dart';
+import 'client_register_controller.dart';
 import 'client_two.dart';
 
 class ClientRegisterOne extends StatefulWidget {

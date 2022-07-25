@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_1/presenter/login/login_controler.dart';
-import 'package:projeto_1/shared/alert_dialog_withoutbutton.dart';
+
 import '../../core/assets.dart';
+import '../../infra/data_sources/data_source.dart';
+import '../../shared/alert_dialog.dart';
+import '../../shared/alert_dialog_withoutbutton.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
+import 'login_controler.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

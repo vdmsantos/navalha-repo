@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/assets.dart';
-import '../../shared/topcontainer_stars_pattern.dart';
 import '../../shared/scaffold_pattern.dart';
+import '../../shared/topcontainer_stars_pattern.dart';
 import 'widgets/container_button_details.dart';
 import 'widgets/container_button_schedule.dart';
 import 'widgets/container_button_services.dart';

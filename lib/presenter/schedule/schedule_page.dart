@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../../core/assets.dart';
 
+import '../../core/assets.dart';
 import '../../infra/model/user_model.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
