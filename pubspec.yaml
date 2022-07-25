@@ -46,7 +46,12 @@ dependencies:
   get_it: ^7.2.0
  
   
-  
+  camera_camera: ^2.0.1
+  # image_picker: ^0.7.4
+
+  get:
+  permission_handler: ^10.0.0
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
