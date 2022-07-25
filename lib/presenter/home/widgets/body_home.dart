@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:projeto_1/infra/model/user_model.dart';
 import 'package:projeto_1/shared/barber_list_item.dart';
 
 import 'container_filter.dart';
@@ -17,9 +19,10 @@ class BodyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      TopBarWidget(userName: 'Vinícius', scaffoldKey: scaffoldKey),
+      TopBarWidget(userName: usuario.userName!),
       Expanded(
         child: SizedBox(
           width: size.width,

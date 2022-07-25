@@ -6,10 +6,8 @@ import '../../../shared/scaffold_pattern.dart';
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
     Key? key,
-    required this.scaffoldKey,
     required this.userName,
   }) : super(key: key);
-  final GlobalKey? scaffoldKey;
   final String userName;
 
   @override
@@ -32,7 +30,10 @@ class TopBarWidget extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              Text(userName,
+              Text(
+                  userName.contains(' ')
+                      ? userName.substring(0, userName.indexOf(' '))
+                      : userName,
                   style: const TextStyle(
                       shadows: [
                         BoxShadow(
@@ -53,7 +54,7 @@ class TopBarWidget extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const DrawerWidget(
                             name: 'Vitor',
-                            photoProfile: barberPhoto,
+                            photoProfile: imgBarberPhoto,
                           )));
             },
             child: Icon(

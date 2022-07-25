@@ -18,7 +18,7 @@ class _BarberShopRegisterOneState extends State<BarberShopRegisterOne> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.fill,
         )),
         child: Column(

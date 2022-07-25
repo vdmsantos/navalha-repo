@@ -19,27 +19,27 @@ class ListProfessionals extends StatelessWidget {
             SizedBox(height: 20),
             ContainerProfissionals(
               barberName: 'Lucas',
-              photoProfile: barber6,
+              photoProfile: imgBarberLucas,
             ),
             ContainerProfissionals(
               barberName: 'Vitor',
-              photoProfile: barber7,
+              photoProfile: imgBarberVitor,
             ),
             ContainerProfissionals(
               barberName: 'Maria',
-              photoProfile: barber1,
+              photoProfile: imgBarberMaria,
             ),
             ContainerProfissionals(
               barberName: 'Guilherme',
-              photoProfile: barber4,
+              photoProfile: imgBarberGuilherme,
             ),
             ContainerProfissionals(
               barberName: 'Fellipe',
-              photoProfile: barber5,
+              photoProfile: imgBarberFelipe,
             ),
             ContainerProfissionals(
               barberName: 'Vinícius',
-              photoProfile: barber2,
+              photoProfile: imgBarberVinicius,
             ),
             SizedBox(height: 50)
           ],

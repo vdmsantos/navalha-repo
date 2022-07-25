@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../core/assets.dart';
-
 import 'barbershop_register/barbershop_one.dart';
 import 'client_register/client_one.dart';
 
@@ -20,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.fill,
         )),
         child: Column(
@@ -31,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    logoGeral,
+                    imgLogoGeral,
                     scale: 1,
                   ),
                   Container(

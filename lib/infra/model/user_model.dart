@@ -9,6 +9,26 @@ class UsuarioModel {
   final String? _cep;
 // senha
 
+  String? get userName {
+    return _name;
+  }
+
+  String? get userEmail {
+    return _email;
+  }
+
+  String? get userPassword {
+    return _password;
+  }
+
+  String? get userCpf {
+    return _cpf;
+  }
+
+  String? get userCep {
+    return _cep;
+  }
+
   UsuarioModel(
     this._name,
     this._email,

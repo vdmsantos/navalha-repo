@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../core/assets.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_stars_pattern.dart';
@@ -42,7 +41,7 @@ class _MyWidgetState extends State<BarberShopPage> {
                 background: TopContainerPatternStar(
                   star: 2,
                   title: 'The gentleman',
-                  profile: barberPhoto,
+                  profile: imgBarberPhoto,
                 ),
               ),
             ),
