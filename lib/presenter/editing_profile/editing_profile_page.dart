@@ -13,6 +13,6 @@ class EditingProfilePage extends StatefulWidget {
 class _MyWidgetState extends State<EditingProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return const ScaffoldPattern(bodyPage: BodyEditingProfile());
+    return const ScaffoldPattern(bodyPage: Edit());
   }
 }

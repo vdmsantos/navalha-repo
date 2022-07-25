@@ -52,7 +52,11 @@ dependencies:
   firebase_database: ^9.0.20
  
   
-  
+  camera_camera: ^2.0.1
+  # image_picker: ^0.7.4
+
+  get:
+  permission_handler: ^10.0.0
 
 dev_dependencies:
   flutter_test:
