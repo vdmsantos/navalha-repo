@@ -2,9 +2,11 @@ import 'dart:math' as math;
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../core/assets.dart';
-import '../presenter/editing_profile/editing_profile_page.dart';
+import '../infra/model/user_model.dart';
+import '../presenter/edit_profile/edit_profile_page.dart';
 import '../presenter/home/home_page.dart';
 import '../presenter/schedule/schedule_page.dart';
 
@@ -37,7 +39,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
       resizeToAvoidBottomInset: false,
       endDrawer: const DrawerWidget(
         name: 'Vinicius',
-        photoProfile: profile,
+        photoProfile: imgProfile,
       ),
       backgroundColor: const Color.fromARGB(255, 24, 24, 24),
       floatingActionButton: SizedBox(
@@ -69,8 +71,8 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
         backgroundColor: const Color.fromARGB(255, 24, 24, 24),
         icons: const [
           Icons.account_circle_outlined,
-          Icons.calendar_month_outlined,
           Icons.notifications_none_outlined,
+          Icons.calendar_month_outlined,
           Icons.settings,
         ],
         iconSize: 27,
@@ -83,14 +85,17 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
         onTap: (index) {
           // scaffoldKey.currentState!.openEndDrawer();
 
-          if (index == 1) {
-            scaffoldKey.currentState!.openEndDrawer();
-          }
+          // if (index == 1) {
+          //   scaffoldKey.currentState!.openEndDrawer();
+          // }
           switch (index) {
             case 0:
               {
                 //TODO chamar pagina perfil
-
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => const EditProfilePage()),
+                );
                 break;
               }
             case 3:
@@ -159,7 +164,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ProfilePhoto(widget: widget),
-                  NameUser(widget: widget),
+                  NameUser(),
                   const SizedBox(
                     height: 25,
                   ),
@@ -236,17 +241,17 @@ class ArrowLeft extends StatelessWidget {
 class NameUser extends StatelessWidget {
   const NameUser({
     Key? key,
-    required this.widget,
   }) : super(key: key);
-
-  final DrawerWidget widget;
 
   @override
   Widget build(BuildContext context) {
+    UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
     return Padding(
       padding: const EdgeInsets.only(top: 5),
       child: Text(
-        widget.name,
+        usuario.userName!.contains(' ')
+            ? usuario.userName!.substring(0, usuario.userName!.indexOf(' '))
+            : usuario.userName!,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 22,
@@ -306,7 +311,7 @@ class ContainerDrawer1 extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => const EditingProfilePage()),
+            builder: ((context) => const EditProfilePage()),
           ),
         );
       },

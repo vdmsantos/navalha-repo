@@ -2,14 +2,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:projeto_1/core/assets.dart';
+import 'package:projeto_1/presenter/register/client_register/client_register_controller.dart';
 import 'package:projeto_1/presenter/register/client_register/client_three.dart';
 
 class ClientRegisterTwo extends StatefulWidget {
   const ClientRegisterTwo({
     Key? key,
     required this.userParams,
+    required this.clientController,
   }) : super(key: key);
 
+  final ClientRegisterController clientController;
   final Map<String, dynamic> userParams;
 
   @override
@@ -28,7 +31,7 @@ class _ClientRegisterTwoState extends State<ClientRegisterTwo> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.cover,
         )),
         child: Column(
@@ -146,15 +149,17 @@ class _ClientRegisterTwoState extends State<ClientRegisterTwo> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                widget.userParams['cpf'] =
-                                    cpfControler.text.toUpperCase();
-                                widget.userParams['cep'] =
-                                    cepControler.text.toUpperCase();
+                                widget.clientController
+                                    .validCpf(cpfControler.text);
+                                widget.clientController
+                                    .validCep(cepControler.text);
 
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: ((context) => ClientRegisterThree(
+                                          clientController:
+                                              widget.clientController,
                                           userParams: widget.userParams,
                                         )),
                                   ),

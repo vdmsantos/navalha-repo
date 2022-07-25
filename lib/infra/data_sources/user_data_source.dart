@@ -45,16 +45,33 @@ class UserDataAccess {
 
   Future<bool> isRegistered(String email, String password) async {
     List<Map> list = await database.rawQuery(
-        'SELECT * FROM TBCLIENTE WHERE EMAIL = ? AND PASSWORD = ?',
-        [email.toUpperCase(), password.toUpperCase()]);
+        'SELECT * FROM TBCLIENTE WHERE UPPER(EMAIL) = ? AND UPPER(PASSWORD) = ?',
+        [email.trim().toUpperCase(), password.trim().toUpperCase()]);
 
     if (list.isNotEmpty) {
-      print('encontrou o cabloco');
+      print('encontrou o cliente');
       return true;
     } else {
-      print('não encontrou o cabloco');
+      print('não encontrou o cliente');
       return false;
     }
+  }
+
+  Future<UsuarioModel?> getClientObj(String email, String password) async {
+    List<Map> list = await database.rawQuery(
+        'SELECT * FROM TBCLIENTE WHERE UPPER(EMAIL) = ? AND UPPER(PASSWORD) = ?',
+        [email.trim().toUpperCase(), password.trim().toUpperCase()]);
+    Map userMap = list[0];
+
+    UsuarioModel userModel = UsuarioModel(
+      userMap['name'],
+      userMap['email'],
+      userMap['password'],
+      userMap['cpf'],
+      userMap['cep'],
+    );
+    print(userModel.toString());
+    return userModel;
   }
 
   void select() async {

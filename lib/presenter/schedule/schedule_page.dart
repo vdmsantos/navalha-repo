@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import '../../core/assets.dart';
 
+import '../../infra/model/user_model.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 import 'widgets/list_schedule_containers.dart';
@@ -10,11 +12,18 @@ class SchedulePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
+
     return ScaffoldPattern(
       bodyPage: Column(
         children: [
-          const TopContainerPattern(
-              title: 'Minha Agenda', name: 'Vinícius', profile: profile),
+          TopContainerPattern(
+              title: 'Minha Agenda',
+              name: usuario.userName!.contains(' ')
+                  ? usuario.userName!
+                      .substring(0, usuario.userName!.indexOf(' '))
+                  : usuario.userName!,
+              profile: imgProfile),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 10),

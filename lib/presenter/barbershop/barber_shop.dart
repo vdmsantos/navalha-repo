@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../../core/assets.dart';
-import '../calendar/calendar_page.dart';
 import '../../shared/topcontainer_stars_pattern.dart';
-
-import '../../shared/row_details.dart';
 import '../../shared/scaffold_pattern.dart';
 import 'widgets/container_button_details.dart';
 import 'widgets/container_button_schedule.dart';
 import 'widgets/container_button_services.dart';
 import 'widgets/container_details_barbershop.dart';
-import 'widgets/container_list_services.dart';
-import 'widgets/container_profissionals.dart';
 import 'widgets/list_profissionals.dart';
 import 'widgets/list_services.dart';
 
@@ -47,7 +41,7 @@ class _MyWidgetState extends State<BarberShopPage> {
                 background: TopContainerPatternStar(
                   star: 2,
                   title: 'The gentleman',
-                  profile: barberPhoto,
+                  profile: imgBarberPhoto,
                 ),
               ),
             ),

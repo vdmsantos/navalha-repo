@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import '../../infra/model/user_model.dart';
 import '../home/home_page.dart';
 
-class BodyEditingProfile extends StatelessWidget {
-  const BodyEditingProfile({
+class BodyEditProfile extends StatelessWidget {
+  BodyEditProfile({
     Key? key,
   }) : super(key: key);
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void setUserInfo() {
+    UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
+    nameController.text = usuario.userName!;
+    emailController.text = usuario.userEmail!;
+    passwordController.text = usuario.userPassword!;
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    setUserInfo();
     return SizedBox(
       height: size.height,
       width: size.width,
@@ -41,7 +55,7 @@ class BodyEditingProfile extends StatelessWidget {
                             Icons.arrow_back_ios_rounded,
                             color: Colors.white,
                           ),
-                        ),                        
+                        ),
                       ),
                       const Text(
                         "Editar Perfil",
@@ -98,9 +112,10 @@ class BodyEditingProfile extends StatelessWidget {
                       color: const Color.fromRGBO(36, 36, 36, 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(left: 10, top: 10),
                       child: TextField(
+                        controller: nameController,
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -133,9 +148,10 @@ class BodyEditingProfile extends StatelessWidget {
                       color: const Color.fromRGBO(36, 36, 36, 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(left: 10, top: 10),
                       child: TextField(
+                        controller: emailController,
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -238,9 +254,11 @@ class BodyEditingProfile extends StatelessWidget {
                       color: const Color.fromRGBO(36, 36, 36, 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(left: 10, top: 10),
                       child: TextField(
+                        obscureText: true,
+                        controller: passwordController,
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -273,9 +291,11 @@ class BodyEditingProfile extends StatelessWidget {
                       color: const Color.fromRGBO(36, 36, 36, 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(left: 10, top: 10),
                       child: TextField(
+                        controller: passwordController,
+                        obscureText: true,
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(

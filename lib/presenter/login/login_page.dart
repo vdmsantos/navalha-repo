@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/shared/alert_dialog.dart';
+import 'package:get_it/get_it.dart';
+import 'package:projeto_1/presenter/login/login_controler.dart';
+import 'package:projeto_1/shared/alert_dialog_withoutbutton.dart';
 import '../../core/assets.dart';
-import '../../infra/data_sources/data_source.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,19 +14,25 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  @override
+  void initState() {
+    super.initState();
+    GetIt.I.reset();
+  }
+
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
 
-  var daofactory = DataAccess();
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = LoginController();
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.fill,
         )),
         child: SingleChildScrollView(
@@ -34,7 +40,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                logoGeral,
+                imgLogoGeral,
                 scale: 1,
               ),
               Container(
@@ -125,18 +131,16 @@ class _LoginState extends State<Login> {
               ),
               GestureDetector(
                 onTap: () async {
-                  if (await daofactory.clientdao.isRegistered(
+                  if (await loginController.validLogin(
                       emailControler.text, passwordControler.text)) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const HomePage(
                               scaffoldKeymed: null,
                             )));
                   } else {
-                    AlertDialogBarber(
-                            buttonColor: Colors.red,
-                            icon: Icons.error,
-                            textbutton: 'Ok',
+                    AlertDialogBarberWithoutButton(
                             text: 'Login inválido, tente novamente',
+                            icon: Icons.error,
                             iconColor: Colors.redAccent)
                         .showCustomDialog(context);
                   }

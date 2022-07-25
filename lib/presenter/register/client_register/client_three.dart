@@ -2,17 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/login/login_page.dart';
-
 import '../../../infra/data_sources/data_source.dart';
-import '../../../infra/model/user_model.dart';
 import '../../../shared/alert_dialog.dart';
+import 'client_register_controller.dart';
 
 class ClientRegisterThree extends StatefulWidget {
   const ClientRegisterThree({
     Key? key,
+    required this.clientController,
     required this.userParams,
   }) : super(key: key);
 
+  final ClientRegisterController clientController;
   final Map<String, dynamic> userParams;
 
   @override
@@ -32,7 +33,7 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.cover,
         )),
         child: Column(
@@ -142,31 +143,20 @@ class _ClientRegisterThreeState extends State<ClientRegisterThree> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                widget.userParams['password'] =
-                                    passwordControler.text.toUpperCase();
+                                if (widget.clientController
+                                    .validPassword(passwordControler.text)) {
+                                  AlertDialogBarber(
+                                          page: const Login(),
+                                          buttonColor: Colors.greenAccent,
+                                          icon: Icons
+                                              .check_circle_outline_outlined,
+                                          textbutton: 'Ok',
+                                          text:
+                                              'Cadastro realizado com sucesso!',
+                                          iconColor: Colors.green)
+                                      .showCustomDialog(context);
+                                }
 
-                                var userModel = UsuarioModel(
-                                  widget.userParams['name'],
-                                  widget.userParams['email'],
-                                  widget.userParams['password'],
-                                  widget.userParams['cpf'],
-                                  widget.userParams['cep'],
-                                );
-                                // print(userModel.toString());
-                                // print(userModel.toMap());
-                                // print(userModel.toJson());
-                                daofactory.clientdao.insert(userModel);
-                                daofactory.clientdao.select();
-
-                                AlertDialogBarber(
-                                        page: const Login(),
-                                        buttonColor: Colors.greenAccent,
-                                        icon:
-                                            Icons.check_circle_outline_outlined,
-                                        textbutton: 'Ok',
-                                        text: 'Cadastro realizado com sucesso!',
-                                        iconColor: Colors.green)
-                                    .showCustomDialog(context);
                                 // daofactory.clientdao.delete(1);
                               },
                               child: const Text(

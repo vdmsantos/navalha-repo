@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/presenter/register/client_register/client_register_controller.dart';
 import '../../../core/assets.dart';
 
 import 'client_two.dart';
@@ -25,13 +26,15 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
 
   @override
   Widget build(BuildContext context) {
+    ClientRegisterController clientControler = ClientRegisterController();
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(fundoGeral),
+          image: AssetImage(imgFundoGeral),
           fit: BoxFit.cover,
         )),
         child: Column(
@@ -69,7 +72,7 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
-                            controller: emailControler,
+                            controller: nameControler,
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 18),
                             decoration: const InputDecoration(
@@ -105,7 +108,7 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
-                            controller: nameControler,
+                            controller: emailControler,
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
@@ -142,14 +145,15 @@ class _ClientRegisterOneState extends State<ClientRegisterOne> {
                           children: [
                             MaterialButton(
                               onPressed: () {
-                                userParams['name'] =
-                                    nameControler.text.toUpperCase();
-                                userParams['email'] =
-                                    emailControler.text.toUpperCase();
+                                clientControler.validName(nameControler.text);
+
+                                clientControler.validEmail(emailControler.text);
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: ((context) => ClientRegisterTwo(
+                                          clientController: clientControler,
                                           userParams: userParams,
                                         )),
                                   ),

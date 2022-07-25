@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
+import 'package:projeto_1/presenter/home/home_page.dart';
 
 import '../../core/assets.dart';
 import '../../shared/alert_dialog.dart';
@@ -21,6 +22,7 @@ class BodyConfirmation extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     AlertDialogBarber dialog = AlertDialogBarber(
+        page: const HomePage(scaffoldKeymed: null),
         iconColor: Colors.green,
         buttonColor: Colors.greenAccent,
         icon: Icons.check_circle,
@@ -39,7 +41,7 @@ class BodyConfirmation extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               // title: Text('Goa', textScaleFactor: 1),
               background: TopContainerPatternStar(
-                  star: 2, title: 'The gentleman', profile: barberPhoto),
+                  star: 2, title: 'The gentleman', profile: imgBarberPhoto),
             ),
           ),
           SliverList(

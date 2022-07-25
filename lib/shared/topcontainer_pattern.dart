@@ -32,7 +32,7 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   opacity: 80,
-                  image: AssetImage(fundoCadeira),
+                  image: AssetImage(imgFundoCadeira),
                   fit: BoxFit.fill,
                 ),
               ),
