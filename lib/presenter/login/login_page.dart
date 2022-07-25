@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_1/shared/alert_dialog.dart';
+
 import '../../core/assets.dart';
 import '../../infra/data_sources/data_source.dart';
+import '../../shared/alert_dialog.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

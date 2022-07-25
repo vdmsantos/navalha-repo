@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/alert_dialog.dart';
 import '../../confirmation/confirmation_page.dart';
 import 'calendar_widget.dart';
 import 'wrap_hour_buttons.dart';
@@ -16,16 +17,27 @@ class ScheduleButton extends StatefulWidget {
 class _ScheduleButtonState extends State<ScheduleButton> {
   @override
   Widget build(BuildContext context) {
+    AlertDialogBarber dialog = AlertDialogBarber(
+        iconColor: Colors.green,
+        buttonColor: Colors.greenAccent,
+        icon: Icons.check_circle,
+        text: 'Escolha um horário!',
+        textbutton: 'Ok');
+
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return ConfirmationPage(
-                  selectDay: daySelected, selectHour: hourSelected!);
-            },
-          ),
-        );
+        if (hourSelected == null) {
+          dialog.showCustomDialog(context);
+        } else {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return ConfirmationPage(
+                    selectDay: daySelected, selectHour: hourSelected!);
+              },
+            ),
+          );
+        }
       },
       child: Ink(
         height: 70,

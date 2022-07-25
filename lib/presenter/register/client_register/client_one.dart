@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/assets.dart';
 
+import '../../../core/assets.dart';
 import 'client_two.dart';
 
 class ClientRegisterOne extends StatefulWidget {

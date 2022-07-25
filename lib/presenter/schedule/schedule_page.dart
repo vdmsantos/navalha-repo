@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/assets.dart';
 
+import '../../core/assets.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_pattern.dart';
 import 'widgets/list_schedule_containers.dart';

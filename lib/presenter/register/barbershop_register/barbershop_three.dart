@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/assets.dart';
 
+import '../../../core/assets.dart';
 import '../../login/login_page.dart';
 
 class BarberShopThree extends StatefulWidget {

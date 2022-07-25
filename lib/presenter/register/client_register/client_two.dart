@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/register/client_register/client_three.dart';
 
