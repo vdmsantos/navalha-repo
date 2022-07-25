@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'hour_buttons.dart';
 
-String? hourSelected;
+String? hourSelected = '';
 
 class WrapHourButtons extends StatefulWidget {
   const WrapHourButtons({Key? key}) : super(key: key);

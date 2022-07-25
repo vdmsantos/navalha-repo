@@ -26,7 +26,7 @@ class _ScheduleButtonState extends State<ScheduleButton> {
 
     return InkWell(
       onTap: () {
-        if (hourSelected == null) {
+        if (hourSelected == '') {
           dialog.showCustomDialog(context);
         } else {
           Navigator.of(context).push(

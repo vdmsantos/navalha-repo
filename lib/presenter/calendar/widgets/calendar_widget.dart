@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-final kToday = DateTime.now();
-final kFirstDay = DateTime(kToday.day);
-final kLastDay = DateTime(2022, 12, 31);
-String daySelected = DateFormat.MEd('pt_BR').format(kToday);
+String daySelected = DateFormat.MEd('pt_BR').format(DateTime.now());
 
 class CalendarWidget extends StatefulWidget {
   const CalendarWidget({Key? key}) : super(key: key);
@@ -21,6 +19,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   @override
   void initState() {
     super.initState();
+
     _selectedDay = _focusedDay;
   }
 
@@ -54,8 +53,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           return null;
         },
       ),
-      firstDay: kFirstDay,
-      lastDay: kLastDay,
+      firstDay: DateTime.now(),
+      lastDay: DateTime(2023, 01, 01),
       focusedDay: _focusedDay,
       selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
       calendarFormat: CalendarFormat.week,
