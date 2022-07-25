@@ -13,6 +13,19 @@ import 'package:image_picker/image_picker.dart';
 import '../../infra/model/user_model.dart';
 import '../home/home_page.dart';
 
+class Edit extends StatelessWidget {
+  const Edit({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return const GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BodyEditingProfile(),
+    );
+  }
+}
+
 class BodyEditingProfile extends StatefulWidget {
   const BodyEditingProfile({Key? key}) : super(key: key);
 
@@ -75,7 +88,7 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     if (arquivo != null) Anexo(arquivo: arquivo!),
                     ElevatedButton.icon(
@@ -130,7 +143,8 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                           child: TextField(
                             controller: nameController,
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -167,7 +181,8 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                           child: TextField(
                             controller: emailController,
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -202,7 +217,9 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                         child: const Padding(
                           padding: EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -237,7 +254,9 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                         child: const Padding(
                           padding: EdgeInsets.only(left: 10, top: 10),
                           child: TextField(
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -275,7 +294,8 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                             obscureText: true,
                             controller: passwordController,
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -313,7 +333,8 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                             obscureText: true,
                             controller: passwordController,
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
+                                color: Color.fromARGB(255, 92, 92, 92),
+                                fontSize: 18),
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
