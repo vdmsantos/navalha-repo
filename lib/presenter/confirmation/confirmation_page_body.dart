@@ -73,31 +73,34 @@ class BodyConfirmation extends StatelessWidget {
                                 topRight: Radius.circular(10),
                               ),
                             ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      "Confirmar agendamento",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const RowDetails(
-                                  firstString: 'Serviços:',
-                                  secondString: 'Barba - Corte Máquina',
-                                ),
-                                RowDetailsSchedule(
-                                  firstString: 'Horário:',
-                                  dateString: selectedDay,
-                                  hourString: selectedHour,
-                                ),
-                              ],
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 15,bottom: 10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Confirmar agendamento",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const RowDetails(
+                                    firstString: 'Serviços:',
+                                    secondString: 'Barba - Corte Máquina',
+                                  ),
+                                  RowDetailsSchedule(
+                                    firstString: 'Horário:',
+                                    dateString: selectedDay,
+                                    hourString: selectedHour,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Container(

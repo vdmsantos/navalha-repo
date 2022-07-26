@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
-
 import '../../../shared/row_details.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse(
+"https://www.google.com.br/maps/place/The+Outsider+Barbershop/@-26.8951972,-49.0999456,17.25z/data=!4m5!3m4!1s0x94df1f8c2d396013:0xf8377137f94421ef!8m2!3d-26.8950615!4d-49.0989121");
+
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
+}
 
 class ContainerDetailsBarberShop extends StatelessWidget {
   final String andress;
@@ -42,21 +51,23 @@ class ContainerDetailsBarberShop extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
+              children: const [
+                Icon(
                   Icons.pin_drop_outlined,
                   color: Colors.white,
                 ),
-                const SizedBox(width: 5),
-                GestureDetector(
-                  onTap: () {},
-                  child: const Text(
+                SizedBox(width: 5),
+
+                MaterialButton(
+                  onPressed: _launchUrl,
+                  child: Text(
                     'Ver no mapa',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
+               
               ],
             ),
           ),
