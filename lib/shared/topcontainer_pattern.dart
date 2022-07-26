@@ -59,7 +59,9 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const BarberShopPage()));
+                                builder: (context) => const BarberShopPage(
+                                      BarberShopName: 'fodase',
+                                    )));
                       },
                     ),
                     Padding(

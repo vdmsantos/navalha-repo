@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/assets.dart';
 import '../../shared/scaffold_pattern.dart';
 import '../../shared/topcontainer_stars_pattern.dart';
@@ -10,7 +11,12 @@ import 'widgets/list_profissionals.dart';
 import 'widgets/list_services.dart';
 
 class BarberShopPage extends StatefulWidget {
-  const BarberShopPage({super.key});
+  const BarberShopPage({
+    Key? key,
+    required this.BarberShopName,
+  }) : super(key: key);
+
+  final String BarberShopName;
 
   @override
   State<BarberShopPage> createState() => _MyWidgetState();
@@ -34,7 +40,7 @@ class _MyWidgetState extends State<BarberShopPage> {
         child: CustomScrollView(
           shrinkWrap: true,
           slivers: <Widget>[
-            const SliverAppBar(
+            SliverAppBar(
               automaticallyImplyLeading: false,
               actions: <Widget>[SizedBox()],
               backgroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -42,7 +48,7 @@ class _MyWidgetState extends State<BarberShopPage> {
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
                   star: 2,
-                  title: 'The gentleman',
+                  title: widget.BarberShopName,
                   profile: imgBarberPhoto,
                 ),
               ),

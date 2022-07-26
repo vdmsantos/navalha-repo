@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/infra/model/user_model.dart';
 import 'package:projeto_1/shared/barber_list_item.dart';
 
@@ -110,6 +111,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 5,
                                             distance: 4.6,
                                             barberShopName: 'Outsider barber',
@@ -120,6 +122,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 4,
                                             distance: 10.6,
                                             barberShopName: 'Packers Barbearia',
@@ -130,6 +133,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 5,
                                             distance: 0.4,
                                             barberShopName:
@@ -141,6 +145,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 4,
                                             distance: 2.6,
                                             barberShopName:
@@ -152,6 +157,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 3,
                                             distance: 2.50,
                                             barberShopName: 'Royal Barbershop',
@@ -162,6 +168,7 @@ class BodyHome extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             right: 15, left: 15, bottom: 15),
                                         child: BarberListItem(
+                                            imgBarberShop: imgBarberFelipe,
                                             star: 3,
                                             distance: 25.6,
                                             barberShopName: 'Outsider barber',

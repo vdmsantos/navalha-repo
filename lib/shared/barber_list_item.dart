@@ -5,14 +5,15 @@ import '../presenter/barbershop/barber_shop.dart';
 
 class BarberListItem extends StatefulWidget {
   const BarberListItem({
-    required this.barberShopName,
-    this.star = 5,
-    this.topColor = const Color.fromARGB(255, 24, 24, 24),
-    this.bottomCollor = const Color.fromARGB(255, 34, 34, 34),
     Key? key,
     required this.berbercutPrice,
     required this.haircutPrice,
+    required this.barberShopName,
+    this.topColor = const Color.fromARGB(255, 24, 24, 24),
+    this.bottomCollor = const Color.fromARGB(255, 34, 34, 34),
+    this.star = 5,
     required this.distance,
+    required this.imgBarberShop,
   }) : super(key: key);
 
   final double berbercutPrice;
@@ -22,6 +23,7 @@ class BarberListItem extends StatefulWidget {
   final Color bottomCollor;
   final int star;
   final double distance;
+  final String imgBarberShop;
 
   @override
   State<BarberListItem> createState() => _BarberListItemState();
@@ -51,8 +53,12 @@ class _BarberListItemState extends State<BarberListItem> {
     ];
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const BarberShopPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BarberShopPage(
+                      BarberShopName: widget.barberShopName,
+                    )));
       },
       child: Container(
         height: 130,
