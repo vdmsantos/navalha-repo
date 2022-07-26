@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../core/assets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:image_picker/image_picker.dart';
+import '../../core/assets.dart';
 import '../../infra/model/user_model.dart';
 import '../home/home_page.dart';
 
@@ -34,31 +33,31 @@ class BodyEditingProfile extends StatefulWidget {
 }
 
 class _BodyEditingProfileState extends State<BodyEditingProfile> {
-  File? arquivo = null;
-  final picker = ImagePicker();
+  // File? arquivo = null;
+  // final picker = ImagePicker();
 
-  Future getFileFromGallery() async {
-    final file = await picker.pickImage(source: ImageSource.gallery);
+  // Future getFileFromGallery() async {
+  //   final file = await picker.pickImage(source: ImageSource.gallery);
 
-    if (file != null) {
-      setState(
-        () => arquivo = File(
-          file.path,
-        ),
-      );
-    }
-  }
+  //   if (file != null) {
+  //     setState(
+  //       () => arquivo = File(
+  //         file.path,
+  //       ),
+  //     );
+  //   }
+  // }
 
-  showPreview(file) async {
-    file = await Get.to(
-      () => PreviewPage(file: file),
-    );
+  // showPreview(file) async {
+  //   file = await Get.to(
+  //     () => PreviewPage(file: file),
+  //   );
 
-    if (file != null) {
-      setState(() => arquivo = file);
-      Get.back();
-    }
-  }
+  //   if (file != null) {
+  //     setState(() => arquivo = file);
+  //     Get.back();
+  //   }
+  // }
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -89,7 +88,7 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                     const SizedBox(
                       height: 25,
                     ),
-                    Anexo(arquivo: arquivo),
+                    Anexo(),
                     const Text('Alterar foto:',
                         style: TextStyle(color: Colors.white)),
                     // ElevatedButton.icon(
@@ -481,13 +480,41 @@ class _PreviewPageState extends State<PreviewPage> {
   }
 }
 
-class Anexo extends StatelessWidget {
-  File? arquivo;
-
+class Anexo extends StatefulWidget {
   Anexo({
     Key? key,
-    this.arquivo,
   }) : super(key: key);
+
+  @override
+  State<Anexo> createState() => _AnexoState();
+}
+
+class _AnexoState extends State<Anexo> {
+  File? arquivo;
+  final picker = ImagePicker();
+
+  Future getFileFromGallery() async {
+    final file = await picker.pickImage(source: ImageSource.gallery);
+
+    if (file != null) {
+      setState(
+        () => arquivo = File(
+          file.path,
+        ),
+      );
+    }
+  }
+
+  showPreview(file) async {
+    file = await Get.to(
+      () => PreviewPage(file: file),
+    );
+
+    if (file != null) {
+      setState(() => arquivo = file);
+      Get.back();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -527,6 +554,8 @@ class Anexo extends StatelessWidget {
                     ),
                     onPressed: () {
                       AlertDialogBarberWithoutButton(
+                              showpreview: showPreview,
+                              getpreview: getFileFromGallery,
                               icon: Icons.add_a_photo_rounded,
                               iconColor: Colors.white,
                               text: 'asdfdsasd')
@@ -555,11 +584,27 @@ class AlertDialogBarberWithoutButton {
     required this.text,
     required this.icon,
     required this.iconColor,
+    required this.showpreview,
+    required this.getpreview,
   });
-
   final String text;
   final IconData icon;
   final Color iconColor;
+
+  final Function showpreview;
+  final Function getpreview;
+
+  void baterfoto() {
+    Get.to(
+      () => CameraCamera(
+        onFile: (file) => showpreview(file),
+      ),
+    );
+  }
+
+  void escolhergaleria() {
+    getpreview();
+  }
 
   void showCustomDialog(BuildContext context) {
     showGeneralDialog(
@@ -581,18 +626,17 @@ class AlertDialogBarberWithoutButton {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 OutlinedButton.icon(
-                  icon: const Icon(Icons.attach_file),
-                  label: const Text(
-                    'Selecione um arquivo',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      inherit: false,
+                    icon: const Icon(Icons.attach_file),
+                    label: const Text(
+                      'Selecione um arquivo',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        inherit: false,
+                      ),
                     ),
-                  ),
-                  onPressed: () {},
-                  //onPressed: () => getFileFromGallery(),
-                ),
+                    // onPressed: () {},
+                    onPressed: escolhergaleria),
                 const Text(
                   'ou',
                   style: TextStyle(
@@ -602,7 +646,7 @@ class AlertDialogBarberWithoutButton {
                   ),
                 ),
                 OutlinedButton.icon(
-                  onPressed: () {},
+                  onPressed: baterfoto,
                   // onPressed: () => Get.to(
                   //   () => CameraCamera(
                   //     onFile: (file) => showPreview(file),

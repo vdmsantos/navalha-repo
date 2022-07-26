@@ -2,8 +2,10 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'presenter/edit_profile/edit_profile_body.dart';
 import 'presenter/splash/splashscreen.dart';
 
 void main() {
@@ -25,8 +27,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // initializeDateFormatting();
-    return MaterialApp(
+    initializeDateFormatting();
+    return GetMaterialApp(
       useInheritedMediaQuery: true,
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
