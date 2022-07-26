@@ -73,340 +73,337 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
   @override
   Widget build(BuildContext context) {
     setUserInfo();
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: ListView(
-        children: [
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 25,
+    return ListView(
+      children: [
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Anexo(),
+                  const Text('Alterar foto:',
+                      style: TextStyle(color: Colors.white)),
+                  // ElevatedButton.icon(
+                  //   onPressed: () => Get.to(
+                  //     () => CameraCamera(
+                  //       onFile: (file) => showPreview(file),
+                  //     ),
+                  //   ),
+                  //   icon: const Icon(Icons.camera_alt),
+                  //   label: const Padding(
+                  //     padding: EdgeInsets.all(10),
+                  //     child: Text('Tire uma foto'),
+                  //   ),
+                  //   style: ElevatedButton.styleFrom(
+                  //     elevation: 0,
+                  //     textStyle: const TextStyle(
+                  //       fontSize: 14,
+                  //     ),
+                  //   ),
+                  // ),
+                  // const Padding(
+                  //   padding: EdgeInsets.only(top: 10),
+                  //   child: Text('ou', style: TextStyle(color: Colors.white)),
+                  // ),
+                  // OutlinedButton.icon(
+                  //   icon: const Icon(Icons.attach_file),
+                  //   label: const Text('Selecione um arquivo'),
+                  //   onPressed: () => getFileFromGallery(),
+                  // ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "Nome:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
-                    Anexo(),
-                    const Text('Alterar foto:',
-                        style: TextStyle(color: Colors.white)),
-                    // ElevatedButton.icon(
-                    //   onPressed: () => Get.to(
-                    //     () => CameraCamera(
-                    //       onFile: (file) => showPreview(file),
-                    //     ),
-                    //   ),
-                    //   icon: const Icon(Icons.camera_alt),
-                    //   label: const Padding(
-                    //     padding: EdgeInsets.all(10),
-                    //     child: Text('Tire uma foto'),
-                    //   ),
-                    //   style: ElevatedButton.styleFrom(
-                    //     elevation: 0,
-                    //     textStyle: const TextStyle(
-                    //       fontSize: 14,
-                    //     ),
-                    //   ),
-                    // ),
-                    // const Padding(
-                    //   padding: EdgeInsets.only(top: 10),
-                    //   child: Text('ou', style: TextStyle(color: Colors.white)),
-                    // ),
-                    // OutlinedButton.icon(
-                    //   icon: const Icon(Icons.attach_file),
-                    //   label: const Text('Selecione um arquivo'),
-                    //   onPressed: () => getFileFromGallery(),
-                    // ),
-                    const SizedBox(
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
                       width: 350,
-                      child: Text(
-                        "Nome:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            controller: nameController,
-                            style: const TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "E-mail:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            controller: emailController,
-                            style: const TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "Celular:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "Data de Nascimento:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "Senha:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            obscureText: true,
-                            controller: passwordController,
-                            style: const TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "Confirmar:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 10),
-                          child: TextField(
-                            obscureText: true,
-                            controller: passwordController,
-                            style: const TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 18),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 50, bottom: 50),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.centerRight,
-                          children: [
-                            Container(
-                              width: 135,
-                              height: 45,
-                              decoration: BoxDecoration(
-                                  color: const Color.fromRGBO(36, 36, 36, 1),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: [
-                                  MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: ((context) => const HomePage(
-                                                scaffoldKeymed: null,
-                                              )),
-                                        ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      "Confirmar",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Positioned(
-                              right: -30,
-                              child: CircleAvatar(
-                                radius: 29,
-                                backgroundColor: Color.fromRGBO(48, 48, 48, 1),
-                                child: Icon(
-                                  Icons.check_circle_rounded,
-                                  size: 40,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          controller: nameController,
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "E-mail:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          controller: emailController,
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "Celular:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "Data de Nascimento:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "Senha:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          obscureText: true,
+                          controller: passwordController,
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    width: 350,
+                    child: Text(
+                      "Confirmar:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(36, 36, 36, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: TextField(
+                          obscureText: true,
+                          controller: passwordController,
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              fontSize: 18),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 50, bottom: 50),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        alignment: Alignment.centerRight,
+                        children: [
+                          Container(
+                            width: 135,
+                            height: 45,
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(36, 36, 36, 1),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Row(
+                              children: [
+                                MaterialButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: ((context) => const HomePage(
+                                              scaffoldKeymed: null,
+                                            )),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    "Confirmar",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Positioned(
+                            right: -30,
+                            child: CircleAvatar(
+                              radius: 29,
+                              backgroundColor: Color.fromRGBO(48, 48, 48, 1),
+                              child: Icon(
+                                Icons.check_circle_rounded,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -641,7 +638,7 @@ class AlertDialogBarberWithoutButton {
                   'ou',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 10,
+                    fontSize: 14,
                     inherit: false,
                   ),
                 ),
@@ -667,8 +664,9 @@ class AlertDialogBarberWithoutButton {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(backgroundColor: Colors.white),
-                  onPressed:
-                      () {}, //TODO navegar para tela de edição de cadastro
+                  onPressed: () {
+                    Get.back();
+                  },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(

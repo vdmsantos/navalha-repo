@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:get_it/get_it.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -23,7 +24,9 @@ class ScaffoldPattern extends StatefulWidget {
 }
 
 class _ScaffoldPatternState extends State<ScaffoldPattern> {
+  late int indexpage = 0;
   var _bottomNavIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
@@ -31,6 +34,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
 
     void setIndex(int index) {
       setState(() {
+        indexpage = index;
         _bottomNavIndex = index;
       });
     }
@@ -89,10 +93,12 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
           // if (index == 1) {
           //   scaffoldKey.currentState!.openEndDrawer();
           // }
+
           switch (index) {
             case 0:
               {
-                //TODO chamar pagina perfil
+                // TODO chamar pagina perfil
+
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => const EditProfilePage()),
@@ -120,7 +126,7 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/fundofinal2.jfif"),
+            image: AssetImage(imgFundoGeral),
             fit: BoxFit.cover,
           ),
         ),
