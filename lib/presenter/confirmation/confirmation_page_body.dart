@@ -90,9 +90,10 @@ class BodyConfirmation extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  const RowDetails(
+                                   RowDetails(
                                     firstString: 'Serviços:',
                                     secondString: 'Barba - Corte Máquina',
+                                    onTap: () {},
                                   ),
                                   RowDetailsSchedule(
                                     firstString: 'Horário:',
