@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:icon_decoration/icon_decoration.dart';
+import 'package:projeto_1/presenter/home/home_page.dart';
 
 import '../core/assets.dart';
 
@@ -67,7 +68,14 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
                           )
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage(
+                                      scaffoldKeymed: null,
+                                    )));
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/assets.dart';
+import '../presenter/barbershop/barber_shop.dart';
 
 class TopContainerPattern extends StatefulWidget {
   final String title;
@@ -54,7 +55,12 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
                           )
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BarberShopPage()));
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),

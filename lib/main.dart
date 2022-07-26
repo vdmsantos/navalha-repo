@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initializeDateFormatting();
+    // initializeDateFormatting();
     return MaterialApp(
       useInheritedMediaQuery: true,
       builder: DevicePreview.appBuilder,

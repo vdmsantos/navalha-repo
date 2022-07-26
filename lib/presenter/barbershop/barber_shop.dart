@@ -35,6 +35,8 @@ class _MyWidgetState extends State<BarberShopPage> {
           shrinkWrap: true,
           slivers: <Widget>[
             const SliverAppBar(
+              automaticallyImplyLeading: false,
+              actions: <Widget>[SizedBox()],
               backgroundColor: Color.fromARGB(255, 0, 0, 0),
               expandedHeight: 220,
               flexibleSpace: FlexibleSpaceBar(

@@ -36,6 +36,8 @@ class BodyConfirmation extends StatelessWidget {
         shrinkWrap: true,
         slivers: <Widget>[
           const SliverAppBar(
+            automaticallyImplyLeading: false,
+            actions: <Widget>[SizedBox()],
             backgroundColor: Color.fromARGB(255, 0, 0, 0),
             expandedHeight: 260.0,
             flexibleSpace: FlexibleSpaceBar(
