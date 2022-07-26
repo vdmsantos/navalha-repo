@@ -90,7 +90,7 @@ class _BodyEditingProfileState extends State<BodyEditingProfile> {
                       height: 25,
                     ),
                     Anexo(arquivo: arquivo),
-                    Text('Alterar foto:',
+                    const Text('Alterar foto:',
                         style: TextStyle(color: Colors.white)),
                     // ElevatedButton.icon(
                     //   onPressed: () => Get.to(
@@ -580,19 +580,57 @@ class AlertDialogBarberWithoutButton {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  icon,
-                  size: 100,
-                  color: iconColor,
+                OutlinedButton.icon(
+                  icon: const Icon(Icons.attach_file),
+                  label: const Text(
+                    'Selecione um arquivo',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      inherit: false,
+                    ),
+                  ),
+                  onPressed: () {},
+                  //onPressed: () => getFileFromGallery(),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-                  child: Text(text,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          decoration: TextDecoration.none)),
+                const Text(
+                  'ou',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    inherit: false,
+                  ),
+                ),
+                OutlinedButton.icon(
+                  onPressed: () {},
+                  // onPressed: () => Get.to(
+                  //   () => CameraCamera(
+                  //     onFile: (file) => showPreview(file),
+                  //   ),
+                  // ),
+                  icon: const Icon(Icons.camera_alt),
+                  label: const Text(
+                    'Tire uma foto',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      inherit: false,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(backgroundColor: Colors.white),
+                  onPressed:
+                      () {}, //TODO navegar para tela de edição de cadastro
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      'Cancelar',
+                    ),
+                  ),
                 ),
               ],
             ),
