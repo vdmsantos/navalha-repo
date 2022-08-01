@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../core/assets.dart';
-import '../../infra/data_sources/data_source.dart';
-import '../../shared/alert_dialog.dart';
 import '../../shared/alert_dialog_withoutbutton.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
@@ -44,7 +42,7 @@ class _LoginState extends State<Login> {
             children: [
               Image.asset(
                 imgLogoGeral,
-                scale: 1,
+                // scale: 1,
               ),
               Container(
                 height: 70,
