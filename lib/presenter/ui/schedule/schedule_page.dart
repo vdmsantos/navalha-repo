@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/client_provider.dart';
 
 import '../../../core/assets.dart';
-import '../../../infra/model/user_model.dart';
 import '../widgets/shared/scaffold_pattern.dart';
 import '../widgets/shared/topcontainer_pattern.dart';
 import 'widgets/list_schedule_containers.dart';

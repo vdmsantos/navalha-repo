@@ -13,10 +13,10 @@ import 'widgets/list_services.dart';
 class BarberShopPage extends StatefulWidget {
   const BarberShopPage({
     Key? key,
-    required this.BarberShopName,
+    required this.barberShopName,
   }) : super(key: key);
 
-  final String BarberShopName;
+  final String barberShopName;
 
   @override
   State<BarberShopPage> createState() => _MyWidgetState();
@@ -42,13 +42,13 @@ class _MyWidgetState extends State<BarberShopPage> {
           slivers: <Widget>[
             SliverAppBar(
               automaticallyImplyLeading: false,
-              actions: <Widget>[SizedBox()],
-              backgroundColor: Color.fromARGB(255, 0, 0, 0),
+              actions: const <Widget>[SizedBox()],
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               expandedHeight: 220,
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
                   star: 2,
-                  title: widget.BarberShopName,
+                  title: widget.barberShopName,
                   profile: imgBarberPhoto,
                 ),
               ),

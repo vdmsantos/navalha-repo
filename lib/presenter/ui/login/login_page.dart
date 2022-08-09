@@ -8,8 +8,10 @@ import '../register/register_page.dart';
 import '../widgets/shared/alert_dialog_withoutbutton.dart';
 
 class Login extends HookConsumerWidget {
-  TextEditingController emailControler = TextEditingController();
-  TextEditingController passwordControler = TextEditingController();
+  final emailControler = TextEditingController();
+  final passwordControler = TextEditingController();
+
+  Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -16,7 +16,6 @@ class Edit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: BodyEditingProfile(),
@@ -27,15 +26,12 @@ class Edit extends StatelessWidget {
 class BodyEditingProfile extends HookConsumerWidget {
   BodyEditingProfile({Key? key}) : super(key: key);
 
-  final TextEditingController nameController = TextEditingController();
-
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController passwordController = TextEditingController();
-
-  final TextEditingController cepController = TextEditingController();
-  final TextEditingController bairroController = TextEditingController();
-  final TextEditingController logradouroController = TextEditingController();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final cepController = TextEditingController();
+  final bairroController = TextEditingController();
+  final logradouroController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -62,7 +58,7 @@ class BodyEditingProfile extends HookConsumerWidget {
                   const SizedBox(
                     height: 25,
                   ),
-                  Anexo(),
+                  const Anexo(),
                   const Text('Alterar foto:',
                       style: TextStyle(color: Colors.white)),
                   const SizedBox(
@@ -276,11 +272,16 @@ class BodyEditingProfile extends HookConsumerWidget {
                             ],
                           );
 
-                          break;
                         default:
                           {
-                            return const CircularProgressIndicator();
-                            break;
+                            return Column(
+                              children: const [
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                CircularProgressIndicator(),
+                              ],
+                            );
                           }
                       }
                     },
@@ -504,8 +505,9 @@ class BodyEditingProfile extends HookConsumerWidget {
 }
 
 class PreviewPage extends StatelessWidget {
-  File file;
-  PreviewPage({Key? key, required this.file}) : super(key: key);
+  final File file;
+
+  const PreviewPage({Key? key, required this.file}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -568,7 +570,7 @@ class PreviewPage extends StatelessWidget {
 }
 
 class Anexo extends StatefulWidget {
-  Anexo({
+  const Anexo({
     Key? key,
   }) : super(key: key);
 
@@ -619,7 +621,7 @@ class _AnexoState extends State<Anexo> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: !arquivo.isNull
+                  child: !(arquivo == null)
                       ? Image.file(arquivo!, fit: BoxFit.cover)
                       : Image.asset(
                           imgProfileDefault,

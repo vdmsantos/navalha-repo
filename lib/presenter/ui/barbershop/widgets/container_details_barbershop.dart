@@ -63,7 +63,7 @@ class ContainerDetailsBarberShop extends StatelessWidget {
                   Icons.pin_drop_outlined,
                   color: Colors.white,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 MaterialButton(
                   onPressed: () {
                     _launchUrl(urlMap);

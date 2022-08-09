@@ -40,7 +40,7 @@ class GetClientByEmailPasswordLocalDatasource
         id: 1,
       );
 
-      print(clientModel.toString());
+      // print(clientModel.toString());
 
       return clientModel;
     } else {

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class AdressModel {
   final String cep;
   final String logradouro;

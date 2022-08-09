@@ -57,7 +57,7 @@ class _BarberListItemState extends State<BarberListItem> {
             context,
             MaterialPageRoute(
                 builder: (context) => BarberShopPage(
-                      BarberShopName: widget.barberShopName,
+                      barberShopName: widget.barberShopName,
                     )));
       },
       child: Container(

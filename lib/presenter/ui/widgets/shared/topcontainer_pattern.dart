@@ -60,7 +60,7 @@ class _TopContainerPatternState extends State<TopContainerPattern> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const BarberShopPage(
-                                      BarberShopName: 'Outsiderbarber',
+                                      barberShopName: 'Outsiderbarber',
                                     )));
                       },
                     ),

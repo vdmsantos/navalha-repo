@@ -2,13 +2,11 @@ import 'dart:math' as math;
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:projeto_1/core/client_provider.dart';
 
 import '../../../../core/assets.dart';
-import '../../../../infra/model/user_model.dart';
 import '../../edit_profile/edit_profile_page.dart';
 import '../../home/home_page.dart';
 import '../../schedule/schedule_page.dart';
