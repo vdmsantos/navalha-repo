@@ -27,24 +27,19 @@ class Edit extends StatelessWidget {
 class BodyEditingProfile extends HookConsumerWidget {
   BodyEditingProfile({Key? key}) : super(key: key);
 
-  TextEditingController nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  TextEditingController cepController = TextEditingController();
-  TextEditingController bairroController = TextEditingController();
-  TextEditingController logradouroController = TextEditingController();
+  final TextEditingController cepController = TextEditingController();
+  final TextEditingController bairroController = TextEditingController();
+  final TextEditingController logradouroController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clientControler = ref.watch(clientController);
-
-    // if (clientControler.client!.cep.length <= 8) {
-    late Future<AdressModel?> adress = clientControler.getClientAdress();
-    adress!.then((value) => value!.complemento);
-    // }
 
     void setUserInfo() {
       nameController.text = clientControler.client!.name;
@@ -144,157 +139,149 @@ class BodyEditingProfile extends HookConsumerWidget {
                     ),
                   ),
                   FutureBuilder(
-                    future: adress,
+                    future: clientControler.getClientAdress(),
                     builder: (context, AsyncSnapshot<AdressModel?> snapshot) {
-                      print(snapshot.data);
                       if (snapshot.data != null) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.done:
-                            cepController.text = snapshot.data!.cep;
-                            bairroController.text = snapshot.data!.bairro;
-                            logradouroController.text =
-                                snapshot.data!.logradouro;
-                            // emailController.text = snapshot.data!.cep;
-                            return Column(
-                              children: [
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                const SizedBox(
-                                  width: 350,
-                                  child: Text(
-                                    "Cep ",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 70,
-                                    width: 350,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          const Color.fromRGBO(36, 36, 36, 1),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 10),
-                                      child: TextField(
-                                        controller: cepController,
-                                        style: const TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 92, 92, 92),
-                                            fontSize: 18),
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                const SizedBox(
-                                  width: 350,
-                                  child: Text(
-                                    "Bairro",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 70,
-                                    width: 350,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          const Color.fromRGBO(36, 36, 36, 1),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 10),
-                                      child: TextField(
-                                        controller: bairroController,
-                                        style: const TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 92, 92, 92),
-                                            fontSize: 18),
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                const SizedBox(
-                                  width: 350,
-                                  child: Text(
-                                    "Logradouro",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 70,
-                                    width: 350,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          const Color.fromRGBO(36, 36, 36, 1),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 10),
-                                      child: TextField(
-                                        controller: logradouroController,
-                                        style: const TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 92, 92, 92),
-                                            fontSize: 18),
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
+                        cepController.text = snapshot.data!.cep;
+                        bairroController.text = snapshot.data!.bairro;
+                        logradouroController.text = snapshot.data!.logradouro;
+                      }
 
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.done:
+
+                          // emailController.text = snapshot.data!.cep;
+                          return Column(
+                            children: [
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              const SizedBox(
+                                width: 350,
+                                child: Text(
+                                  "Cep ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Container(
+                                  height: 70,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(36, 36, 36, 1),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 10),
+                                    child: TextField(
+                                      controller: cepController,
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 92, 92, 92),
+                                          fontSize: 18),
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              const SizedBox(
+                                width: 350,
+                                child: Text(
+                                  "Bairro",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Container(
+                                  height: 70,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(36, 36, 36, 1),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 10),
+                                    child: TextField(
+                                      controller: bairroController,
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 92, 92, 92),
+                                          fontSize: 18),
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              const SizedBox(
+                                width: 350,
+                                child: Text(
+                                  "Logradouro",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Container(
+                                  height: 70,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(36, 36, 36, 1),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 10),
+                                    child: TextField(
+                                      controller: logradouroController,
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 92, 92, 92),
+                                          fontSize: 18),
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+
+                          break;
+                        default:
+                          {
+                            return const CircularProgressIndicator();
                             break;
-                          default:
-                            {
-                              return CircularProgressIndicator();
-                              break;
-                            }
-                        }
-                      } else {
-                        return Text('asdasd');
+                          }
                       }
                     },
                   ),
