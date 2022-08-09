@@ -8,9 +8,9 @@ class GetClientAdressByCep {
     required this.dio,
   });
 
-  late AdressModel adress;
+  late AdressModel? adress;
 
-  Future<AdressModel> getClientAdress(String cep) async {
+  Future<AdressModel?> getClientAdress(String cep) async {
     try {
       var url = 'https://viacep.com.br/ws/$cep/json/';
       final response = await dio.get(url);
@@ -18,6 +18,7 @@ class GetClientAdressByCep {
       adress = AdressModel.fromMap(response.data);
     } catch (e) {
       print('Deu erro $e');
+      adress = null;
     }
     return adress;
   }

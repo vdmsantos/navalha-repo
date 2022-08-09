@@ -19,7 +19,7 @@ class ClientControler {
     client = await _getClientByEmailPasswordUseCase.call(email, password);
   }
 
-  Future<AdressModel>? getClientAdress() async {
+  Future<AdressModel?> getClientAdress() async {
     return await _adressRepository.getClientAdress(client!.cep);
   }
 

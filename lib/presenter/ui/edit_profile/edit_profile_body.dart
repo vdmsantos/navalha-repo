@@ -42,8 +42,8 @@ class BodyEditingProfile extends HookConsumerWidget {
     final clientControler = ref.watch(clientController);
 
     // if (clientControler.client!.cep.length <= 8) {
-    late Future<AdressModel>? adress = clientControler.getClientAdress();
-    adress!.then((value) => value.complemento);
+    late Future<AdressModel?> adress = clientControler.getClientAdress();
+    adress!.then((value) => value!.complemento);
     // }
 
     void setUserInfo() {
@@ -53,6 +53,7 @@ class BodyEditingProfile extends HookConsumerWidget {
     }
 
     setUserInfo();
+
     return ListView(
       children: [
         Center(
@@ -144,144 +145,156 @@ class BodyEditingProfile extends HookConsumerWidget {
                   ),
                   FutureBuilder(
                     future: adress,
-                    builder: (context, AsyncSnapshot<AdressModel> snapshot) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.done:
-                          cepController.text = snapshot.data!.cep;
-                          bairroController.text = snapshot.data!.bairro;
-                          logradouroController.text = snapshot.data!.logradouro;
-                          // emailController.text = snapshot.data!.cep;
-                          return Column(
-                            children: [
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const SizedBox(
-                                width: 350,
-                                child: Text(
-                                  "Cep ",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                    builder: (context, AsyncSnapshot<AdressModel?> snapshot) {
+                      print(snapshot.data);
+                      if (snapshot.data != null) {
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.done:
+                            cepController.text = snapshot.data!.cep;
+                            bairroController.text = snapshot.data!.bairro;
+                            logradouroController.text =
+                                snapshot.data!.logradouro;
+                            // emailController.text = snapshot.data!.cep;
+                            return Column(
+                              children: [
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                const SizedBox(
+                                  width: 350,
+                                  child: Text(
+                                    "Cep ",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Container(
-                                  height: 70,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(36, 36, 36, 1),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, top: 10),
-                                    child: TextField(
-                                      controller: cepController,
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 92, 92, 92),
-                                          fontSize: 18),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Container(
+                                    height: 70,
+                                    width: 350,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromRGBO(36, 36, 36, 1),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, top: 10),
+                                      child: TextField(
+                                        controller: cepController,
+                                        style: const TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 92, 92, 92),
+                                            fontSize: 18),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const SizedBox(
-                                width: 350,
-                                child: Text(
-                                  "Bairro",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                const SizedBox(
+                                  width: 350,
+                                  child: Text(
+                                    "Bairro",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Container(
-                                  height: 70,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(36, 36, 36, 1),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, top: 10),
-                                    child: TextField(
-                                      controller: bairroController,
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 92, 92, 92),
-                                          fontSize: 18),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Container(
+                                    height: 70,
+                                    width: 350,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromRGBO(36, 36, 36, 1),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, top: 10),
+                                      child: TextField(
+                                        controller: bairroController,
+                                        style: const TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 92, 92, 92),
+                                            fontSize: 18),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const SizedBox(
-                                width: 350,
-                                child: Text(
-                                  "Logradouro",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                const SizedBox(
+                                  width: 350,
+                                  child: Text(
+                                    "Logradouro",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Container(
-                                  height: 70,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(36, 36, 36, 1),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, top: 10),
-                                    child: TextField(
-                                      controller: logradouroController,
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 92, 92, 92),
-                                          fontSize: 18),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Container(
+                                    height: 70,
+                                    width: 350,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromRGBO(36, 36, 36, 1),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, top: 10),
+                                      child: TextField(
+                                        controller: logradouroController,
+                                        style: const TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 92, 92, 92),
+                                            fontSize: 18),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          );
+                              ],
+                            );
 
-                          break;
-                        default:
-                          {
-                            return CircularProgressIndicator();
                             break;
-                          }
+                          default:
+                            {
+                              return CircularProgressIndicator();
+                              break;
+                            }
+                        }
+                      } else {
+                        return Text('asdasd');
                       }
                     },
                   ),

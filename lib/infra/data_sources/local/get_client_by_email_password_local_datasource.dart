@@ -13,10 +13,13 @@ class GetClientByEmailPasswordLocalDatasource
   @override
   Future<ClientEntity?> call(String email, String password) async {
     //executar metodos que procurar pelo usuário
+
     ClientEntity? client;
+
     await getClientObj(email, password).then((value) {
       client = value;
     });
+
     return client;
   }
 
@@ -36,7 +39,9 @@ class GetClientByEmailPasswordLocalDatasource
         cep: clientMap['cep'],
         id: 1,
       );
+
       print(clientModel.toString());
+
       return clientModel;
     } else {
       return null;
@@ -45,6 +50,7 @@ class GetClientByEmailPasswordLocalDatasource
 
   void init() async {
     var databasesPath = await getDatabasesPath();
+
     String path = '${databasesPath}demo1.db';
 
     database = await openDatabase(
