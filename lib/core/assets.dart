@@ -16,3 +16,4 @@ const String imgBarberLucas = 'assets/images/image6.png';
 const String imgBarberVitor = 'assets/images/image7.png';
 const String profileDefault = 'assets/images/profileDefault1.png';
 const String imgProfileDefault = 'assets/images/imgProfileDefault1.png';
+const String imgLogoBarber2 = 'assets/images/Cut (1).png';

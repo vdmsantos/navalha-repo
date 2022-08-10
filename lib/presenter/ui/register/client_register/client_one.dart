@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/assets.dart';
 import 'client_register_controller.dart';
 import 'client_two.dart';
 
-class ClientRegisterOne extends StatefulWidget {
+class ClientRegisterOne extends StatefulHookConsumerWidget {
   const ClientRegisterOne({Key? key}) : super(key: key);
 
   @override
-  State<ClientRegisterOne> createState() => _ClientRegisterOneState();
+  ConsumerState<ClientRegisterOne> createState() => _ClientRegisterOneState();
 }
 
-class _ClientRegisterOneState extends State<ClientRegisterOne> {
+class _ClientRegisterOneState extends ConsumerState<ClientRegisterOne> {
   final nameControler = TextEditingController();
   final emailControler = TextEditingController();
 

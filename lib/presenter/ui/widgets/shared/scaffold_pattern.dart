@@ -59,11 +59,12 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           },
-          child: const Text('NAVALHA',
-              style: TextStyle(
-                  fontFamily: 'Bevan',
-                  fontSize: 12,
-                  color: Color.fromARGB(255, 255, 255, 255))),
+          child: Icon(Icons.home, size: 50),
+          // child: const Text('NAVALHA',
+          //     style: TextStyle(
+          //         fontFamily: 'Bevan',
+          //         fontSize: 12,
+          //         color: Color.fromARGB(255, 255, 255, 255))),
           // child: const Icon(Icons.home, size: 30),
         ),
       ),
