@@ -44,7 +44,7 @@ class _MyWidgetState extends State<BarberShopPage> {
               automaticallyImplyLeading: false,
               actions: const <Widget>[SizedBox()],
               backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-              expandedHeight: 220,
+              expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
                   star: 2,
@@ -57,7 +57,7 @@ class _MyWidgetState extends State<BarberShopPage> {
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return SizedBox(
-                    height: 520,
+                    height: 600,
                     width: 50,
                     child: Column(
                       children: [

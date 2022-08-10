@@ -58,6 +58,7 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   hooks_riverpod: ^1.0.4
   dio: ^4.0.6
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

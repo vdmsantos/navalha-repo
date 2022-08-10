@@ -18,7 +18,7 @@ class Login extends HookConsumerWidget {
     final clientControler = ref.watch(clientController);
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        height: 1000,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -30,7 +30,7 @@ class Login extends HookConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                imgLogoGeral,
+                imgLogoBarber2,
                 // scale: 1,
               ),
               Container(
@@ -136,13 +136,14 @@ class Login extends HookConsumerWidget {
                             iconColor: Colors.redAccent)
                         .showCustomDialog(context);
                   }
-                  print(' id : ${clientControler.client!.id}');
-                  print(' name : ${clientControler.client!.name}');
-                  print(' email : ${clientControler.client!.email}');
-                  print(' paswword : ${clientControler.client!.password}');
-                  print(' cep : ${clientControler.client!.cep}');
-                  print(' cpf : ${clientControler.client!.cpf}');
-
+                  if (clientControler.client != null) {
+                    print(' id : ${clientControler.client!.id}');
+                    print(' name : ${clientControler.client!.name}');
+                    print(' email : ${clientControler.client!.email}');
+                    print(' paswword : ${clientControler.client!.password}');
+                    print(' cep : ${clientControler.client!.cep}');
+                    print(' cpf : ${clientControler.client!.cpf}');
+                  }
                   // if (await loginController.validLogin(
                   //     emailControler.text, passwordControler.text)) {
                   //   // ignore: use_build_context_synchronously
