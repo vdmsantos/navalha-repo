@@ -1,40 +1,55 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:icon_decoration/icon_decoration.dart';
 import 'package:projeto_1/presenter/ui/home/home_page.dart';
 
 import '../../../../core/assets.dart';
+import '../../../../core/providers.dart';
 
-class TopContainerPatternStar extends StatefulWidget {
+class TopContainerPatternStar extends HookConsumerWidget {
   final String title;
   final String profile;
+  final int star;
 
-  const TopContainerPatternStar({
-    Key? key,
+  TopContainerPatternStar({
     required this.title,
     required this.profile,
     required this.star,
-  }) : super(key: key);
-  final int star;
+  });
 
   @override
-  State<TopContainerPatternStar> createState() =>
-      _TopContainerPatternStarState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    // final topContainerPatternStar = ref.watch(topContainerPatternStarProvider);
 
-class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
-  Color topColor = const Color.fromARGB(255, 24, 24, 24);
-  Color bottomCollor = const Color.fromARGB(255, 34, 34, 34);
+    List<Widget> starList = [];
+    Color noStar;
+    Color filledStar;
 
-  List<Widget> starList = [];
-  @override
-  initState() {
-    super.initState();
-    setStarList();
-  }
+    darkMode.darkMode
+        ? noStar = const Color.fromARGB(255, 98, 93, 93)
+        : noStar = Color.fromARGB(255, 139, 135, 135);
 
-  @override
-  Widget build(BuildContext context) {
+    darkMode.darkMode
+        ? filledStar = const Color.fromARGB(255, 255, 255, 255)
+        : filledStar = Color.fromARGB(255, 32, 32, 32);
+
+    starList.clear();
+    for (var i = 1; i <= 5; i++) {
+      if (i <= star) {
+        starList.add(
+          Icon(Icons.star, color: filledStar),
+        );
+      } else {
+        starList.add(
+          DecoratedIcon(
+            icon: Icon(Icons.star, color: noStar),
+          ),
+        );
+      }
+    }
+
     return Stack(
       children: [
         Column(
@@ -57,36 +72,44 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_new,
-                        color: Colors.white,
+                        color: darkMode.darkMode ? Colors.white : Colors.black,
                         shadows: [
                           Shadow(
-                            offset: Offset(3, 5),
+                            offset: const Offset(1, 2),
                             blurRadius: 2,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: darkMode.darkMode
+                                ? const Color.fromARGB(255, 0, 0, 0)
+                                : Colors.white,
                           )
                         ],
                       ),
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
                       },
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       child: Text(
-                        widget.title,
-                        style: const TextStyle(
+                        title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           fontSize: 25,
-                          color: Colors.white,
+                          color:
+                              darkMode.darkMode ? Colors.white : Colors.black,
                           shadows: [
                             Shadow(
-                              offset: Offset(3, 5),
-                              blurRadius: 2,
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              offset: const Offset(1, 1),
+                              blurRadius: 1,
+                              color: darkMode.darkMode
+                                  ? const Color.fromARGB(255, 0, 0, 0)
+                                  : Colors.white,
                             )
                           ],
                         ),
@@ -101,30 +124,41 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
               margin: const EdgeInsets.only(left: 80),
               width: double.maxFinite,
               height: 60,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 66, 66, 66),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: darkMode.darkMode
+                    ? const Color.fromARGB(255, 42, 42, 42)
+                    : const Color.fromARGB(255, 255, 255, 255),
+                borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(35),
                 ),
               ),
               child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [for (int i = 0; i <= 4; i++) starList[i]],
-                  )),
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [for (int i = 0; i <= 4; i++) starList[i]],
+                ),
+              ),
             ),
           ],
         ),
         Positioned(
           top: 112,
           child: CircleAvatar(
-            backgroundColor: const Color.fromARGB(255, 42, 42, 42),
-            radius: 75,
-            child: SizedBox(
-              child: Image(
-                image: AssetImage(
-                  widget.profile,
+            backgroundColor: darkMode.darkMode
+                ? Colors.white
+                : const Color.fromARGB(255, 42, 42, 42),
+            radius: 77,
+            child: CircleAvatar(
+              backgroundColor: darkMode.darkMode
+                  ? const Color.fromARGB(255, 42, 42, 42)
+                  : Colors.white,
+              radius: 75,
+              child: SizedBox(
+                child: Image(
+                  image: AssetImage(
+                    profile,
+                  ),
                 ),
               ),
             ),
@@ -132,21 +166,5 @@ class _TopContainerPatternStarState extends State<TopContainerPatternStar> {
         ),
       ],
     );
-  }
-
-  void setStarList() {
-    for (var i = 1; i <= 5; i++) {
-      if (i <= widget.star) {
-        starList.add(
-          const Icon(Icons.star, color: Colors.white, shadows: []),
-        );
-      } else {
-        starList.add(
-          DecoratedIcon(
-            icon: Icon(Icons.star, color: bottomCollor),
-          ),
-        );
-      }
-    }
   }
 }

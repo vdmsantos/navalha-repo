@@ -1,36 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/assets.dart';
+import '../../../core/providers.dart';
 import '../widgets/shared/scaffold_pattern.dart';
 import '../widgets/shared/topcontainer_stars_pattern.dart';
-import 'widgets/container_button_details.dart';
-import 'widgets/container_button_schedule.dart';
-import 'widgets/container_button_services.dart';
-import 'widgets/container_details_barbershop.dart';
-import 'widgets/list_profissionals.dart';
-import 'widgets/list_services.dart';
+import 'widgets/container_button_barber_shop_widget.dart';
+import 'widgets/container_details_barbershop_widget.dart';
+import 'widgets/list_profissionals_widget.dart';
+import 'widgets/list_services_widget.dart';
 
-class BarberShopPage extends StatefulWidget {
-  const BarberShopPage({
-    Key? key,
-    required this.barberShopName,
-  }) : super(key: key);
-
+class BarberShopPage extends HookConsumerWidget {
   final String barberShopName;
 
-  @override
-  State<BarberShopPage> createState() => _MyWidgetState();
-}
+  BarberShopPage({
+    required this.barberShopName,
+  });
 
-class _MyWidgetState extends State<BarberShopPage> {
-  int currentIndex = 0;
   @override
-  Widget build(BuildContext context) {
-    setBottomBarIndex(index) {
-      setState(() {
-        currentIndex = index;
-      });
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    final currentIndex = ref.watch(currentIndexProvider);
 
     Size size = MediaQuery.of(context).size;
     return ScaffoldPattern(
@@ -43,12 +33,14 @@ class _MyWidgetState extends State<BarberShopPage> {
             SliverAppBar(
               automaticallyImplyLeading: false,
               actions: const <Widget>[SizedBox()],
-              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+              backgroundColor: darkMode.darkMode
+                  ? const Color.fromARGB(255, 0, 0, 0)
+                  : const Color.fromARGB(255, 211, 206, 206),
               expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
                   star: 2,
-                  title: widget.barberShopName,
+                  title: barberShopName,
                   profile: imgBarberPhoto,
                 ),
               ),
@@ -75,10 +67,13 @@ class _MyWidgetState extends State<BarberShopPage> {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
-                                    setBottomBarIndex(0);
+                                    currentIndex.setBottomBarIndex(0);
                                   },
-                                  child: ContainerButtonDetails(
-                                      currentIndex: currentIndex),
+                                  child: ContainerButtonBarberShop(
+                                    currentIndex: currentIndex.currentIndex,
+                                    name: 'Detalhes',
+                                    index: 0,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -87,10 +82,13 @@ class _MyWidgetState extends State<BarberShopPage> {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
-                                    setBottomBarIndex(1);
+                                    currentIndex.setBottomBarIndex(1);
                                   },
-                                  child: ContainerButtonServices(
-                                      currentIndex: currentIndex),
+                                  child: ContainerButtonBarberShop(
+                                    currentIndex: currentIndex.currentIndex,
+                                    name: 'Serviços',
+                                    index: 1,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -99,10 +97,13 @@ class _MyWidgetState extends State<BarberShopPage> {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
-                                    setBottomBarIndex(2);
+                                    currentIndex.setBottomBarIndex(2);
                                   },
-                                  child: ContainerButoonSchedule(
-                                      currentIndex: currentIndex),
+                                  child: ContainerButtonBarberShop(
+                                    currentIndex: currentIndex.currentIndex,
+                                    name: 'Agendar',
+                                    index: 2,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -111,15 +112,17 @@ class _MyWidgetState extends State<BarberShopPage> {
                             ],
                           ),
                         ),
-                        if (currentIndex == 0)
+                        if (currentIndex.currentIndex == 0)
                           const ContainerDetailsBarberShop(
                             andress:
                                 'Rua Antônio da veiga, 416 - Victor Konder - Blumenau- SC',
                             hoursOpen: 'Das 08:00 até 21:00',
                             phone: '(47) 9 9999-9999',
                           ),
-                        if (currentIndex == 1) const ListServices(),
-                        if (currentIndex == 2) const ListProfessionals(),
+                        if (currentIndex.currentIndex == 1)
+                          const ListServices(),
+                        if (currentIndex.currentIndex == 2)
+                          const ListProfessionals(),
                       ],
                     ),
                   );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../../core/providers.dart';
 import '../../widgets/shared/row_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,7 +15,7 @@ Future<void> _launchUrl(String url) async {
   }
 }
 
-class ContainerDetailsBarberShop extends StatelessWidget {
+class ContainerDetailsBarberShop extends HookConsumerWidget {
   final String andress;
   final String phone;
   final String hoursOpen;
@@ -26,14 +28,17 @@ class ContainerDetailsBarberShop extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    
     return Container(
       margin: const EdgeInsets.only(left: 18, right: 18, top: 20),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 24, 24, 24),
+        color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
         borderRadius: BorderRadius.circular(10),
+        border: darkMode.darkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black),
       ),
       child: Column(
         children: [
@@ -59,19 +64,19 @@ class ContainerDetailsBarberShop extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.pin_drop_outlined,
-                  color: Colors.white,
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
                 ),
                 const SizedBox(width: 5),
                 MaterialButton(
                   onPressed: () {
                     _launchUrl(urlMap);
                   },
-                  child: const Text(
+                  child: Text(
                     'Ver no mapa',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
                     ),
                   ),
                 ),

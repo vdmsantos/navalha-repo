@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../core/providers.dart';
 import '../../widgets/shared/alert_dialog.dart';
 import '../../confirmation/confirmation_page.dart';
 import 'calendar_widget.dart';
-import 'wrap_hour_buttons.dart';
+import 'wrap_hour_buttons_widget.dart';
+// import '../../../../presenter/controller/selected_day_controller.dart';
 
-class ScheduleButton extends StatefulWidget {
-  const ScheduleButton({
-    Key? key,
-  }) : super(key: key);
-
+class ScheduleButton extends HookConsumerWidget {
   @override
-  State<ScheduleButton> createState() => _ScheduleButtonState();
-}
-
-class _ScheduleButtonState extends State<ScheduleButton> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    
     AlertDialogBarber dialog = AlertDialogBarber(
         iconColor: Colors.green,
         buttonColor: Colors.greenAccent,

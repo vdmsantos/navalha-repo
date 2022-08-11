@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../core/providers.dart';
 import '../../calendar/calendar_page.dart';
 
-class ContainerProfissionals extends StatelessWidget {
+class ContainerProfissionals extends HookConsumerWidget {
   final String barberName;
   final String photoProfile;
 
@@ -13,14 +15,16 @@ class ContainerProfissionals extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: ((context) => CalendarPage(
-                  iconBarberSelect: photoProfile,
+                  photoProfile,
                   nameBarberSelect: barberName,
                 )),
           ),
@@ -33,9 +37,12 @@ class ContainerProfissionals extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(left: 30, right: 18, bottom: 10),
               width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 44, 44, 44),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
+                border: darkMode.darkMode
+                    ? Border.all(color: Colors.white)
+                    : Border.all(color: Colors.black),
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(77),
                   topLeft: Radius.circular(100),
@@ -49,8 +56,8 @@ class ContainerProfissionals extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       barberName,
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: darkMode.darkMode ? Colors.white : Colors.black,
                         fontSize: 25,
                       ),
                     ),

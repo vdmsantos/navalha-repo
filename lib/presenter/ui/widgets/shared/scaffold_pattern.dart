@@ -4,62 +4,52 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:projeto_1/core/client_provider.dart';
+
+import 'package:projeto_1/core/providers.dart';
+import 'package:projeto_1/presenter/ui/login/login_page.dart';
 
 import '../../../../core/assets.dart';
 import '../../edit_profile/edit_profile_page.dart';
 import '../../home/home_page.dart';
 import '../../schedule/schedule_page.dart';
 
-class ScaffoldPattern extends StatefulWidget {
-  const ScaffoldPattern({
-    required this.bodyPage,
-    Key? key,
-  }) : super(key: key);
-
+class ScaffoldPattern extends HookConsumerWidget {
   final Widget bodyPage;
-  @override
-  State<ScaffoldPattern> createState() => _ScaffoldPatternState();
-}
 
-class _ScaffoldPatternState extends State<ScaffoldPattern> {
-  late int indexpage = 0;
-  var _bottomNavIndex = 0;
+  const ScaffoldPattern({required this.bodyPage, Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // var size = MediaQuery.of(context).size;
+  Widget build(BuildContext context, WidgetRef ref) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-
-    void setIndex(int index) {
-      setState(() {
-        indexpage = index;
-        _bottomNavIndex = index;
-      });
-    }
+    final index = ref.watch(indexProvider);
+    final darkMode = ref.watch(darkModeProvider);
 
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
-      endDrawer: const DrawerWidget(
+      endDrawer: DrawerWidget(
         name: 'Vinicius',
         photoProfile: imgProfile,
       ),
-      backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+      backgroundColor: darkMode.darkMode
+          ? const Color.fromARGB(255, 24, 24, 24)
+          : const Color.fromARGB(255, 255, 255, 255),
       floatingActionButton: SizedBox(
         height: 90,
         width: 90,
         child: FloatingActionButton(
           elevation: 50,
-          focusColor: Colors.grey,
+          focusColor: darkMode.darkMode
+              ? Colors.grey
+              : const Color.fromARGB(255, 61, 56, 56),
           backgroundColor: const Color.fromARGB(255, 42, 42, 42),
           onPressed: () {
-            setIndex(9);
+            index.setIndex(9);
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           },
-          child: Icon(Icons.home, size: 50),
+          child: const Icon(Icons.home, size: 50),
           // child: const Text('NAVALHA',
           //     style: TextStyle(
           //         fontFamily: 'Bevan',
@@ -72,7 +62,9 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
       bottomNavigationBar: AnimatedBottomNavigationBar(
         leftCornerRadius: 32,
         rightCornerRadius: 32,
-        backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+        backgroundColor: darkMode.darkMode
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : const Color.fromARGB(255, 255, 255, 255),
         icons: const [
           Icons.account_circle_rounded,
           LineIcons.instagram,
@@ -80,9 +72,13 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
           Icons.settings,
         ],
         iconSize: 27,
-        activeIndex: _bottomNavIndex,
-        inactiveColor: Colors.white,
-        activeColor: Colors.white,
+        activeIndex: index.bottomNavIndex,
+        inactiveColor: darkMode.darkMode
+            ? Colors.white
+            : const Color.fromARGB(255, 42, 42, 42),
+        activeColor: darkMode.darkMode
+            ? Colors.white
+            : const Color.fromARGB(255, 42, 42, 42),
         borderWidth: 0.9,
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
@@ -115,35 +111,33 @@ class _ScaffoldPatternState extends State<ScaffoldPattern> {
         },
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(imgFundoGeral),
+            image: darkMode.darkMode
+                ? const AssetImage(imgFundoGeral)
+                : const AssetImage(imgFundoGeralLight),
             fit: BoxFit.cover,
           ),
         ),
-        child: widget.bodyPage,
+        child: bodyPage,
       ),
     );
   }
 }
 
-class DrawerWidget extends StatefulWidget {
+class DrawerWidget extends HookConsumerWidget {
   final String photoProfile;
   final String name;
 
-  const DrawerWidget({
-    Key? key,
+  DrawerWidget({
     required this.photoProfile,
     required this.name,
-  }) : super(key: key);
+  });
 
   @override
-  State<DrawerWidget> createState() => _DrawerWidgetState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
 
-class _DrawerWidgetState extends State<DrawerWidget> {
-  @override
-  Widget build(BuildContext context) {
     return Drawer(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -151,7 +145,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           bottomLeft: Radius.circular(20),
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 44, 44, 44),
+      backgroundColor: darkMode.darkMode
+          ? const Color.fromARGB(255, 44, 44, 44)
+          : const Color.fromARGB(255, 255, 255, 255),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -161,31 +157,43 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ProfilePhoto(widget: widget),
+                  CircleAvatar(
+                    radius: 80,
+                    backgroundColor: darkMode.darkMode
+                        ? const Color.fromARGB(255, 255, 253, 253)
+                        : const Color.fromARGB(255, 83, 80, 80),
+                    child: Image.asset(
+                      photoProfile,
+                    ),
+                  ),
                   const NameUser(),
                   const SizedBox(
                     height: 25,
                   ),
                   const ContainerDrawer1(
                     textTopic: 'Editar cadastro',
+                    index: 1,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  const ContainerDrawerSchedule(
+                  const ContainerDrawer1(
                     textTopic: 'Minha agenda',
+                    index: 2,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   const ContainerDrawer1(
                     textTopic: 'Redes sociais',
+                    index: 3,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   const ContainerDrawer1(
                     textTopic: 'Sair',
+                    index: 4,
                   ),
                 ],
               ),
@@ -198,7 +206,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   }
 }
 
-class ProfilePhoto extends StatelessWidget {
+class ProfilePhoto extends HookConsumerWidget {
   const ProfilePhoto({
     Key? key,
     required this.widget,
@@ -207,10 +215,14 @@ class ProfilePhoto extends StatelessWidget {
   final DrawerWidget widget;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return CircleAvatar(
       radius: 80,
-      backgroundColor: const Color.fromARGB(255, 66, 66, 66),
+      backgroundColor: darkMode.darkMode
+          ? const Color.fromARGB(255, 255, 253, 253)
+          : const Color.fromARGB(255, 83, 80, 80),
       child: Image.asset(
         widget.photoProfile,
       ),
@@ -218,18 +230,20 @@ class ProfilePhoto extends StatelessWidget {
   }
 }
 
-class ArrowLeft extends StatelessWidget {
+class ArrowLeft extends HookConsumerWidget {
   const ArrowLeft({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return IconButton(
       onPressed: () {},
-      icon: const Icon(
+      icon: Icon(
         Icons.arrow_forward_ios_rounded,
-        color: Colors.white,
+        color: darkMode.darkMode ? Colors.white : Colors.black,
         size: 30,
       ),
     );
@@ -243,7 +257,9 @@ class NameUser extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clientControler = ref.watch(clientController);
+    final clientControler = ref.watch(clientProvider);
+    final darkMode = ref.watch(darkModeProvider);
+
     return Padding(
       padding: const EdgeInsets.only(top: 5),
       child: Text(
@@ -251,13 +267,13 @@ class NameUser extends HookConsumerWidget {
             ? clientControler.client!.name
                 .substring(0, clientControler.client!.name.indexOf(' '))
             : clientControler.client!.name,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: darkMode.darkMode ? Colors.white : Colors.black,
           fontSize: 22,
-          shadows: [
+          shadows: const [
             Shadow(
               offset: Offset(0, 2),
-              blurRadius: 3,
+              blurRadius: 1,
               color: Color.fromARGB(255, 0, 0, 0),
             )
           ],
@@ -267,24 +283,29 @@ class NameUser extends HookConsumerWidget {
   }
 }
 
-class DarkLightMode extends StatelessWidget {
+class DarkLightMode extends HookConsumerWidget {
   const DarkLightMode({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return InkWell(
-      onTap: () {},
+      borderRadius: BorderRadius.circular(20),
+      onTap: () {
+        ref.watch(darkModeProvider).changeMode(!darkMode.darkMode);
+      },
       child: Transform.rotate(
         angle: 320 * math.pi / 180,
-        child: const Icon(
+        child: Icon(
           Icons.nightlight,
-          color: Colors.white,
-          shadows: [
+          color: darkMode.darkMode ? Colors.white : Colors.black,
+          shadows: const [
             Shadow(
               offset: Offset(0, 3),
-              blurRadius: 5,
+              blurRadius: 1,
               color: Color.fromARGB(255, 0, 0, 0),
             )
           ],
@@ -295,51 +316,76 @@ class DarkLightMode extends StatelessWidget {
   }
 }
 
-class ContainerDrawer1 extends StatelessWidget {
+class ContainerDrawer1 extends HookConsumerWidget {
   final String textTopic;
+  final int index;
 
   const ContainerDrawer1({
     Key? key,
     required this.textTopic,
+    required this.index,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => const EditProfilePage()),
+            builder: ((context) {
+              if (index == 1) {
+                return const EditProfilePage();
+              } else if (index == 2) {
+                return const SchedulePage();
+              } else if (index == 3) {
+                // return const SocialMediaPage();
+              } else if (index == 4) {
+                return Login();
+              }
+              return const EditProfilePage();
+            }),
           ),
         );
       },
       child: Ink(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 44, 44, 44),
+          color: darkMode.darkMode
+              ? const Color.fromARGB(36, 36, 36, 1)
+              : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(30),
+          border: darkMode.darkMode
+              ? Border.all(color: Colors.white)
+              : Border.all(color: Colors.black),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(100, 0, 0, 0),
-              blurRadius: 5,
+              blurRadius: 1,
               spreadRadius: 1,
             ),
           ],
         ),
         child: ListTile(
           title: Center(
-            child: Text(textTopic,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  shadows: [
-                    Shadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 3,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    )
-                  ],
-                )),
+            child: Text(
+              textTopic,
+              style: TextStyle(
+                color: darkMode.darkMode
+                    ? const Color.fromARGB(255, 255, 255, 255)
+                    : const Color.fromARGB(36, 36, 36, 1),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                shadows: const [
+                  Shadow(
+                    offset: Offset(0, 1),
+                    blurRadius: 1,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -347,7 +393,7 @@ class ContainerDrawer1 extends StatelessWidget {
   }
 }
 
-class ContainerDrawerSchedule extends StatelessWidget {
+class ContainerDrawerSchedule extends HookConsumerWidget {
   final String textTopic;
 
   const ContainerDrawerSchedule({
@@ -356,7 +402,9 @@ class ContainerDrawerSchedule extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -368,30 +416,40 @@ class ContainerDrawerSchedule extends StatelessWidget {
       },
       child: Ink(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 44, 44, 44),
+          color: darkMode.darkMode
+              ? const Color.fromARGB(36, 36, 36, 1)
+              : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(30),
+          border: darkMode.darkMode
+              ? Border.all(color: Colors.white)
+              : Border.all(color: Colors.black),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(100, 0, 0, 0),
-              blurRadius: 5,
+              blurRadius: 1,
               spreadRadius: 1,
             ),
           ],
         ),
         child: ListTile(
           title: Center(
-            child: Text(textTopic,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  shadows: [
-                    Shadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 3,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    )
-                  ],
-                )),
+            child: Text(
+              textTopic,
+              style: TextStyle(
+                color: darkMode.darkMode
+                    ? const Color.fromARGB(255, 255, 255, 255)
+                    : const Color.fromARGB(36, 36, 36, 1),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                shadows: const [
+                  Shadow(
+                    offset: Offset(0, 1),
+                    blurRadius: 1,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),

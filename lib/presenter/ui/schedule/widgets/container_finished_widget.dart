@@ -1,42 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ContainerFinished extends StatefulWidget {
+import '../../../../core/providers.dart';
+
+class ContainerFinished extends HookConsumerWidget {
+  final double berbercutPrice;
+  final double haircutPrice;
+  final String barberShopName;
+  final Color topColorDark;
+  final Color topColorLight;
+  final Color bottomCollorDark;
+  final Color bottomCollorLight;
+  final String dayOfService;
+  final String hourOfService;
+
   const ContainerFinished({
     Key? key,
     required this.berbercutPrice,
     required this.haircutPrice,
     required this.barberShopName,
-    this.topColor = Colors.black,
-    this.bottomCollor = Colors.black,
+    this.topColorDark = Colors.black,
+    this.topColorLight = Colors.white,
+    this.bottomCollorDark = const Color.fromARGB(255, 34, 34, 34),
+    this.bottomCollorLight = const Color.fromARGB(255, 34, 34, 34),
     required this.dayOfService,
     required this.hourOfService,
   }) : super(key: key);
 
-  final double berbercutPrice;
-  final double haircutPrice;
-  final String barberShopName;
-  final Color topColor;
-  final Color bottomCollor;
-  final String dayOfService;
-  final String hourOfService;
-
   @override
-  State<ContainerFinished> createState() => _ContainerFinishedState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
 
-class _ContainerFinishedState extends State<ContainerFinished> {
-  @override
-  Widget build(BuildContext context) {
     double fillPercent = 32.00; //
 
     final double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.0, fillStop, fillStop, 1.0];
 
-    final List<Color> gradient = [
-      widget.topColor,
-      widget.topColor,
-      widget.bottomCollor,
-      widget.bottomCollor,
+    final List<Color> gradientDark = [
+      topColorDark,
+      topColorDark,
+      bottomCollorDark,
+      bottomCollorDark,
+    ];
+
+    final List<Color> gradientLight = [
+      topColorLight,
+      topColorLight,
+      bottomCollorLight,
+      bottomCollorLight,
     ];
 
     return Container(
@@ -45,14 +56,18 @@ class _ContainerFinishedState extends State<ContainerFinished> {
       width: 320,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: gradient,
+          colors: darkMode.darkMode ? gradientDark : gradientLight,
           stops: stops,
           end: Alignment.bottomCenter,
           begin: Alignment.topCenter,
         ),
         borderRadius: BorderRadius.circular(10),
-        color: const Color.fromARGB(255, 24, 24, 24),
-        border: Border.all(color: Colors.white30),
+        color: darkMode.darkMode
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : const Color.fromARGB(255, 255, 255, 255),
+        border: darkMode.darkMode
+            ? Border.all(color: Colors.white)
+            : Border.all(color: Colors.black),
       ),
       child: Column(
         children: [
@@ -62,9 +77,11 @@ class _ContainerFinishedState extends State<ContainerFinished> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.barberShopName,
-                  style: const TextStyle(
-                      color: Colors.grey,
+                  barberShopName,
+                  style: TextStyle(
+                      color: darkMode.darkMode
+                          ? Colors.grey
+                          : const Color.fromARGB(255, 88, 88, 88),
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
@@ -75,40 +92,52 @@ class _ContainerFinishedState extends State<ContainerFinished> {
             padding: const EdgeInsets.only(left: 15.0),
             child: Row(
               children: [
-                const Text(
+                Text(
                   'Cabelo',
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(
                   width: 25,
                 ),
-                const Text(
+                Text(
                   'Barba',
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(width: 170),
+                const SizedBox(width: 140),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Total:',
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12,
+                        color: darkMode.darkMode
+                            ? Colors.grey
+                            : const Color.fromARGB(255, 88, 88, 88),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 3),
+                    const SizedBox(height: 3),
                     Text(
                       'R\$ 37,00',
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: darkMode.darkMode
+                            ? Colors.grey
+                            : const Color.fromARGB(255, 88, 88, 88),
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -120,34 +149,43 @@ class _ContainerFinishedState extends State<ContainerFinished> {
             padding: const EdgeInsets.only(left: 15.0),
             child: Row(
               children: [
-                const Text(
+                Text(
                   'R\$',
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 10,
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(
                   width: 3,
                 ),
                 Text(
-                  '${widget.haircutPrice.toInt()},',
+                  '${haircutPrice.toInt()},',
                   textAlign: TextAlign.start,
-                  style: const TextStyle(
-                    color: Colors.grey,
+                  style: TextStyle(
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
                     fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Column(
-                  children: const [
-                    SizedBox(
-                      height: 5,
+                  children: [
+                    const SizedBox(
+                      height: 3,
                     ),
                     Text(
                       '00',
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10,
+                        color: darkMode.darkMode
+                            ? Colors.grey
+                            : const Color.fromARGB(255, 88, 88, 88),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -155,33 +193,42 @@ class _ContainerFinishedState extends State<ContainerFinished> {
                 const SizedBox(
                   width: 15,
                 ),
-                const Text(
+                Text(
                   'R\$',
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 10,
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(
                   width: 3,
                 ),
                 Text(
-                  '${widget.berbercutPrice.toInt()},',
-                  style: const TextStyle(
-                    color: Colors.grey,
+                  '${berbercutPrice.toInt()},',
+                  style: TextStyle(
+                    color: darkMode.darkMode
+                        ? Colors.grey
+                        : const Color.fromARGB(255, 88, 88, 88),
                     fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Column(
-                  children: const [
-                    SizedBox(
-                      height: 5,
+                  children: [
+                    const SizedBox(
+                      height: 3,
                     ),
                     Text(
                       '00',
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10,
+                        color: darkMode.darkMode
+                            ? Colors.grey
+                            : const Color.fromARGB(255, 88, 88, 88),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -201,7 +248,7 @@ class _ContainerFinishedState extends State<ContainerFinished> {
                     Row(
                       children: [
                         Text(
-                          widget.dayOfService,
+                          dayOfService,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.grey,
@@ -210,7 +257,7 @@ class _ContainerFinishedState extends State<ContainerFinished> {
                         ),
                         const SizedBox(width: 30),
                         Text(
-                          widget.hourOfService,
+                          hourOfService,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.grey,

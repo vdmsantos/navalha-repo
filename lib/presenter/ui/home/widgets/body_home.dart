@@ -2,26 +2,26 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
-import 'package:projeto_1/core/client_provider.dart';
+import 'package:projeto_1/core/providers.dart';
 import 'package:projeto_1/presenter/ui/widgets/shared/barber_list_item.dart';
 
+import 'card_barber_shop.dart';
 import 'container_filter.dart';
 import 'image_container.dart';
 import 'topbar_widget.dart';
 
 class BodyHome extends HookConsumerWidget {
-  const BodyHome({
-    Key? key,
-  }) : super(key: key);
+  const BodyHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clientControler = ref.watch(clientController);
+    final clientControler = ref.watch(clientProvider);
     Size size = MediaQuery.of(context).size;
+    final darkMode = ref.watch(darkModeProvider);
 
     // UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
 
-    return SafeArea(
+    return SafeArea(  
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         TopBarWidget(userName: clientControler.client!.name),
         Expanded(
@@ -35,7 +35,7 @@ class BodyHome extends HookConsumerWidget {
                 const SliverAppBar(
                   automaticallyImplyLeading: false,
                   actions: <Widget>[SizedBox()],
-                  backgroundColor: Colors.black,
+                  backgroundColor: Color.fromARGB(0, 0, 0, 0),
                   expandedHeight: 200,
                   flexibleSpace: FlexibleSpaceBar(
                     background: ImageContainer(),
@@ -45,24 +45,32 @@ class BodyHome extends HookConsumerWidget {
                   delegate: SliverChildBuilderDelegate(
                     (_, int index) {
                       return SizedBox(
-                        height: size.height - 160,
+                        height: size.height - 20,
                         child: Column(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 22),
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: const [
-                                    Icon(Icons.filter_alt_rounded,
-                                        color: Colors.white, size: 14),
-                                    SizedBox(width: 5),
-                                    Text('Filtros',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold)),
-                                  ]),
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(Icons.filter_alt_rounded,
+                                      color: darkMode.darkMode
+                                          ? Colors.white
+                                          : Colors.black,
+                                      size: 14),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    'Filtros',
+                                    style: TextStyle(
+                                        color: darkMode.darkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 7),
                             Padding(
@@ -73,9 +81,8 @@ class BodyHome extends HookConsumerWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: const [
                                   Expanded(
-                                    child: ContainerFilterIcon(
-                                        filterName: 'Preço'),
-                                  ),
+                                      child: ContainerFilterIcon(
+                                          filterName: 'Preço')),
                                   SizedBox(
                                     width: 15,
                                   ),
@@ -110,76 +117,55 @@ class BodyHome extends HookConsumerWidget {
                                     padding: const EdgeInsets.only(top: 15),
                                     child: ListView(
                                       physics: const BouncingScrollPhysics(),
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 5,
-                                              distance: 4.6,
-                                              barberShopName: 'Outsider barber',
-                                              berbercutPrice: 25,
-                                              haircutPrice: 20),
+                                      children: [
+                                        CardBarberShop(
+                                          barberShopName: 'Outside Barber',
+                                          star: 5,
+                                          distance: 4.6,
+                                          barbercutPrice: 16,
+                                          haircutPrice: 20,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 4,
-                                              distance: 10.6,
-                                              barberShopName:
-                                                  'Packers Barbearia',
-                                              berbercutPrice: 25,
-                                              haircutPrice: 20),
+                                        CardBarberShop(
+                                          barberShopName: 'Packers Barbearia',
+                                          star: 4,
+                                          distance: 10.6,
+                                          barbercutPrice: 25,
+                                          haircutPrice: 20,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 5,
-                                              distance: 0.4,
-                                              barberShopName:
-                                                  'Black dog barbershop',
-                                              berbercutPrice: 30,
-                                              haircutPrice: 25),
+                                        CardBarberShop(
+                                          barberShopName:
+                                              'Black dog barbershop',
+                                          star: 3,
+                                          distance: 16.6,
+                                          barbercutPrice: 30,
+                                          haircutPrice: 25,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 4,
-                                              distance: 2.6,
-                                              barberShopName:
-                                                  'El Chape Barbearia',
-                                              berbercutPrice: 25,
-                                              haircutPrice: 20),
+                                        CardBarberShop(
+                                          barberShopName: 'El Chape Barbearia',
+                                          star: 2,
+                                          distance: 24.6,
+                                          barbercutPrice: 35,
+                                          haircutPrice: 30,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 3,
-                                              distance: 2.50,
-                                              barberShopName:
-                                                  'Royal Barbershop',
-                                              berbercutPrice: 25,
-                                              haircutPrice: 20),
+                                        CardBarberShop(
+                                          barberShopName: 'Royal Barbershop',
+                                          star: 1,
+                                          distance: 30.6,
+                                          barbercutPrice: 40,
+                                          haircutPrice: 35,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              right: 15, left: 15, bottom: 15),
-                                          child: BarberListItem(
-                                              imgBarberShop: imgBarberFelipe,
-                                              star: 3,
-                                              distance: 25.6,
-                                              barberShopName: 'Outsider barber',
-                                              berbercutPrice: 25,
-                                              haircutPrice: 20),
+                                        CardBarberShop(
+                                          barberShopName: 'Outsider barber',
+                                          star: 5,
+                                          distance: 35.6,
+                                          barbercutPrice: 43,
+                                          haircutPrice: 38,
+                                          imgBarberShop: imgBarberFelipe,
                                         ),
                                       ],
                                     ),

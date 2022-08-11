@@ -1,16 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class AlertDialogBarberWithoutButton {
-  AlertDialogBarberWithoutButton({
+class AlertDialogBarberWithoutButtonLogin {
+  final String text;
+  final IconData icon;
+  final Color iconColor;
+
+  AlertDialogBarberWithoutButtonLogin({
     required this.text,
     required this.icon,
     required this.iconColor,
   });
-
-  final String text;
-  final IconData icon;
-  final Color iconColor;
 
   void showCustomDialog(BuildContext context) {
     showGeneralDialog(

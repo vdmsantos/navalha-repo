@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ContainerListServices extends StatelessWidget {
+import '../../../../core/providers.dart';
+
+class ContainerListServices extends HookConsumerWidget {
   final String service;
   final String price;
 
@@ -11,13 +14,16 @@ class ContainerListServices extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    
     return Container(
       margin: const EdgeInsets.only(left: 18, right: 18, bottom: 10),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 24, 24, 24),
+        color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
         borderRadius: BorderRadius.circular(10),
+        border: darkMode.darkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black) ,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -26,19 +32,19 @@ class ContainerListServices extends StatelessWidget {
           children: [
             Text(
               service,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: darkMode.darkMode ? Colors.white : Colors.black,
                 fontSize: 20,
               ),
             ),
             SizedBox(
               child: Row(
                 children: [
-                  const Text(
+                  Text(
                     'R\$',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 18,
                     ),
                   ),
                   Padding(
@@ -47,8 +53,8 @@ class ContainerListServices extends StatelessWidget {
                     ),
                     child: Text(
                       price,
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: darkMode.darkMode ? Colors.white : Colors.black,
                         fontSize: 20,
                       ),
                     ),

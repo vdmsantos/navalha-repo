@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_1/core/client_provider.dart';
+import 'package:projeto_1/core/providers.dart';
 
 import '../../../core/assets.dart';
 import '../home/home_page.dart';
 import '../register/register_page.dart';
-import '../widgets/shared/alert_dialog_withoutbutton.dart';
+import 'alert_dialog_barber_without_button_login_widget.dart';
 
 class Login extends HookConsumerWidget {
   final emailControler = TextEditingController();
@@ -15,29 +15,39 @@ class Login extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clientControler = ref.watch(clientController);
+    final clientControler = ref.watch(clientProvider);
+    final darkMode = ref.watch(darkModeProvider);
+
     return Scaffold(
       body: Container(
         height: 1000,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage(imgFundoGeral),
-          fit: BoxFit.fill,
-        )),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: darkMode.darkMode
+                ? const AssetImage(imgFundoGeral)
+                : const AssetImage(imgFundoGeralLight),
+            fit: BoxFit.fill,
+          ),
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                imgLogoBarber2,
-                // scale: 1,
-              ),
+              darkMode.darkMode
+                  ? Image.asset(
+                      imgLogoBarber2,
+                    )
+                  : Image.asset(
+                      imgLogoBarber2Light,
+                    ),
               Container(
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: const Color.fromRGBO(36, 36, 36, 1),
+                  color: darkMode.darkMode
+                      ? const Color.fromRGBO(36, 36, 36, 1)
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -45,13 +55,20 @@ class Login extends HookConsumerWidget {
                   child: TextField(
                     controller: emailControler,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "E-mail",
                       hintStyle: TextStyle(
-                          color: Color.fromRGBO(85, 85, 85, 1), fontSize: 20),
+                        color: darkMode.darkMode
+                            ? const Color.fromRGBO(85, 85, 85, 1)
+                            : const Color.fromARGB(255, 63, 60, 60),
+                        fontSize: 20,
+                      ),
                     ),
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ),
@@ -62,20 +79,29 @@ class Login extends HookConsumerWidget {
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: const Color.fromRGBO(36, 36, 36, 1),
+                  color: darkMode.darkMode
+                      ? const Color.fromRGBO(36, 36, 36, 1)
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10, top: 10),
                   child: TextField(
                     controller: passwordControler,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "Senha",
                       border: InputBorder.none,
                       hintStyle: TextStyle(
-                          color: Color.fromRGBO(85, 85, 85, 1), fontSize: 20),
+                        color: darkMode.darkMode
+                            ? const Color.fromRGBO(85, 85, 85, 1)
+                            : const Color.fromARGB(255, 63, 60, 60),
+                        fontSize: 20,
+                      ),
                     ),
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 18,
+                    ),
                     obscureText: true,
                   ),
                 ),
@@ -90,35 +116,37 @@ class Login extends HookConsumerWidget {
                   children: [
                     MaterialButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         "Esqueci minha senha",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                        ),
+                            color:
+                                darkMode.darkMode ? Colors.white : Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     MaterialButton(
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RegisterPage()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterPage(),
+                          ),
+                        );
                       },
-                      child: const Text(
+                      child: Text(
                         "Cadastrar",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                        ),
+                            color:
+                                darkMode.darkMode ? Colors.white : Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               GestureDetector(
                 onTap: () async {
                   await clientControler.getClientByEmailPassword(
@@ -126,11 +154,14 @@ class Login extends HookConsumerWidget {
 
                   if (!clientControler.isNull()) {
                     // ignore: use_build_context_synchronously
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const HomePage()));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
                   } else {
                     // ignore: use_build_context_synchronously
-                    AlertDialogBarberWithoutButton(
+                    AlertDialogBarberWithoutButtonLogin(
                             text: 'Login inválido, tente novamente',
                             icon: Icons.error,
                             iconColor: Colors.redAccent)

@@ -41,11 +41,14 @@ class _MyWidgetState extends State<InsetExample> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const CalendarPage(
-                          iconBarberSelect: null,
-                          nameBarberSelect: '',
-                        )));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CalendarPage(
+                      null,
+                      nameBarberSelect: '',
+                    ),
+                  ),
+                );
               },
               icon: const Icon(Icons.arrow_circle_right_sharp))
         ],

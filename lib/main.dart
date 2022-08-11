@@ -6,12 +6,13 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'presenter/ui/splash/splashscreen.dart';
-
 void main() {
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(),
+    ProviderScope(
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(),
+      ),
     ),
   );
 }

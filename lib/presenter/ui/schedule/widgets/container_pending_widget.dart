@@ -1,67 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ContainerPending extends StatefulWidget {
+import '../../../../core/providers.dart';
+
+class ContainerPending extends HookConsumerWidget {
+  final double berbercutPrice;
+  final double haircutPrice;
+  final String barberShopName;
+  final String dayOfService;
+  final String hourOfService;
+  final Color topColorDark;
+  final Color topColorLight;
+  final Color bottomCollorDark;
+  final Color bottomCollorLight;
+
   const ContainerPending({
     Key? key,
     required this.berbercutPrice,
     required this.haircutPrice,
     required this.barberShopName,
-    this.topColor = const Color.fromARGB(255, 24, 24, 24),
-    this.bottomCollor = const Color.fromARGB(255, 34, 34, 34),
-   
+    this.topColorDark = Colors.black,
+    this.topColorLight = Colors.white,
+    this.bottomCollorDark = const Color.fromARGB(255, 34, 34, 34),
+    this.bottomCollorLight = const Color.fromARGB(255, 34, 34, 34),
     required this.dayOfService,
     required this.hourOfService,
   }) : super(key: key);
 
-  final double berbercutPrice;
-  final double haircutPrice;
-  final String barberShopName;
-  final Color topColor;
-  final Color bottomCollor;
-  
-  final String dayOfService;
-  final String hourOfService;
-
   @override
-  State<ContainerPending> createState() => _ContainerPendingState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
 
-class _ContainerPendingState extends State<ContainerPending> {
-  @override
-  Widget build(BuildContext context) {
-    double fillPercent = 32.00; //
+    double fillPercent = 32.00;
 
     final double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.0, fillStop, fillStop, 1.0];
 
-    final List<Color> gradient = [
-      widget.topColor,
-      widget.topColor,
-      widget.bottomCollor,
-      widget.bottomCollor,
+    final List<Color> gradientDark = [
+      topColorDark,
+      topColorDark,
+      bottomCollorDark,
+      bottomCollorDark,
     ];
+
+    final List<Color> gradientLight = [
+      topColorLight,
+      topColorLight,
+      bottomCollorLight,
+      bottomCollorLight,
+    ];
+
     return Container(
       height: 140,
       padding: const EdgeInsets.only(top: 8, left: 15),
       width: 320,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: gradient,
-            stops: stops,
-            end: Alignment.bottomCenter,
-            begin: Alignment.topCenter,
-          ),
-          borderRadius: BorderRadius.circular(10),
-          color: const Color.fromARGB(255, 24, 24, 24)),
+        gradient: LinearGradient(
+          colors: darkMode.darkMode ? gradientDark : gradientLight,
+          stops: stops,
+          end: Alignment.bottomCenter,
+          begin: Alignment.topCenter,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        color: darkMode.darkMode
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : const Color.fromARGB(255, 255, 255, 255),
+        border: darkMode.darkMode
+            ? Border.all(color: Colors.white)
+            : Border.all(color: Colors.black),
+      ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                widget.barberShopName,
-                style: const TextStyle(
-                    color: Colors.white,
+                barberShopName,
+                style: TextStyle(
+                    color: darkMode.darkMode ? Colors.white : Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -69,40 +85,44 @@ class _ContainerPendingState extends State<ContainerPending> {
           ),
           Row(
             children: [
-              const Text(
+              Text(
                 'Cabelo',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
                 width: 25,
               ),
-              const Text(
+              Text(
                 'Barba',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 170),
+              const SizedBox(width: 140),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'Total:',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 3),
+                  const SizedBox(height: 3),
                   Text(
                     'R\$ 37,00',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
                       fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -111,34 +131,37 @@ class _ContainerPendingState extends State<ContainerPending> {
           ),
           Row(
             children: [
-              const Text(
+              Text(
                 'R\$',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
                 width: 3,
               ),
               Text(
-                '${widget.haircutPrice.toInt()},',
+                '${haircutPrice.toInt()},',
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
                   fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Column(
-                children: const [
-                  SizedBox(
-                    height: 5,
+                children: [
+                  const SizedBox(
+                    height: 3,
                   ),
                   Text(
                     '00',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -146,33 +169,36 @@ class _ContainerPendingState extends State<ContainerPending> {
               const SizedBox(
                 width: 15,
               ),
-              const Text(
+              Text(
                 'R\$',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
                 width: 3,
               ),
               Text(
-                '${widget.berbercutPrice.toInt()},',
-                style: const TextStyle(
-                  color: Colors.white,
+                '${berbercutPrice.toInt()},',
+                style: TextStyle(
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
                   fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Column(
-                children: const [
-                  SizedBox(
-                    height: 5,
+                children: [
+                  const SizedBox(
+                    height: 3,
                   ),
                   Text(
                     '00',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
+                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -188,7 +214,7 @@ class _ContainerPendingState extends State<ContainerPending> {
                     Row(
                       children: [
                         Text(
-                          widget.dayOfService,
+                          dayOfService,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.white,
@@ -197,14 +223,14 @@ class _ContainerPendingState extends State<ContainerPending> {
                         ),
                         const SizedBox(width: 30),
                         Text(
-                          widget.hourOfService,
+                          hourOfService,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(width: 120),
+                        const SizedBox(width: 100),
                         const Text(
                           'Pendente',
                           style: TextStyle(

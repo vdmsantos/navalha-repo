@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_1/core/client_provider.dart';
+import 'package:projeto_1/core/providers.dart';
 
 import '../../../core/assets.dart';
 import '../widgets/shared/scaffold_pattern.dart';
@@ -12,7 +12,7 @@ class SchedulePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clientControler = ref.watch(clientController);
+    final clientControler = ref.watch(clientProvider);
     // UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
 
     return ScaffoldPattern(

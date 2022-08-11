@@ -49,31 +49,31 @@ class AlertDialogBarber {
                           decoration: TextDecoration.none)),
                 ),
                 Container(
-                    width: 100,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(100)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (page != null) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => page!));
-                        }
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(buttonColor),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      side: const BorderSide(
-                                          color: Colors.transparent)))),
-                      child: Text(
-                        textbutton,
-                        style: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ))
+                  width: 100,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (page != null) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => page!));
+                      }
+                    },
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(buttonColor),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    side: const BorderSide(
+                                        color: Colors.transparent)))),
+                    child: Text(
+                      textbutton,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

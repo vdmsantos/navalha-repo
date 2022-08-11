@@ -1,38 +1,44 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/presenter/ui/register/client_register/client_register_controller.dart';
 import 'package:projeto_1/presenter/ui/register/client_register/client_three.dart';
 
-class ClientRegisterTwo extends StatefulWidget {
-  const ClientRegisterTwo({
-    Key? key,
-    required this.userParams,
-    required this.clientController,
-  }) : super(key: key);
+import '../../../../core/providers.dart';
+import '../widgets/button_next_register_widget.dart';
+import '../widgets/label_register.dart';
+import '../widgets/text_field_register.dart';
+import '../widgets/text_field_register_two_widget.dart';
 
-  final ClientRegisterController clientController;
-  final Map<String, dynamic> userParams;
-
-  @override
-  State<ClientRegisterTwo> createState() => _ClientRegisterTwoState();
-}
-
-class _ClientRegisterTwoState extends State<ClientRegisterTwo> {
+class ClientRegisterTwo extends HookConsumerWidget {
   final cpfControler = TextEditingController();
   final cepControler = TextEditingController();
+  final ClientRegisterController clientProvider;
+  final Map<String, dynamic> userParams;
+
+  ClientRegisterTwo({
+    Key? key,
+    required this.userParams,
+    required this.clientProvider,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage(imgFundoGeral),
-          fit: BoxFit.cover,
-        )),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: darkMode.darkMode
+                ? const AssetImage(imgFundoGeral)
+                : const AssetImage(imgFundoGeralLight),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -42,153 +48,42 @@ class _ClientRegisterTwoState extends State<ClientRegisterTwo> {
               children: [
                 Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 50),
-                      child: SizedBox(
-                        width: 350,
-                        child: Text(
-                          "Insira seu CPF",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8, right: 8, top: 10),
-                          child: TextField(
-                            controller: cepControler,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
-                            keyboardType: TextInputType.number,
-                            maxLength: 11,
-                            decoration: const InputDecoration(
-                              counterText: "",
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
+                      padding: const EdgeInsets.only(top: 50),
+                      child: LabelRegister(text: "Insira seu CPF"),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: Text(
-                        "Insira seu CEP",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Container(
-                        height: 70,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8, right: 8, top: 10),
-                          child: TextField(
-                            controller: cpfControler,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 18),
-                            keyboardType: TextInputType.number,
-                            maxLength: 8,
-                            decoration: const InputDecoration(
-                              counterText: "",
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    const TextFieldRegister(),
+                    const SizedBox(height: 10),
+                    LabelRegister(text: "Insira seu CEP"),
+                    const TextFieldRegisterTwo(),
                   ],
                 ),
 
                 //Botao proximo daqui pra baixo
               ],
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 50, bottom: 30),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.centerRight,
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 45,
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(36, 36, 36, 1),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Row(
-                          children: [
-                            MaterialButton(
-                              onPressed: () {
-                                widget.clientController
-                                    .validCpf(cpfControler.text);
-                                widget.clientController
-                                    .validCep(cepControler.text);
+            ButtonNextRegister(
+              button: MaterialButton(
+                onPressed: () {
+                  clientProvider.validCpf(cpfControler.text);
+                  clientProvider.validCep(cepControler.text);
 
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => ClientRegisterThree(
-                                          clientController:
-                                              widget.clientController,
-                                          userParams: widget.userParams,
-                                        )),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                "Próximo",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => ClientRegisterThree(
+                            clientProvider: clientProvider,
+                            userParams: userParams,
+                          )),
                     ),
-                    const Positioned(
-                      right: -30,
-                      child: CircleAvatar(
-                        radius: 29,
-                        backgroundColor: Color.fromRGBO(48, 48, 48, 1),
-                        child: Icon(
-                          Icons.check_circle_rounded,
-                          size: 40,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                  );
+                },
+                child: const Text(
+                  "Próximo",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
                 ),
               ),
             ),

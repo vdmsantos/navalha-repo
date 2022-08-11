@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class RowDetailsSchedule extends StatefulWidget {
+import '../../../../core/providers.dart';
+
+class RowDetailsSchedule extends HookConsumerWidget {
   final String firstString;
 
   final dateString;
@@ -17,21 +20,18 @@ class RowDetailsSchedule extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<RowDetailsSchedule> createState() => _RowDetailsState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
 
-class _RowDetailsState extends State<RowDetailsSchedule> {
-  @override
-  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              widget.firstString,
-              style: const TextStyle(
-                  color: Colors.white,
+              firstString,
+              style: TextStyle(
+                  color: darkMode.darkMode ? Colors.white : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
@@ -39,8 +39,11 @@ class _RowDetailsState extends State<RowDetailsSchedule> {
           Expanded(
             flex: 2,
             child: Text(
-              '${widget.dateString} às ${widget.hourString}',
-              style: const TextStyle(color: Colors.white, fontSize: 13),
+              '$dateString às $hourString',
+              style: TextStyle(
+                color: darkMode.darkMode ? Colors.white : Colors.black,
+                fontSize: 16,
+              ),
             ),
           ),
         ],

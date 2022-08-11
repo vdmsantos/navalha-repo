@@ -1,42 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../../core/providers.dart';
+
+// import '../../../../core/providers.dart';
+
 String daySelected = DateFormat.MEd('pt_BR').format(DateTime.now());
 
-class CalendarWidget extends StatefulWidget {
-  const CalendarWidget({Key? key}) : super(key: key);
+// class CalendarWidget extends StatefulWidget {
+//   const CalendarWidget({Key? key}) : super(key: key);
 
-  @override
-  State<CalendarWidget> createState() => _CalendarWidgetState();
-}
+//   @override
+//   State<CalendarWidget> createState() => _CalendarWidgetState();
+// }
 
-class _CalendarWidgetState extends State<CalendarWidget> {
+final selectedDayProvider = ChangeNotifierProvider(
+  (ref) => SelectedDayController(),
+);
+
+class SelectedDayController extends ChangeNotifier {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
-  @override
-  void initState() {
-    super.initState();
-
+  void setDay() {
     _selectedDay = _focusedDay;
   }
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     if (!isSameDay(_selectedDay, selectedDay)) {
-      setState(
-        () {
-          daySelected = DateFormat.MEd('pt_BR').format(selectedDay);
-          _selectedDay = selectedDay;
-          _focusedDay = focusedDay;
-        },
-      );
+      daySelected = DateFormat.MEd('pt_BR').format(selectedDay);
+      _selectedDay = selectedDay;
+      _focusedDay = focusedDay;
     }
+    notifyListeners();
   }
+}
+
+class CalendarWidget extends HookConsumerWidget {
+  const CalendarWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    final selectedDay = ref.watch(selectedDayProvider);
+
+    selectedDay.setDay();
+
     return TableCalendar(
       locale: 'pt_BR',
       calendarBuilders: CalendarBuilders(
@@ -46,46 +58,70 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             return Center(
               child: Text(
                 text,
-                style: const TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             );
           }
           return null;
         },
       ),
+
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekdayStyle: darkMode.darkMode
+            ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+            : const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        weekendStyle: darkMode.darkMode
+            ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+            : const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      ),
+
       firstDay: DateTime.now(),
       lastDay: DateTime(2023, 01, 01),
-      focusedDay: _focusedDay,
-      selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+      focusedDay: selectedDay._focusedDay,
+      selectedDayPredicate: (day) => isSameDay(selectedDay._selectedDay, day),
       calendarFormat: CalendarFormat.week,
       startingDayOfWeek: StartingDayOfWeek.monday,
+
       calendarStyle: CalendarStyle(
+        disabledTextStyle: darkMode.darkMode
+            ? const TextStyle(color: Color.fromARGB(255, 75, 74, 72))
+            : const TextStyle(color: Color.fromARGB(255, 153, 149, 138)),
         outsideDaysVisible: false,
         isTodayHighlighted: false,
         markersMaxCount: 0,
-        defaultTextStyle: const TextStyle(color: Colors.white),
-        weekendTextStyle: const TextStyle(color: Colors.white),
+        defaultTextStyle: darkMode.darkMode
+            ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+            : const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        weekendTextStyle: darkMode.darkMode
+            ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+            : const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         selectedDecoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.blueGrey[300],
+          color: darkMode.darkMode
+              ? Colors.blueGrey[300]
+              : const Color.fromARGB(255, 41, 43, 44),
         ),
       ),
-      onDaySelected: _onDaySelected,
+
+      onDaySelected: selectedDay._onDaySelected,
       onPageChanged: (focusedDay) {
-        _focusedDay = focusedDay;
+        selectedDay._focusedDay = focusedDay;
       },
-      headerStyle: const HeaderStyle(
+      
+      headerStyle: HeaderStyle(
         titleCentered: true,
         formatButtonVisible: false,
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+        titleTextStyle: darkMode.darkMode
+            ? const TextStyle(color: Colors.white, fontSize: 20)
+            : const TextStyle(color: Colors.black, fontSize: 20),
         leftChevronIcon: Icon(
           Icons.chevron_left,
-          color: Colors.white,
+          color: darkMode.darkMode ? Colors.white : Colors.black,
           size: 30,
         ),
         rightChevronIcon: Icon(
           Icons.chevron_right,
-          color: Colors.white,
+          color: darkMode.darkMode ? Colors.white : Colors.black,
           size: 30,
         ),
       ),

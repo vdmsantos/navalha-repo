@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/assets.dart';
-import 'container_profissionals.dart';
+import 'container_profissionals_widget.dart';
 
 class ListProfessionals extends StatelessWidget {
   const ListProfessionals({

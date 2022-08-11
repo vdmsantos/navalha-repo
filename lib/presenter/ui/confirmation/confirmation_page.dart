@@ -21,9 +21,10 @@ class _MyWidgetState extends State<ConfirmationPage> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldPattern(
-        bodyPage: BodyConfirmation(
-      selectedDay: widget.selectDay,
-      selectedHour: widget.selectHour,
-    ));
+      bodyPage: BodyConfirmation(
+        selectedDay: widget.selectDay,
+        selectedHour: widget.selectHour,
+      ),
+    );
   }
 }
