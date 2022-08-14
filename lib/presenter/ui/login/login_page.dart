@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/providers.dart';
+import 'package:projeto_1/domain/entities/client_entity.dart';
 
 import '../../../core/assets.dart';
 import '../home/home_page.dart';
@@ -23,12 +24,13 @@ class Login extends HookConsumerWidget {
         height: 1000,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: darkMode.darkMode
-                ? const AssetImage(imgFundoGeral)
-                : const AssetImage(imgFundoGeralLight),
-            fit: BoxFit.fill,
-          ),
+          color: Colors.black,
+          // image: DecorationImage(
+          //   image: darkMode.darkMode
+          //       ? const AssetImage(imgFundoGeral)
+          //       : const AssetImage(imgFundoGeralLight),
+          //   fit: BoxFit.fill,
+          // ),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -149,6 +151,8 @@ class Login extends HookConsumerWidget {
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: () async {
+                  //TODO trocar essa porra
+
                   await clientControler.getClientByEmailPassword(
                       emailControler.text, passwordControler.text);
 

@@ -585,7 +585,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.9.1"
+    version: "1.9.0"
   sqflite:
     dependency: "direct main"
     description:

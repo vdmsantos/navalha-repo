@@ -53,10 +53,10 @@ class ClientRegisterThree extends HookConsumerWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: passwordControler),
                     const SizedBox(height: 10),
                     LabelRegister(text: "Confirme sua senha"),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: passwordConfirmControler),
                   ],
                 ),
 
@@ -66,6 +66,8 @@ class ClientRegisterThree extends HookConsumerWidget {
             ButtonNextRegister(
               button: MaterialButton(
                 onPressed: () {
+                  print('page 3');
+
                   if (clientProvider.validPassword(passwordControler.text)) {
                     AlertDialogBarber(
                             page: Login(),
@@ -75,6 +77,13 @@ class ClientRegisterThree extends HookConsumerWidget {
                             text: 'Cadastro realizado com sucesso!',
                             iconColor: Colors.green)
                         .showCustomDialog(context);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Login(),
+                      ),
+                    );
                   }
 
                   // daofactory.clientdao.delete(1);

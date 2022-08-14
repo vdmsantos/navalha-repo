@@ -52,10 +52,10 @@ class ClientRegisterTwo extends HookConsumerWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira seu CPF"),
                     ),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: cpfControler),
                     const SizedBox(height: 10),
                     LabelRegister(text: "Insira seu CEP"),
-                    const TextFieldRegisterTwo(),
+                    TextFieldRegister(input: cepControler)
                   ],
                 ),
 

@@ -41,12 +41,12 @@ class BarberShopRegisterOne extends HookConsumerWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: 'Insira o nome da barbearia'),
                     ),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: null),
                     const SizedBox(
                       height: 10,
                     ),
                     LabelRegister(text: 'Insira seu e-mail'),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: null),
                   ],
                 ),
 

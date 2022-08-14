@@ -9,7 +9,7 @@ import '../widgets/text_field_register.dart';
 import 'client_register_controller.dart';
 import 'client_two.dart';
 
-class ClientRegisterOne extends HookConsumerWidget {
+class ClientRegisterOne1 extends HookConsumerWidget {
   final nameControler = TextEditingController();
   final emailControler = TextEditingController();
 
@@ -22,7 +22,7 @@ class ClientRegisterOne extends HookConsumerWidget {
     'cep': null
   };
 
-  ClientRegisterOne({super.key});
+  ClientRegisterOne1({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,10 +54,10 @@ class ClientRegisterOne extends HookConsumerWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira seu nome"),
                     ),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: nameControler),
                     const SizedBox(height: 10),
                     LabelRegister(text: "Insira seu e-mail"),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: emailControler),
                   ],
                 ),
 
@@ -67,6 +67,8 @@ class ClientRegisterOne extends HookConsumerWidget {
             ButtonNextRegister(
               button: MaterialButton(
                 onPressed: () {
+                  clientControler.validName(nameControler.text);
+                  clientControler.validEmail(emailControler.text);
                   Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -40,10 +40,10 @@ class BarberShopThree extends HookConsumerWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: null),
                     const SizedBox(height: 10),
                     LabelRegister(text: "Confirme sua senha"),
-                    const TextFieldRegister(),
+                    TextFieldRegister(input: null),
                   ],
                 ),
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/providers.dart';
 import '../../../core/assets.dart';
@@ -52,10 +53,11 @@ class RegisterPage extends HookConsumerWidget {
                       children: [
                         MaterialButton(
                           onPressed: () {
+                            print('REGISTE4R 1');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: ((context) => ClientRegisterOne()),
+                                builder: ((context) => ClientRegisterOne1()),
                               ),
                             );
                           },

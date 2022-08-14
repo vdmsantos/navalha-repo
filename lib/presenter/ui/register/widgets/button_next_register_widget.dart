@@ -31,25 +31,7 @@ class ButtonNextRegister extends HookConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Row(
-                  children: [
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: ((context) => const BarberShopThree()),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "Próximo",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ],
+                  children: [button],
                 ),
               ),
             ),

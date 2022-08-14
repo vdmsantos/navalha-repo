@@ -3,25 +3,25 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 import 'presenter/ui/splash/splashscreen.dart';
-void main() {
-  runApp(
-    ProviderScope(
-      child: DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => const MyApp(),
-      ),
-    ),
-  );
-}
 
 // void main() {
 //   runApp(
-//     const MyApp(),
+//     ProviderScope(
+//       child: DevicePreview(
+//         enabled: !kReleaseMode,
+//         builder: (context) => const MyApp(),
+//       ),
+//     ),
 //   );
 // }
+
+void main() {
+  runApp(
+    const MyApp(),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,16 +30,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // initializeDateFormatting();
     return ProviderScope(
-      child: GetMaterialApp(
-        // useInheritedMediaQuery: true,
-        // builder: DevicePreview.appBuilder,
-        debugShowCheckedModeBanner: false,
-        title: 'Barber app',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const SplashScreen(),
+        child: MaterialApp(
+      useInheritedMediaQuery: true,
+      // builder: DevicePreview.appBuilder,
+      debugShowCheckedModeBanner: false,
+      title: 'Barber app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-    );
+      home: const SplashScreen(),
+    ));
+    //    )
+    // ProviderScope(
+    //   child: GetMaterialApp(
+    //     // useInheritedMediaQuery: true,
+    //     // builder: DevicePreview.appBuilder,
+    //     debugShowCheckedModeBanner: false,
+    //     title: 'Barber app',
+    //     theme: ThemeData(
+    //       primarySwatch: Colors.blue,
+    //     ),
+    //     home: const SplashScreen(),
+    //   ),
+    // );
   }
 }
