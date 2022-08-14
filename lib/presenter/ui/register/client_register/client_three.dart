@@ -49,13 +49,13 @@ class ClientRegisterThree extends HookConsumerWidget {
               children: [
                 Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
                     TextFieldRegister(input: passwordControler),
                     const SizedBox(height: 10),
-                    LabelRegister(text: "Confirme sua senha"),
+                    const LabelRegister(text: "Confirme sua senha"),
                     TextFieldRegister(input: passwordConfirmControler),
                   ],
                 ),
@@ -66,8 +66,6 @@ class ClientRegisterThree extends HookConsumerWidget {
             ButtonNextRegister(
               button: MaterialButton(
                 onPressed: () {
-                  print('page 3');
-
                   if (clientProvider.validPassword(passwordControler.text)) {
                     AlertDialogBarber(
                             page: Login(),

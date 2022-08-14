@@ -47,7 +47,6 @@ class BodyConfirmation extends HookConsumerWidget {
                 : const Color.fromARGB(255, 209, 208, 208),
             expandedHeight: 260.0,
             flexibleSpace: FlexibleSpaceBar(
-              // title: Text('Goa', textScaleFactor: 1),
               background: TopContainerPatternStar(
                   star: 2, title: 'The gentleman', profile: imgBarberPhoto),
             ),
@@ -74,9 +73,11 @@ class BodyConfirmation extends HookConsumerWidget {
                             width: double.maxFinite,
                             decoration: BoxDecoration(
                               border: darkMode.darkMode
-                                ? Border.all(color: Colors.white)
-                                : Border.all(color: Colors.black),
-                              color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : const Color.fromARGB(255, 255, 255, 255),
+                                  ? Border.all(color: Colors.white)
+                                  : Border.all(color: Colors.black),
+                              color: darkMode.darkMode
+                                  ? const Color.fromARGB(255, 24, 24, 24)
+                                  : const Color.fromARGB(255, 255, 255, 255),
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 topRight: Radius.circular(10),
@@ -93,7 +94,9 @@ class BodyConfirmation extends HookConsumerWidget {
                                       Text(
                                         "Confirmar agendamento",
                                         style: TextStyle(
-                                          color: darkMode.darkMode ? Colors.white : Colors.black,
+                                          color: darkMode.darkMode
+                                              ? Colors.white
+                                              : Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -156,7 +159,9 @@ class BodyConfirmation extends HookConsumerWidget {
                       Align(
                         alignment: Alignment.centerRight,
                         child: InkWell(
-                          onTap: () {dialog.showCustomDialog(context);},
+                          onTap: () {
+                            dialog.showCustomDialog(context);
+                          },
                           child: Ink(
                             height: 70,
                             width: 180,
@@ -173,7 +178,8 @@ class BodyConfirmation extends HookConsumerWidget {
                                     bottom: 15,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 44, 44, 44),
+                                    color:
+                                        const Color.fromARGB(255, 44, 44, 44),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: const Text(

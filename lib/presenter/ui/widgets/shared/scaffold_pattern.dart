@@ -27,7 +27,7 @@ class ScaffoldPattern extends HookConsumerWidget {
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
-      endDrawer: DrawerWidget(
+      endDrawer: const DrawerWidget(
         name: 'Vinicius',
         photoProfile: imgProfile,
       ),
@@ -50,12 +50,6 @@ class ScaffoldPattern extends HookConsumerWidget {
             );
           },
           child: const Icon(Icons.home, size: 50),
-          // child: const Text('NAVALHA',
-          //     style: TextStyle(
-          //         fontFamily: 'Bevan',
-          //         fontSize: 12,
-          //         color: Color.fromARGB(255, 255, 255, 255))),
-          // child: const Icon(Icons.home, size: 30),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -129,7 +123,8 @@ class DrawerWidget extends HookConsumerWidget {
   final String photoProfile;
   final String name;
 
-  DrawerWidget({
+  const DrawerWidget({
+    super.key,
     required this.photoProfile,
     required this.name,
   });

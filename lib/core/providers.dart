@@ -9,7 +9,6 @@ import 'package:projeto_1/presenter/controller/client_controler.dart';
 import '../presenter/controller/current_index_controller.dart';
 import '../presenter/controller/dark_mode_controller.dart';
 import '../presenter/controller/index_controller.dart';
-import '../presenter/controller/selected_day_controller.dart';
 import '../presenter/controller/selected_service_controller.dart';
 
 final clientProvider = StateProvider<ClientControler>(

@@ -35,17 +35,17 @@ class BarberShopRegisterTwo extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: 'Insira seu CNPJ'),
                     ),
-                    const TextFieldRegisterTwo(),
-                    const SizedBox(
+                    TextFieldRegisterTwo(),
+                    SizedBox(
                       height: 10,
                     ),
                     LabelRegister(text: 'Insira seu CEP'),
-                    const TextFieldRegisterTwo(),
+                    TextFieldRegisterTwo(),
                   ],
                 ),
 

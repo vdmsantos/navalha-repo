@@ -4,65 +4,12 @@ import 'package:icon_decoration/icon_decoration.dart';
 
 import '../../../../core/providers.dart';
 import '../../barbershop/barber_shop.dart';
-import 'scaffold_pattern.dart';
-
-// class BarberListItem extends StatefulWidget {
-//   final double barbercutPrice;
-//   final double haircutPrice;
-//   final String barberShopName;
-//   final Color topColor;
-//   final Color bottomCollor;
-//   final int star;
-//   final double distance;
-//   final String imgBarberShop;
-
-//   const BarberListItem({
-//     Key? key,
-//     required this.barbercutPrice,
-//     required this.haircutPrice,
-//     required this.barberShopName,
-//     this.topColor = const Color.fromARGB(255, 24, 24, 24),
-//     this.bottomCollor = const Color.fromARGB(255, 34, 34, 34),
-//     this.star = 5,
-//     required this.distance,
-//     required this.imgBarberShop,
-//   }) : super(key: key);
-
-//   @override
-//   State<BarberListItem> createState() => _BarberListItemState();
-// }
-
-// final barberListItemProvider = ChangeNotifierProvider(
-//   (ref) => BarberListItemProviderController(),
-// );
-
-// class BarberListItemProviderController extends ChangeNotifier {
-//   List<Widget> starList = [];
-
-//   void setStarList(int star, Color bottomCollor, Color filledStar) {
-//     starList.clear();
-//     for (var i = 1; i <= 5; i++) {
-//       if (i <= star) {
-//         starList.add(
-//           Icon(Icons.star, color: filledStar),
-//         );
-//       } else {
-//         starList.add(
-//           DecoratedIcon(
-//             icon: Icon(Icons.star, color: bottomCollor),
-//           ),
-//         );
-//       }
-//     }
-//     notifyListeners();
-//   }
-// }
 
 class BarberListItem extends HookConsumerWidget {
   final double barbercutPrice;
   final double haircutPrice;
   final String barberShopName;
-  Color topColor = const Color.fromARGB(255, 24, 24, 24);
+  late Color topColor = const Color.fromARGB(255, 24, 24, 24);
   final Color bottomCollor = const Color.fromARGB(255, 34, 34, 34);
   final int star;
   final double distance;

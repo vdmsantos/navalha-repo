@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/providers.dart';
-import 'package:projeto_1/domain/entities/client_entity.dart';
 
 import '../../../core/assets.dart';
 import '../home/home_page.dart';
@@ -24,13 +23,13 @@ class Login extends HookConsumerWidget {
         height: 1000,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Colors.black,
-          // image: DecorationImage(
-          //   image: darkMode.darkMode
-          //       ? const AssetImage(imgFundoGeral)
-          //       : const AssetImage(imgFundoGeralLight),
-          //   fit: BoxFit.fill,
-          // ),
+          // color: Colors.black,
+          image: DecorationImage(
+            image: darkMode.darkMode
+                ? const AssetImage(imgFundoGeral)
+                : const AssetImage(imgFundoGeralLight),
+            fit: BoxFit.fill,
+          ),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -151,8 +150,6 @@ class Login extends HookConsumerWidget {
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: () async {
-                  //TODO trocar essa porra
-
                   await clientControler.getClientByEmailPassword(
                       emailControler.text, passwordControler.text);
 
@@ -179,20 +176,6 @@ class Login extends HookConsumerWidget {
                     print(' cep : ${clientControler.client!.cep}');
                     print(' cpf : ${clientControler.client!.cpf}');
                   }
-                  // if (await loginController.validLogin(
-                  //     emailControler.text, passwordControler.text)) {
-                  //   // ignore: use_build_context_synchronously
-                  //   Navigator.of(context).push(MaterialPageRoute(
-                  //       builder: (context) => const HomePage()));
-                  // } else {
-                  //   // ignore: use_build_context_synchronously
-                  //   AlertDialogBarberWithoutButton(
-                  //           text: 'Login inválido, tente novamente',
-                  //           icon: Icons.error,
-                  //           iconColor: Colors.redAccent)
-                  //       .showCustomDialog(context);
-                  // }
-                  // daofactory.clientdao.delete(1);
                 },
                 child: Container(
                   height: 50,

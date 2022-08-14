@@ -5,28 +5,13 @@ import '../../../../core/assets.dart';
 import '../../../../core/providers.dart';
 import '../../barbershop/barber_shop.dart';
 
-// class TopContainerPattern extends StatefulWidget {
-//   final String title;
-//   final String name;
-//   final String profile;
-
-//   const TopContainerPattern({
-//     Key? key,
-//     required this.title,
-//     required this.name,
-//     required this.profile,
-//   }) : super(key: key);
-
-//   @override
-//   State<TopContainerPattern> createState() => _TopContainerPatternState();
-// }
-
 class TopContainerPattern extends HookConsumerWidget {
   final String title;
   final String name;
   final String profile;
 
-  TopContainerPattern({
+  const TopContainerPattern({
+    super.key,
     required this.title,
     required this.name,
     required this.profile,
@@ -132,7 +117,9 @@ class TopContainerPattern extends HookConsumerWidget {
                     shadows: [
                       Shadow(
                         blurRadius: 1,
-                        color: darkMode.darkMode ? Colors.black : const Color.fromARGB(255, 74, 72, 72),
+                        color: darkMode.darkMode
+                            ? Colors.black
+                            : const Color.fromARGB(255, 74, 72, 72),
                       )
                     ],
                   ),

@@ -5,7 +5,7 @@ import '../../../../core/providers.dart';
 import 'services_buttons_widget.dart';
 
 class WrapServicesButtons extends HookConsumerWidget {
-  WrapServicesButtons({super.key});
+  const WrapServicesButtons({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

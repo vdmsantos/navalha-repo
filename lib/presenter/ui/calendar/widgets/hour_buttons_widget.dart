@@ -30,7 +30,8 @@ class HoursButtons extends HookConsumerWidget {
   final int indexSelected;
   final void Function() onPressed;
 
-  HoursButtons({
+  const HoursButtons({
+    super.key,
     required this.text,
     required this.index,
     required this.indexSelected,
@@ -42,20 +43,28 @@ class HoursButtons extends HookConsumerWidget {
     final darkMode = ref.watch(darkModeProvider);
 
     return MaterialButton(
-      color: darkMode.darkMode ? (indexSelected == index
-          ? Colors.black
-          : const Color.fromARGB(255, 66, 66, 66)) : (indexSelected == index
-          ? const Color.fromARGB(255, 66, 66, 66)
-          : Colors.white),
+      color: darkMode.darkMode
+          ? (indexSelected == index
+              ? Colors.black
+              : const Color.fromARGB(255, 66, 66, 66))
+          : (indexSelected == index
+              ? const Color.fromARGB(255, 66, 66, 66)
+              : Colors.white),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: darkMode.darkMode ? const BorderSide(color: Colors.white) : ((indexSelected == index) ? const BorderSide(color: Colors.white) : const BorderSide(color: Colors.black)),
+        side: darkMode.darkMode
+            ? const BorderSide(color: Colors.white)
+            : ((indexSelected == index)
+                ? const BorderSide(color: Colors.white)
+                : const BorderSide(color: Colors.black)),
       ),
       onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(
-          color: darkMode.darkMode ? Colors.white : ((indexSelected == index) ? Colors.white : Colors.black),
+          color: darkMode.darkMode
+              ? Colors.white
+              : ((indexSelected == index) ? Colors.white : Colors.black),
           fontWeight: FontWeight.bold,
           fontSize: 13,
         ),

@@ -4,9 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/providers.dart';
 
 class LabelRegister extends HookConsumerWidget {
-  String text;
+  final String text;
 
-  LabelRegister({
+  const LabelRegister({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -20,8 +20,7 @@ class LabelRegister extends HookConsumerWidget {
       child: Text(
         text,
         style: TextStyle(
-          color:
-              darkMode.darkMode ? Colors.white : Colors.black,
+          color: darkMode.darkMode ? Colors.white : Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),

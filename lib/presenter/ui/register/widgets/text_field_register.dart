@@ -5,9 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/providers.dart';
 
 class TextFieldRegister extends HookConsumerWidget {
-  TextEditingController? input;
+  final TextEditingController? input;
 
-  TextFieldRegister({
+  const TextFieldRegister({
     required this.input,
   });
 

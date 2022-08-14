@@ -48,7 +48,7 @@ class ClientRegisterTwo extends HookConsumerWidget {
               children: [
                 Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: const EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira seu CPF"),
                     ),

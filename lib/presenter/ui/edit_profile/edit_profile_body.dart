@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:camera_camera/camera_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -70,10 +69,10 @@ class BodyEditingProfile extends HookConsumerWidget {
                   const SizedBox(height: 25),
                   const Anexo(),
                   LabelEditProfile(darkMode: darkMode, text: 'Nome'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: nameController),
                   const SizedBox(height: 15),
                   LabelEditProfile(darkMode: darkMode, text: 'E-mail'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: emailController),
                   FutureBuilder(
                     future: clientControler.getClientAdress(),
                     builder: (context, AsyncSnapshot<AdressModel?> snapshot) {
@@ -91,18 +90,17 @@ class BodyEditingProfile extends HookConsumerWidget {
                             children: [
                               const SizedBox(height: 15),
                               LabelEditProfile(darkMode: darkMode, text: 'Cep'),
-                              TextFieldEditProfile(
-                                  nameController: nameController),
+                              TextFieldEditProfile(controller: cepController),
                               const SizedBox(height: 15),
                               LabelEditProfile(
                                   darkMode: darkMode, text: 'Bairro'),
                               TextFieldEditProfile(
-                                  nameController: nameController),
+                                  controller: bairroController),
                               const SizedBox(height: 15),
                               LabelEditProfile(
                                   darkMode: darkMode, text: 'Logradouro'),
                               TextFieldEditProfile(
-                                  nameController: nameController),
+                                  controller: logradouroController),
                             ],
                           );
 
@@ -120,17 +118,17 @@ class BodyEditingProfile extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 15),
                   LabelEditProfile(darkMode: darkMode, text: 'Celular'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: TextEditingController()),
                   const SizedBox(height: 15),
                   LabelEditProfile(
                       darkMode: darkMode, text: 'Data de Nascimento'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: TextEditingController()),
                   const SizedBox(height: 15),
                   LabelEditProfile(darkMode: darkMode, text: 'Senha'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: passwordController),
                   const SizedBox(height: 15),
                   LabelEditProfile(darkMode: darkMode, text: 'Confirmar'),
-                  TextFieldEditProfile(nameController: nameController),
+                  TextFieldEditProfile(controller: passwordController),
                   const SizedBox(height: 15),
                   Align(
                     alignment: Alignment.centerRight,

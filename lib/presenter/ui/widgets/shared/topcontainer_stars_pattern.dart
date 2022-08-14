@@ -12,7 +12,8 @@ class TopContainerPatternStar extends HookConsumerWidget {
   final String profile;
   final int star;
 
-  TopContainerPatternStar({
+  const TopContainerPatternStar({
+    super.key,
     required this.title,
     required this.profile,
     required this.star,
@@ -29,11 +30,11 @@ class TopContainerPatternStar extends HookConsumerWidget {
 
     darkMode.darkMode
         ? noStar = const Color.fromARGB(255, 98, 93, 93)
-        : noStar = Color.fromARGB(255, 139, 135, 135);
+        : noStar = const Color.fromARGB(255, 139, 135, 135);
 
     darkMode.darkMode
         ? filledStar = const Color.fromARGB(255, 255, 255, 255)
-        : filledStar = Color.fromARGB(255, 32, 32, 32);
+        : filledStar = const Color.fromARGB(255, 32, 32, 32);
 
     starList.clear();
     for (var i = 1; i <= 5; i++) {

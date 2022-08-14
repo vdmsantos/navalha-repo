@@ -43,7 +43,7 @@ class _MyWidgetState extends State<InsetExample> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => CalendarPage(
+                    builder: (context) => const CalendarPage(
                       null,
                       nameBarberSelect: '',
                     ),
@@ -124,9 +124,6 @@ class _MyWidgetState extends State<InsetExample> {
                     datanascControler.text,
                     cidadeControler.text,
                   );
-                  print(userModel.toString());
-                  print(userModel.toMap());
-                  print(userModel.toJson());
                   daofactory.clientdao.insert(userModel);
                   daofactory.clientdao.select();
                 },

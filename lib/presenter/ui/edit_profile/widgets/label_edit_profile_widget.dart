@@ -4,9 +4,9 @@ import '../../../controller/dark_mode_controller.dart';
 
 class LabelEditProfile extends StatelessWidget {
   final DarkModeController darkMode;
-  String text;
+  final String text;
 
-  LabelEditProfile({
+  const LabelEditProfile({
     Key? key,
     required this.darkMode,
     required this.text,

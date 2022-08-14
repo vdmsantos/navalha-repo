@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/providers.dart';
 import '../../widgets/shared/alert_dialog.dart';
 import '../../confirmation/confirmation_page.dart';
 import 'calendar_widget.dart';
@@ -9,10 +8,10 @@ import 'wrap_hour_buttons_widget.dart';
 // import '../../../../presenter/controller/selected_day_controller.dart';
 
 class ScheduleButton extends HookConsumerWidget {
+  const ScheduleButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
-    
     AlertDialogBarber dialog = AlertDialogBarber(
         iconColor: Colors.green,
         buttonColor: Colors.greenAccent,

@@ -1,14 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/providers.dart';
 
 class TextFieldEditProfile extends HookConsumerWidget {
-  final TextEditingController nameController;
-
-  const TextFieldEditProfile({
-    super.key,
-    required this.nameController,
+  final TextEditingController controller;
+  TextFieldEditProfile({
+    required this.controller,
   });
 
   @override
@@ -26,12 +25,13 @@ class TextFieldEditProfile extends HookConsumerWidget {
               : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(10),
           border: darkMode.darkMode
-              ? Border.all(color: Colors.white) : Border.all(color: Colors.black),
+              ? Border.all(color: Colors.white)
+              : Border.all(color: Colors.black),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: TextField(
-            controller: nameController,
+            controller: controller,
             style: TextStyle(
                 color: darkMode.darkMode
                     ? const Color.fromARGB(255, 255, 255, 255)

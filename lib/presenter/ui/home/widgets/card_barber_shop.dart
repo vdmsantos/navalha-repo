@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../../widgets/shared/barber_list_item.dart';
 
 class CardBarberShop extends StatelessWidget {
-  String barberShopName;
-  int star;
-  double distance;
-  double barbercutPrice;
-  double haircutPrice;
-  String imgBarberShop;
+  final String barberShopName;
+  final int star;
+  final double distance;
+  final double barbercutPrice;
+  final double haircutPrice;
+  final String imgBarberShop;
 
   CardBarberShop({
     Key? key,

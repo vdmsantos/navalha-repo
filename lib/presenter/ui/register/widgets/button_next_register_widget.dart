@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../barbershop_register/barbershop_three.dart';
-
 class ButtonNextRegister extends HookConsumerWidget {
-  MaterialButton button;
+  final MaterialButton button;
 
-  ButtonNextRegister({
+  const ButtonNextRegister({
     Key? key,
     required this.button,
   }) : super(key: key);

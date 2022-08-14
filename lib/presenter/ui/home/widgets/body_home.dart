@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/core/providers.dart';
-import 'package:projeto_1/presenter/ui/widgets/shared/barber_list_item.dart';
-
 import 'card_barber_shop.dart';
 import 'container_filter.dart';
 import 'image_container.dart';
@@ -21,7 +19,7 @@ class BodyHome extends HookConsumerWidget {
 
     // UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
 
-    return SafeArea(  
+    return SafeArea(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         TopBarWidget(userName: clientControler.client!.name),
         Expanded(
@@ -117,7 +115,7 @@ class BodyHome extends HookConsumerWidget {
                                     padding: const EdgeInsets.only(top: 15),
                                     child: ListView(
                                       physics: const BouncingScrollPhysics(),
-                                      children: [
+                                      children: const [
                                         CardBarberShop(
                                           barberShopName: 'Outside Barber',
                                           star: 5,

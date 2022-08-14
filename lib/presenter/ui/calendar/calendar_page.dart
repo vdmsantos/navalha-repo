@@ -15,7 +15,8 @@ class CalendarPage extends HookConsumerWidget {
   final iconBarberSelect;
   final String nameBarberSelect;
 
-  CalendarPage(this.iconBarberSelect, {
+  const CalendarPage(
+    this.iconBarberSelect, {
     required this.nameBarberSelect,
   });
 

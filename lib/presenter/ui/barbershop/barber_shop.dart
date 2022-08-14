@@ -13,7 +13,8 @@ import 'widgets/list_services_widget.dart';
 class BarberShopPage extends HookConsumerWidget {
   final String barberShopName;
 
-  BarberShopPage({
+  const BarberShopPage({
+    super.key,
     required this.barberShopName,
   });
 
