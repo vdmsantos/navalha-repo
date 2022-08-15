@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
         _a = !_a;
       });
     });
-    Timer(const Duration(milliseconds: 7000), () {
+    Timer(const Duration(milliseconds: 5600), () {
       Navigator.of(context).pushReplacement(SlideTransitionAnimation(Login()));
     });
   }

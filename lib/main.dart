@@ -1,23 +1,25 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'presenter/ui/splash/splashscreen.dart';
 
-// void main() {
-//   runApp(
-//     ProviderScope(
-//       child: DevicePreview(
-//         enabled: !kReleaseMode,
-//         builder: (context) => const MyApp(),
-//       ),
-//     ),
-//   );
-// }
-
 void main() {
   runApp(
-    const MyApp(),
+    ProviderScope(
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(),
+      ),
+    ),
   );
 }
+
+// void main() {
+//   runApp(
+//     const MyApp(),
+//   );
+//}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
         child: MaterialApp(
       useInheritedMediaQuery: true,
-      // builder: DevicePreview.appBuilder,
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Barber app',
       theme: ThemeData(
