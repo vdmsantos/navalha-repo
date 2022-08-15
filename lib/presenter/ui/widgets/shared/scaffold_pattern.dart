@@ -7,12 +7,22 @@ import 'package:line_icons/line_icons.dart';
 
 import 'package:projeto_1/core/providers.dart';
 import 'package:projeto_1/presenter/ui/login/login_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/assets.dart';
 import '../../edit_profile/edit_profile_page.dart';
 import '../../home/home_page.dart';
 import '../../schedule/schedule_page.dart';
 
+
+const String urlInsta =
+"https://www.instagram.com/warrenbrasil/";
+
+Future<void> _launchUrl(String url) async {
+  if (!await launchUrl(Uri.parse(url))) {
+    throw 'Could not launch $url';
+  }
+}
 class ScaffoldPattern extends HookConsumerWidget {
   final Widget bodyPage;
 
@@ -97,6 +107,12 @@ class ScaffoldPattern extends HookConsumerWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const SchedulePage()),
                 );
+                break;
+              }
+              case 1:
+              {
+                _launchUrl(urlInsta);
+
                 break;
               }
 
@@ -336,11 +352,12 @@ class ContainerDrawer1 extends HookConsumerWidget {
               } else if (index == 2) {
                 return const SchedulePage();
               } else if (index == 3) {
-                // return const SocialMediaPage();
+                _launchUrl(urlInsta);
               } else if (index == 4) {
                 return Login();
               }
-              return const EditProfilePage();
+              //return const EditProfilePage();
+              return const HomePage();
             }),
           ),
         );

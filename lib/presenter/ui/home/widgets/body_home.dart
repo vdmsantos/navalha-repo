@@ -115,7 +115,7 @@ class BodyHome extends HookConsumerWidget {
                                     padding: const EdgeInsets.only(top: 15),
                                     child: ListView(
                                       physics: const BouncingScrollPhysics(),
-                                      children: const [
+                                      children:  [
                                         CardBarberShop(
                                           barberShopName: 'Outside Barber',
                                           star: 5,
