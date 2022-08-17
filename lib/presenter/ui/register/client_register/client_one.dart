@@ -66,6 +66,8 @@ class ClientRegisterOne1 extends HookConsumerWidget {
             ),
             ButtonNextRegister(
               button: MaterialButton(
+                // splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onPressed: () {
                   clientControler.validName(nameControler.text);
                   clientControler.validEmail(emailControler.text);
