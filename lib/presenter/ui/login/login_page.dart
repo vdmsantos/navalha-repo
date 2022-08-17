@@ -16,39 +16,26 @@ class Login extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clientControler = ref.watch(clientProvider);
-    final darkMode = ref.watch(darkModeProvider);
 
     return Scaffold(
       body: Container(
         height: 1000,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
-          color: Colors.black,
-          // image: DecorationImage(
-          //   image: darkMode.darkMode
-          //       ? const AssetImage(imgFundoGeral)
-          //       : const AssetImage(imgFundoGeralLight),
-          //   fit: BoxFit.fill,
-          // ),
+          color: Color.fromARGB(255, 0, 0, 0),
         ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              darkMode.darkMode
-                  ? Image.asset(
-                      imgLogoBarber2,
-                    )
-                  : Image.asset(
-                      imgLogoBarber2Light,
-                    ),
+              Image.asset(
+                imgLogoBarber2,
+              ),
               Container(
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: darkMode.darkMode
-                      ? const Color.fromRGBO(36, 36, 36, 1)
-                      : Colors.white,
+                  color: const Color.fromRGBO(36, 36, 36, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -56,18 +43,16 @@ class Login extends HookConsumerWidget {
                   child: TextField(
                     controller: emailControler,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: "E-mail",
                       hintStyle: TextStyle(
-                        color: darkMode.darkMode
-                            ? const Color.fromRGBO(85, 85, 85, 1)
-                            : const Color.fromARGB(255, 63, 60, 60),
+                        color: Color.fromRGBO(85, 85, 85, 1),
                         fontSize: 20,
                       ),
                     ),
-                    style: TextStyle(
-                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                    style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                     ),
                   ),
@@ -80,27 +65,23 @@ class Login extends HookConsumerWidget {
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: darkMode.darkMode
-                      ? const Color.fromRGBO(36, 36, 36, 1)
-                      : Colors.white,
+                  color: const Color.fromRGBO(36, 36, 36, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10, top: 10),
                   child: TextField(
                     controller: passwordControler,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Senha",
                       border: InputBorder.none,
                       hintStyle: TextStyle(
-                        color: darkMode.darkMode
-                            ? const Color.fromRGBO(85, 85, 85, 1)
-                            : const Color.fromARGB(255, 63, 60, 60),
+                        color: Color.fromRGBO(85, 85, 85, 1),
                         fontSize: 20,
                       ),
                     ),
-                    style: TextStyle(
-                      color: darkMode.darkMode ? Colors.white : Colors.black,
+                    style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                     ),
                     obscureText: true,
@@ -117,11 +98,10 @@ class Login extends HookConsumerWidget {
                   children: [
                     MaterialButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Esqueci minha senha",
                         style: TextStyle(
-                            color:
-                                darkMode.darkMode ? Colors.white : Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
@@ -135,11 +115,10 @@ class Login extends HookConsumerWidget {
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "Cadastrar",
                         style: TextStyle(
-                            color:
-                                darkMode.darkMode ? Colors.white : Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
