@@ -50,13 +50,13 @@ class ClientRegisterOne1 extends HookConsumerWidget {
               children: [
                 Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira seu nome"),
                     ),
                     TextFieldRegister(input: nameControler),
                     const SizedBox(height: 10),
-                    LabelRegister(text: "Insira seu e-mail"),
+                    const LabelRegister(text: "Insira seu e-mail"),
                     TextFieldRegister(input: emailControler),
                   ],
                 ),

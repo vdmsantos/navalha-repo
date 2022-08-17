@@ -25,7 +25,7 @@ class UserDataAccess {
           userMap['_cep'],
           userMap['_cpf']
         ]);
-    print('inserindo ${userMap.toString()}');
+    // print('inserindo ${userMap.toString()}');
   }
 
   void update() async {
@@ -40,7 +40,7 @@ class UserDataAccess {
       ],
     );
 
-    print('update ${userMap.toString()}');
+    // print('update ${userMap.toString()}');
   }
 
   Future<bool> isRegistered(String email, String password) async {
@@ -49,10 +49,10 @@ class UserDataAccess {
         [email.trim().toUpperCase(), password.trim().toUpperCase()]);
 
     if (list.isNotEmpty) {
-      print('encontrou o cliente');
+      // print('encontrou o cliente');
       return true;
     } else {
-      print('não encontrou o cliente');
+      // print('não encontrou o cliente');
       return false;
     }
   }
@@ -70,20 +70,20 @@ class UserDataAccess {
       userMap['cpf'],
       userMap['cep'],
     );
-    print(userModel.toString());
+    // print(userModel.toString());
     return userModel;
   }
 
   void select() async {
     List<Map> list = await database.rawQuery('SELECT * FROM TBCLIENTE');
-    print('ESSA É A LISTA PORRA $list');
+    // print('ESSA É A LISTA PORRA $list');
   }
 
   void delete(int id) async {
     await database.rawDelete(
       'DELETE  FROM TBCLIENTE',
     );
-    print('deletando id $id');
+    // print('deletando id $id');
   }
 
   void closeDatabase() async {

@@ -35,14 +35,15 @@ class ServicesButtons extends HookConsumerWidget {
   // final List<int> indexSelectedList;
   final void Function() onPressedPush;
   final void Function() onPressedPop;
-  
-  ServicesButtons({
+
+  const ServicesButtons({
+    Key? key,
     required this.text,
     required this.index,
     // required this.indexSelectedList,
     required this.onPressedPush,
     required this.onPressedPop,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -52,14 +53,20 @@ class ServicesButtons extends HookConsumerWidget {
 
     return MaterialButton(
       // key: UniqueKey(),
-      color: darkMode.darkMode ? (services.indexSelectedList.contains(index)
-          ? Colors.black
-          : const Color.fromARGB(255, 66, 66, 66)) : (services.indexSelectedList.contains(index)
-          ? const Color.fromARGB(255, 66, 66, 66)
-          : Colors.white),
+      color: darkMode.darkMode
+          ? (services.indexSelectedList.contains(index)
+              ? Colors.black
+              : const Color.fromARGB(255, 66, 66, 66))
+          : (services.indexSelectedList.contains(index)
+              ? const Color.fromARGB(255, 66, 66, 66)
+              : Colors.white),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: darkMode.darkMode ? const BorderSide(color: Colors.white) : ((services.indexSelectedList.contains(index)) ? const BorderSide(color: Colors.white) : const BorderSide(color: Colors.black)),
+        side: darkMode.darkMode
+            ? const BorderSide(color: Colors.black)
+            : ((services.indexSelectedList.contains(index))
+                ? const BorderSide(color: Colors.white)
+                : const BorderSide(color: Colors.black)),
       ),
       onPressed: () {
         if (services.indexSelectedList.contains(index)) {
@@ -71,7 +78,11 @@ class ServicesButtons extends HookConsumerWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: darkMode.darkMode ? Colors.white : ((services.indexSelectedList.contains(index)) ? Colors.white : Colors.black),
+          color: darkMode.darkMode
+              ? Colors.white
+              : ((services.indexSelectedList.contains(index))
+                  ? Colors.white
+                  : Colors.black),
           fontWeight: FontWeight.bold,
           fontSize: 13,
         ),

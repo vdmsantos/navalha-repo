@@ -38,10 +38,11 @@ class ContainerProfissionals extends HookConsumerWidget {
               margin: const EdgeInsets.only(left: 30, right: 18, bottom: 10),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
-                border: darkMode.darkMode
-                    ? Border.all(color: Colors.white)
-                    : Border.all(color: Colors.black),
+                color: darkMode.darkMode
+                    ? const Color.fromARGB(255, 24, 24, 24)
+                    : Colors.white,
+                border:
+                    darkMode.darkMode ? null : Border.all(color: Colors.black),
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(77),

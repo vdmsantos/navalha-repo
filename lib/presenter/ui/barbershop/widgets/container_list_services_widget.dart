@@ -16,14 +16,18 @@ class ContainerListServices extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
-    
+
     return Container(
       margin: const EdgeInsets.only(left: 18, right: 18, bottom: 10),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
+        color: darkMode.darkMode
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: darkMode.darkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black) ,
+        border: darkMode.darkMode
+            ? Border.all(color: Colors.black)
+            : Border.all(color: Colors.black),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

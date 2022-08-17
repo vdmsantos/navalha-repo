@@ -40,13 +40,6 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: Stack(
         children: [
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 3000),
-            curve: Curves.fastLinearToSlowEaseIn,
-            width: _a ? width : 0,
-            height: height,
-            color: Colors.black,
-          ),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Center(
@@ -59,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       speed: const Duration(milliseconds: 150),
                     ),
                   ],
-                  // isRepeatingAnimation: false,
-                  // repeatForever: false,
+                  isRepeatingAnimation: false,
+                  repeatForever: false,
                   // displayFullTextOnTap: false,
                 ),
               ),
@@ -78,10 +71,10 @@ class SlideTransitionAnimation extends PageRouteBuilder {
   SlideTransitionAnimation(this.page)
       : super(
             pageBuilder: (context, animation, anotherAnimation) => page,
-            transitionDuration: const Duration(milliseconds: 3500),
+            transitionDuration: const Duration(milliseconds: 2000),
             transitionsBuilder: (context, animation, anotherAnimation, child) {
               animation = CurvedAnimation(
-                curve: Curves.bounceInOut,
+                curve: Curves.easeInOutQuart,
                 parent: animation,
               );
               return SlideTransition(
@@ -90,6 +83,7 @@ class SlideTransitionAnimation extends PageRouteBuilder {
                         end: const Offset(0.0, 0.0))
                     .animate(animation),
                 textDirection: TextDirection.rtl,
+                // textDirection: TextDirection.rtl,
                 child: page,
               );
             });

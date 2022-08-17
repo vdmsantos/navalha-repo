@@ -46,7 +46,7 @@ class BodyConfirmation extends HookConsumerWidget {
                 ? const Color.fromARGB(255, 0, 0, 0)
                 : const Color.fromARGB(255, 209, 208, 208),
             expandedHeight: 260.0,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               background: TopContainerPatternStar(
                   star: 2, title: 'The gentleman', profile: imgBarberPhoto),
             ),

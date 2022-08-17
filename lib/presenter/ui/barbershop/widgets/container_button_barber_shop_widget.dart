@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/providers.dart';
 
-
 class ContainerButtonBarberShop extends HookConsumerWidget {
   final int currentIndex;
   final int index;
@@ -22,18 +21,22 @@ class ContainerButtonBarberShop extends HookConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: darkMode.darkMode ? ((currentIndex == index)
-            ? const Color.fromARGB(255, 0, 0, 0)
-            : const Color.fromARGB(255, 34, 34, 34)) : ((currentIndex == index)
-            ? const Color.fromARGB(255, 34, 34, 34)
-            : const Color.fromARGB(255, 255, 255, 255)),
+        color: darkMode.darkMode
+            ? ((currentIndex == index)
+                ? const Color.fromARGB(255, 122, 122, 122)
+                : const Color.fromARGB(255, 34, 34, 34))
+            : ((currentIndex == index)
+                ? const Color.fromARGB(255, 34, 34, 34)
+                : const Color.fromARGB(255, 255, 255, 255)),
         boxShadow: [
           BoxShadow(
-            color: darkMode.darkMode ? ((currentIndex == index)
-                ? const Color.fromARGB(255, 255, 255, 255)
-                : const Color.fromARGB(0, 94, 94, 94)) : ((currentIndex == index)
-                ? const Color.fromARGB(255, 255, 255, 255)
-                : const Color.fromARGB(255, 41, 40, 40)),
+            color: darkMode.darkMode
+                ? ((currentIndex == index)
+                    ? const Color.fromARGB(255, 0, 0, 0)
+                    : const Color.fromARGB(0, 94, 94, 94))
+                : ((currentIndex == index)
+                    ? const Color.fromARGB(255, 0, 0, 0)
+                    : const Color.fromARGB(255, 41, 40, 40)),
             spreadRadius: 1,
           ),
         ],
@@ -50,11 +53,13 @@ class ContainerButtonBarberShop extends HookConsumerWidget {
             Text(
               name,
               style: TextStyle(
-                  color: darkMode.darkMode ? ((currentIndex == index)
-                      ? const Color.fromARGB(255, 255, 255, 255)
-                      : const Color.fromARGB(255, 255, 255, 255)) : ((currentIndex == index)
-                      ? const Color.fromARGB(255, 255, 255, 255)
-                      : const Color.fromARGB(255, 0, 0, 0)),
+                  color: darkMode.darkMode
+                      ? ((currentIndex == index)
+                          ? const Color.fromARGB(255, 255, 255, 255)
+                          : const Color.fromARGB(255, 255, 255, 255))
+                      : ((currentIndex == index)
+                          ? const Color.fromARGB(255, 255, 255, 255)
+                          : const Color.fromARGB(255, 0, 0, 0)),
                   fontWeight: FontWeight.bold),
             ),
           ],

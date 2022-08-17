@@ -63,7 +63,7 @@ class TopBarWidget extends HookConsumerWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DrawerWidget(
+                  builder: (context) => const DrawerWidget(
                     name: 'Vitor',
                     photoProfile: imgBarberPhoto,
                   ),

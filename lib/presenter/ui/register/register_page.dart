@@ -39,9 +39,7 @@ class RegisterPage extends HookConsumerWidget {
                     height: 70,
                     width: 350,
                     decoration: BoxDecoration(
-                      border: darkMode.darkMode
-                          ? Border.all(color: Colors.white)
-                          : Border.all(color: Colors.black),
+                      border: Border.all(color: Colors.black),
                       color: darkMode.darkMode
                           ? const Color.fromRGBO(36, 36, 36, 1)
                           : Colors.white,
@@ -79,9 +77,7 @@ class RegisterPage extends HookConsumerWidget {
                     height: 70,
                     width: 350,
                     decoration: BoxDecoration(
-                      border: darkMode.darkMode
-                          ? Border.all(color: Colors.white)
-                          : Border.all(color: Colors.black),
+                      border: Border.all(color: Colors.black),
                       color: darkMode.darkMode
                           ? const Color.fromRGBO(36, 36, 36, 1)
                           : Colors.white,

@@ -53,7 +53,7 @@ class HoursButtons extends HookConsumerWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: darkMode.darkMode
-            ? const BorderSide(color: Colors.white)
+            ? const BorderSide(color: Colors.black)
             : ((indexSelected == index)
                 ? const BorderSide(color: Colors.white)
                 : const BorderSide(color: Colors.black)),

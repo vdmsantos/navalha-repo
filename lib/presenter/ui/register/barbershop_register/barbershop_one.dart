@@ -36,13 +36,13 @@ class BarberShopRegisterOne extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: 'Insira o nome da barbearia'),
                     ),
                     TextFieldRegister(input: null),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     LabelRegister(text: 'Insira seu e-mail'),
@@ -59,7 +59,7 @@ class BarberShopRegisterOne extends HookConsumerWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => BarberShopRegisterTwo()),
+                      builder: ((context) => const BarberShopRegisterTwo()),
                     ),
                   );
                 },

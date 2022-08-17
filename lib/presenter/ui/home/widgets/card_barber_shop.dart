@@ -10,7 +10,7 @@ class CardBarberShop extends StatelessWidget {
   final double haircutPrice;
   final String imgBarberShop;
 
-  CardBarberShop({
+  const CardBarberShop({
     Key? key,
     required this.barberShopName,
     required this.star,

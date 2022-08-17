@@ -17,8 +17,9 @@ class CalendarPage extends HookConsumerWidget {
 
   const CalendarPage(
     this.iconBarberSelect, {
+    Key? key,
     required this.nameBarberSelect,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,7 +50,7 @@ class CalendarPage extends HookConsumerWidget {
                 ),
               ],
             ),
-            WrapServicesButtons(),
+            const WrapServicesButtons(),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -71,7 +72,7 @@ class CalendarPage extends HookConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+                children: const [
                   ScheduleButton(),
                 ],
               ),

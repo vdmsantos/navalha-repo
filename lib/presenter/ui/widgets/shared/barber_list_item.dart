@@ -9,7 +9,7 @@ class BarberListItem extends HookConsumerWidget {
   final double barbercutPrice;
   final double haircutPrice;
   final String barberShopName;
-  late Color topColor = const Color.fromARGB(255, 24, 24, 24);
+  Color topColor = const Color.fromARGB(255, 24, 24, 24);
   final Color bottomCollor = const Color.fromARGB(255, 34, 34, 34);
   final int star;
   final double distance;
@@ -87,9 +87,7 @@ class BarberListItem extends HookConsumerWidget {
         padding: const EdgeInsets.only(top: 15, right: 10, left: 15),
         width: double.maxFinite,
         decoration: BoxDecoration(
-          border: darkMode.darkMode
-              ? Border.all(color: Colors.white)
-              : Border.all(color: Colors.black),
+          border: darkMode.darkMode ? null : Border.all(color: Colors.black),
           gradient: LinearGradient(
             colors: gradient,
             stops: stops,

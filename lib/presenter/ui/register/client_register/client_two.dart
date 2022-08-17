@@ -9,7 +9,6 @@ import '../../../../core/providers.dart';
 import '../widgets/button_next_register_widget.dart';
 import '../widgets/label_register.dart';
 import '../widgets/text_field_register.dart';
-import '../widgets/text_field_register_two_widget.dart';
 
 class ClientRegisterTwo extends HookConsumerWidget {
   final cpfControler = TextEditingController();
@@ -49,12 +48,12 @@ class ClientRegisterTwo extends HookConsumerWidget {
                 Column(
                   children: [
                     const Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira seu CPF"),
                     ),
                     TextFieldRegister(input: cpfControler),
                     const SizedBox(height: 10),
-                    LabelRegister(text: "Insira seu CEP"),
+                    const LabelRegister(text: "Insira seu CEP"),
                     TextFieldRegister(input: cepControler)
                   ],
                 ),

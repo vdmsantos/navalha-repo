@@ -30,15 +30,17 @@ class ContainerDetailsBarberShop extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
-    
+
     return Container(
       margin: const EdgeInsets.only(left: 18, right: 18, top: 20),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: darkMode.darkMode ? const Color.fromARGB(255, 24, 24, 24) : Colors.white,
+        color: darkMode.darkMode
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: darkMode.darkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black),
+        border: Border.all(color: Colors.black),
       ),
       child: Column(
         children: [

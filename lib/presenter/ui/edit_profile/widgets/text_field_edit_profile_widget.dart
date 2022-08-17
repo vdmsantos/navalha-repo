@@ -6,9 +6,10 @@ import '../../../../core/providers.dart';
 
 class TextFieldEditProfile extends HookConsumerWidget {
   final TextEditingController controller;
-  TextFieldEditProfile({
+  const TextFieldEditProfile({
+    Key? key,
     required this.controller,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,9 +25,7 @@ class TextFieldEditProfile extends HookConsumerWidget {
               ? const Color.fromRGBO(36, 36, 36, 1)
               : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(10),
-          border: darkMode.darkMode
-              ? Border.all(color: Colors.white)
-              : Border.all(color: Colors.black),
+          border: darkMode.darkMode ? null : Border.all(color: Colors.black),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),

@@ -8,8 +8,9 @@ class TextFieldRegister extends HookConsumerWidget {
   final TextEditingController? input;
 
   const TextFieldRegister({
+    Key? key,
     required this.input,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

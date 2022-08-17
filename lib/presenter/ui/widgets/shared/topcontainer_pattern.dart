@@ -28,7 +28,7 @@ class TopContainerPattern extends HookConsumerWidget {
           children: [
             Container(
               width: double.maxFinite,
-              height: 200,
+              height: 205,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   opacity: 80,
@@ -61,7 +61,7 @@ class TopContainerPattern extends HookConsumerWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => BarberShopPage(
+                            builder: (context) => const BarberShopPage(
                               barberShopName: 'BarberShopName',
                             ),
                           ),
@@ -132,7 +132,7 @@ class TopContainerPattern extends HookConsumerWidget {
           top: 112,
           child: CircleAvatar(
             backgroundColor: darkMode.darkMode
-                ? Colors.white
+                ? Colors.black
                 : const Color.fromARGB(255, 42, 42, 42),
             radius: 77,
             child: CircleAvatar(

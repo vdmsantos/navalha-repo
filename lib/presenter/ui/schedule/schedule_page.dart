@@ -24,7 +24,7 @@ class SchedulePage extends HookConsumerWidget {
                   ? clientControler.client!.name
                       .substring(0, clientControler.client!.name.indexOf(' '))
                   : clientControler.client!.name,
-              profile: imgProfile),
+              profile: imgProfileDefault),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 10),

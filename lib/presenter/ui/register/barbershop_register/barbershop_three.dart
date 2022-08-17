@@ -35,13 +35,13 @@ class BarberShopThree extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
                     TextFieldRegister(input: null),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     LabelRegister(text: "Confirme sua senha"),
                     TextFieldRegister(input: null),
                   ],

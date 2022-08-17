@@ -22,14 +22,8 @@ class Login extends HookConsumerWidget {
       body: Container(
         height: 1000,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          // color: Colors.black,
-          image: DecorationImage(
-            image: darkMode.darkMode
-                ? const AssetImage(imgFundoGeral)
-                : const AssetImage(imgFundoGeralLight),
-            fit: BoxFit.fill,
-          ),
+        decoration: const BoxDecoration(
+          color: Colors.black,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -168,14 +162,14 @@ class Login extends HookConsumerWidget {
                             iconColor: Colors.redAccent)
                         .showCustomDialog(context);
                   }
-                  if (clientControler.client != null) {
-                    print(' id : ${clientControler.client!.id}');
-                    print(' name : ${clientControler.client!.name}');
-                    print(' email : ${clientControler.client!.email}');
-                    print(' paswword : ${clientControler.client!.password}');
-                    print(' cep : ${clientControler.client!.cep}');
-                    print(' cpf : ${clientControler.client!.cpf}');
-                  }
+                  // if (clientControler.client != null) {
+                  //   print(' id : ${clientControler.client!.id}');
+                  //   print(' name : ${clientControler.client!.name}');
+                  //   print(' email : ${clientControler.client!.email}');
+                  //   print(' paswword : ${clientControler.client!.password}');
+                  //   print(' cep : ${clientControler.client!.cep}');
+                  //   print(' cpf : ${clientControler.client!.cpf}');
+                  // }
                 },
                 child: Container(
                   height: 50,

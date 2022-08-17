@@ -12,7 +12,7 @@ import '../widgets/text_field_register.dart';
 import 'client_register_controller.dart';
 
 class ClientRegisterThree extends HookConsumerWidget {
-  var daofactory = DataAccess();
+  final daofactory = DataAccess();
   final passwordControler = TextEditingController();
   final passwordConfirmControler = TextEditingController();
   final ClientRegisterController clientProvider;
@@ -50,7 +50,7 @@ class ClientRegisterThree extends HookConsumerWidget {
                 Column(
                   children: [
                     const Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
                     TextFieldRegister(input: passwordControler),

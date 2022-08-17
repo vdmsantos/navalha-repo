@@ -65,9 +65,7 @@ class ContainerPending extends HookConsumerWidget {
         color: darkMode.darkMode
             ? const Color.fromARGB(255, 24, 24, 24)
             : const Color.fromARGB(255, 255, 255, 255),
-        border: darkMode.darkMode
-            ? Border.all(color: Colors.white)
-            : Border.all(color: Colors.black),
+        border: Border.all(color: const Color.fromARGB(255, 52, 51, 51)),
       ),
       child: Column(
         children: [

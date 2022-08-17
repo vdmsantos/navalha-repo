@@ -19,7 +19,7 @@ class ContainerFilterIcon extends HookConsumerWidget {
             ? const Color.fromARGB(255, 34, 34, 34)
             : const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(5),
-        border: darkMode.darkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black),
+        border: darkMode.darkMode ? null : Border.all(color: Colors.black),
       ),
       height: 35,
       child: Center(

@@ -49,144 +49,138 @@ class BodyEditingProfile extends HookConsumerWidget {
 
     return ListView(
       children: [
-        Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 25),
-                  Text(
-                    'Alterar foto:',
-                    style: TextStyle(
-                      color: darkMode.darkMode ? Colors.white : Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  const Anexo(),
-                  LabelEditProfile(darkMode: darkMode, text: 'Nome'),
-                  TextFieldEditProfile(controller: nameController),
-                  const SizedBox(height: 15),
-                  LabelEditProfile(darkMode: darkMode, text: 'E-mail'),
-                  TextFieldEditProfile(controller: emailController),
-                  FutureBuilder(
-                    future: clientControler.getClientAdress(),
-                    builder: (context, AsyncSnapshot<AdressModel?> snapshot) {
-                      if (snapshot.data != null) {
-                        cepController.text = snapshot.data!.cep;
-                        bairroController.text = snapshot.data!.bairro;
-                        logradouroController.text = snapshot.data!.logradouro;
-                      }
-
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.done:
-
-                          // emailController.text = snapshot.data!.cep;
-                          return Column(
-                            children: [
-                              const SizedBox(height: 15),
-                              LabelEditProfile(darkMode: darkMode, text: 'Cep'),
-                              TextFieldEditProfile(controller: cepController),
-                              const SizedBox(height: 15),
-                              LabelEditProfile(
-                                  darkMode: darkMode, text: 'Bairro'),
-                              TextFieldEditProfile(
-                                  controller: bairroController),
-                              const SizedBox(height: 15),
-                              LabelEditProfile(
-                                  darkMode: darkMode, text: 'Logradouro'),
-                              TextFieldEditProfile(
-                                  controller: logradouroController),
-                            ],
-                          );
-
-                        default:
-                          {
-                            return Column(
-                              children: const [
-                                SizedBox(height: 20),
-                                CircularProgressIndicator(),
-                              ],
-                            );
-                          }
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  LabelEditProfile(darkMode: darkMode, text: 'Celular'),
-                  TextFieldEditProfile(controller: TextEditingController()),
-                  const SizedBox(height: 15),
-                  LabelEditProfile(
-                      darkMode: darkMode, text: 'Data de Nascimento'),
-                  TextFieldEditProfile(controller: TextEditingController()),
-                  const SizedBox(height: 15),
-                  LabelEditProfile(darkMode: darkMode, text: 'Senha'),
-                  TextFieldEditProfile(controller: passwordController),
-                  const SizedBox(height: 15),
-                  LabelEditProfile(darkMode: darkMode, text: 'Confirmar'),
-                  TextFieldEditProfile(controller: passwordController),
-                  const SizedBox(height: 15),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 50, bottom: 50),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        alignment: Alignment.centerRight,
-                        children: [
-                          Container(
-                            width: 135,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: const Color.fromRGBO(36, 36, 36, 1),
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                MaterialButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: ((context) =>
-                                            const HomePage()),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    "Confirmar",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Positioned(
-                            right: -30,
-                            child: CircleAvatar(
-                              radius: 29,
-                              backgroundColor: Color.fromRGBO(48, 48, 48, 1),
-                              child: Icon(
-                                Icons.check_circle_rounded,
-                                size: 40,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 25),
+            Text(
+              'Alterar foto:',
+              style: TextStyle(
+                color: darkMode.darkMode ? Colors.white : Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 25),
+            const Anexo(),
+            LabelEditProfile(darkMode: darkMode, text: 'Nome'),
+            TextFieldEditProfile(controller: nameController),
+            const SizedBox(height: 15),
+            LabelEditProfile(darkMode: darkMode, text: 'E-mail'),
+            TextFieldEditProfile(controller: emailController),
+            FutureBuilder(
+              future: clientControler.getClientAdress(),
+              builder: (context, AsyncSnapshot<AdressModel?> snapshot) {
+                if (snapshot.data != null) {
+                  cepController.text = snapshot.data!.cep;
+                  bairroController.text = snapshot.data!.bairro;
+                  logradouroController.text = snapshot.data!.logradouro;
+                }
+
+                switch (snapshot.connectionState) {
+                  case ConnectionState.done:
+
+                    // emailController.text = snapshot.data!.cep;
+                    return Column(
+                      children: [
+                        const SizedBox(height: 15),
+                        LabelEditProfile(darkMode: darkMode, text: 'Cep'),
+                        TextFieldEditProfile(controller: cepController),
+                        const SizedBox(height: 15),
+                        LabelEditProfile(darkMode: darkMode, text: 'Bairro'),
+                        TextFieldEditProfile(controller: bairroController),
+                        const SizedBox(height: 15),
+                        LabelEditProfile(
+                            darkMode: darkMode, text: 'Logradouro'),
+                        TextFieldEditProfile(controller: logradouroController),
+                      ],
+                    );
+
+                  default:
+                    {
+                      return Column(
+                        children: const [
+                          SizedBox(height: 20),
+                          CircularProgressIndicator(),
+                        ],
+                      );
+                    }
+                }
+              },
+            ),
+            const SizedBox(height: 15),
+            LabelEditProfile(darkMode: darkMode, text: 'Celular'),
+            TextFieldEditProfile(controller: TextEditingController()),
+            const SizedBox(height: 15),
+            LabelEditProfile(darkMode: darkMode, text: 'Data de Nascimento'),
+            TextFieldEditProfile(controller: TextEditingController()),
+            const SizedBox(height: 15),
+            LabelEditProfile(darkMode: darkMode, text: 'Senha'),
+            TextFieldEditProfile(controller: passwordController),
+            const SizedBox(height: 15),
+            LabelEditProfile(darkMode: darkMode, text: 'Confirmar'),
+            TextFieldEditProfile(controller: passwordController),
+            const SizedBox(height: 15),
+            Row(
+              children: const [
+                Expanded(child: SizedBox()),
+                CheckContainer(),
+              ],
+            )
+
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 50),
+            //   child: Stack(
+            //     clipBehavior: Clip.none,
+            //     alignment: Alignment.centerRight,
+            //     children: [
+            //       Container(
+            //         width: 135,
+            //         height: 45,
+            //         decoration: BoxDecoration(
+            //             color: const Color.fromRGBO(36, 36, 36, 1),
+            //             borderRadius: BorderRadius.circular(20)),
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.end,
+            //           // crossAxisAlignment: CrossAxisAlignment.end,
+            //           children: [
+            //             MaterialButton(
+            //               onPressed: () {
+            //                 Navigator.push(
+            //                   context,
+            //                   MaterialPageRoute(
+            //                     builder: ((context) => const HomePage()),
+            //                   ),
+            //                 );
+            //               },
+            //               child: const Text(
+            //                 "Confirmar",
+            //                 style: TextStyle(
+            //                     color: Colors.white,
+            //                     fontWeight: FontWeight.bold,
+            //                     fontSize: 18),
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //       const Positioned(
+            //         right: -30,
+            //         child: CircleAvatar(
+            //           radius: 29,
+            //           backgroundColor: Color.fromRGBO(48, 48, 48, 1),
+            //           child: Icon(
+            //             Icons.check_circle_rounded,
+            //             size: 40,
+            //             color: Colors.white,
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+          ],
         ),
       ],
     );
@@ -253,6 +247,74 @@ class PreviewPage extends StatelessWidget {
             ],
           ))
         ],
+      ),
+    );
+  }
+}
+
+class CheckContainer extends StatelessWidget {
+  const CheckContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const HomePage()),
+          ),
+        );
+      },
+      child: SizedBox(
+        height: 200,
+        width: 200,
+        child: Stack(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(
+                top: 5,
+              ),
+              padding: const EdgeInsets.only(
+                right: 55,
+                left: 20,
+                top: 15,
+                bottom: 15,
+              ),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 44, 44, 44),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: const Text(
+                'Confirmar',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 3,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Positioned(
+              left: 105,
+              child: CircleAvatar(
+                backgroundColor: Color.fromARGB(255, 23, 23, 23),
+                radius: 30,
+                child: SizedBox(
+                  child:
+                      Icon(Icons.check_circle, size: 32, color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

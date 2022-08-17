@@ -14,15 +14,14 @@ import '../../edit_profile/edit_profile_page.dart';
 import '../../home/home_page.dart';
 import '../../schedule/schedule_page.dart';
 
-
-const String urlInsta =
-"https://www.instagram.com/warrenbrasil/";
+const String urlInsta = "https://www.instagram.com/warrenbrasil/";
 
 Future<void> _launchUrl(String url) async {
   if (!await launchUrl(Uri.parse(url))) {
     throw 'Could not launch $url';
   }
 }
+
 class ScaffoldPattern extends HookConsumerWidget {
   final Widget bodyPage;
 
@@ -109,7 +108,7 @@ class ScaffoldPattern extends HookConsumerWidget {
                 );
                 break;
               }
-              case 1:
+            case 1:
               {
                 _launchUrl(urlInsta);
 
@@ -168,13 +167,15 @@ class DrawerWidget extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundColor: darkMode.darkMode
-                        ? const Color.fromARGB(255, 255, 253, 253)
-                        : const Color.fromARGB(255, 83, 80, 80),
-                    child: Image.asset(
-                      photoProfile,
+                  SizedBox(
+                    height: 120,
+                    width: 120,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(
+                        imgProfileDefault,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const NameUser(),
@@ -368,9 +369,7 @@ class ContainerDrawer1 extends HookConsumerWidget {
               ? const Color.fromARGB(36, 36, 36, 1)
               : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(30),
-          border: darkMode.darkMode
-              ? Border.all(color: Colors.white)
-              : Border.all(color: Colors.black),
+          border: darkMode.darkMode ? null : Border.all(color: Colors.black),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(100, 0, 0, 0),
