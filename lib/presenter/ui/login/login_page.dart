@@ -16,7 +16,6 @@ class Login extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clientControler = ref.watch(clientProvider);
-    final darkMode = ref.watch(darkModeProvider);
 
     return Scaffold(
       body: Container(
