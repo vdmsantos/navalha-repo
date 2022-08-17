@@ -40,9 +40,9 @@ class BarberShopPage extends HookConsumerWidget {
               expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: TopContainerPatternStar(
-                  star: 2,
+                  star: 5,
                   title: barberShopName,
-                  profile: imgBarberPhoto,
+                  profile: imgOutside,
                 ),
               ),
             ),

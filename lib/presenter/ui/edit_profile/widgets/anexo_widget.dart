@@ -63,7 +63,7 @@ class _AnexoState extends State<Anexo> {
                   child: !(arquivo == null)
                       ? Image.file(arquivo!, fit: BoxFit.cover)
                       : Image.asset(
-                          imgProfileDefault,
+                          imgProfile1,
                           fit: BoxFit.cover,
                         ),
                 ),

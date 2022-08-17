@@ -173,7 +173,7 @@ class DrawerWidget extends HookConsumerWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.asset(
-                        imgProfileDefault,
+                        imgProfile1,
                         fit: BoxFit.cover,
                       ),
                     ),

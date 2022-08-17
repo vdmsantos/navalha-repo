@@ -8,6 +8,7 @@ import 'package:projeto_1/core/providers.dart';
 import 'package:projeto_1/infra/model/adress_model.dart';
 
 import '../home/home_page.dart';
+import '../register/widgets/text_field_password.dart';
 import 'widgets/anexo_widget.dart';
 import 'widgets/label_edit_profile_widget.dart';
 import 'widgets/text_field_edit_profile_widget.dart';
@@ -117,10 +118,10 @@ class BodyEditingProfile extends HookConsumerWidget {
             TextFieldEditProfile(controller: TextEditingController()),
             const SizedBox(height: 15),
             LabelEditProfile(darkMode: darkMode, text: 'Senha'),
-            TextFieldEditProfile(controller: passwordController),
+            TextFieldPassword(input: passwordController),
             const SizedBox(height: 15),
             LabelEditProfile(darkMode: darkMode, text: 'Confirmar'),
-            TextFieldEditProfile(controller: passwordController),
+            TextFieldPassword(input: passwordController),
             const SizedBox(height: 15),
             Row(
               children: const [

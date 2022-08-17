@@ -19,3 +19,5 @@ const String profileDefault = 'assets/images/profileDefault1.png';
 const String imgProfileDefault = 'assets/images/imgProfileDefault1.png';
 const String imgLogoBarber2 = 'assets/images/logoNavalhaDark.png';
 const String imgLogoBarber2Light = 'assets/images/logoNavalhaLight.png';
+const String imgOutside = 'assets/images/outside.jfif';
+const String imgProfile1 = 'assets/images/profile1.png';

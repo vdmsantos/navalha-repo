@@ -146,22 +146,14 @@ class TopContainerPatternStar extends HookConsumerWidget {
         Positioned(
           top: 112,
           child: CircleAvatar(
-            backgroundColor: darkMode.darkMode
-                ? Colors.white
-                : const Color.fromARGB(255, 42, 42, 42),
+            backgroundColor: const Color.fromARGB(255, 42, 42, 42),
             radius: 77,
-            child: CircleAvatar(
-              backgroundColor: darkMode.darkMode
-                  ? const Color.fromARGB(255, 42, 42, 42)
-                  : Colors.white,
-              radius: 75,
-              child: SizedBox(
-                child: Image(
-                  image: AssetImage(
-                    profile,
-                  ),
-                ),
-              ),
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              height: double.maxFinite,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: AssetImage(profile))),
             ),
           ),
         ),

@@ -24,6 +24,12 @@ class Login extends HookConsumerWidget {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           color: Colors.black,
+          // image: DecorationImage(
+          //   image: darkMode.darkMode
+          //       ? const AssetImage(imgFundoGeral)
+          //       : const AssetImage(imgFundoGeralLight),
+          //   fit: BoxFit.fill,
+          // ),
         ),
         child: SingleChildScrollView(
           child: Column(

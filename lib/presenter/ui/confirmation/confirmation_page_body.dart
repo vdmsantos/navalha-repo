@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_1/presenter/ui/schedule/schedule_page.dart';
 
 import '../../../core/assets.dart';
 import '../../../core/providers.dart';
@@ -26,7 +27,7 @@ class BodyConfirmation extends HookConsumerWidget {
 
     Size size = MediaQuery.of(context).size;
     AlertDialogBarber dialog = AlertDialogBarber(
-        page: const HomePage(),
+        page: const SchedulePage(),
         iconColor: Colors.green,
         buttonColor: Colors.greenAccent,
         icon: Icons.check_circle,
@@ -48,7 +49,7 @@ class BodyConfirmation extends HookConsumerWidget {
             expandedHeight: 260.0,
             flexibleSpace: const FlexibleSpaceBar(
               background: TopContainerPatternStar(
-                  star: 2, title: 'The gentleman', profile: imgBarberPhoto),
+                  star: 5, title: 'Outside barber', profile: imgOutside),
             ),
           ),
           SliverList(
@@ -72,9 +73,9 @@ class BodyConfirmation extends HookConsumerWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             width: double.maxFinite,
                             decoration: BoxDecoration(
-                              border: darkMode.darkMode
-                                  ? Border.all(color: Colors.white)
-                                  : Border.all(color: Colors.black),
+                              border: !darkMode.darkMode
+                                  ? Border.all(color: Colors.black)
+                                  : null,
                               color: darkMode.darkMode
                                   ? const Color.fromARGB(255, 24, 24, 24)
                                   : const Color.fromARGB(255, 255, 255, 255),

@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/core/providers.dart';
 import 'package:projeto_1/presenter/ui/login/login_page.dart';
+import 'package:projeto_1/presenter/ui/register/widgets/text_field_password.dart';
 import '../../../../infra/data_sources_deprecated/data_source.dart';
 import '../../widgets/shared/alert_dialog.dart';
 import '../widgets/button_next_register_widget.dart';
@@ -53,10 +54,10 @@ class ClientRegisterThree extends HookConsumerWidget {
                       padding: EdgeInsets.only(top: 50),
                       child: LabelRegister(text: "Insira sua senha"),
                     ),
-                    TextFieldRegister(input: passwordControler),
+                    TextFieldPassword(input: passwordControler),
                     const SizedBox(height: 10),
                     const LabelRegister(text: "Confirme sua senha"),
-                    TextFieldRegister(input: passwordConfirmControler),
+                    TextFieldPassword(input: passwordConfirmControler),
                   ],
                 ),
 
