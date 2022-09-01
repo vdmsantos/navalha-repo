@@ -147,14 +147,6 @@ class Login extends HookConsumerWidget {
                             iconColor: Colors.redAccent)
                         .showCustomDialog(context);
                   }
-                  // if (clientControler.client != null) {
-                  //   print(' id : ${clientControler.client!.id}');
-                  //   print(' name : ${clientControler.client!.name}');
-                  //   print(' email : ${clientControler.client!.email}');
-                  //   print(' paswword : ${clientControler.client!.password}');
-                  //   print(' cep : ${clientControler.client!.cep}');
-                  //   print(' cpf : ${clientControler.client!.cpf}');
-                  // }
                 },
                 child: Container(
                   height: 50,

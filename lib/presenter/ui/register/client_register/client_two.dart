@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
-import 'package:projeto_1/presenter/ui/register/client_register/client_register_controller.dart';
 import 'package:projeto_1/presenter/ui/register/client_register/client_three.dart';
 
 import '../../../../core/providers.dart';
@@ -13,18 +12,15 @@ import '../widgets/text_field_register.dart';
 class ClientRegisterTwo extends HookConsumerWidget {
   final cpfControler = TextEditingController();
   final cepControler = TextEditingController();
-  final ClientRegisterController clientProvider;
-  final Map<String, dynamic> userParams;
 
   ClientRegisterTwo({
     Key? key,
-    required this.userParams,
-    required this.clientProvider,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
+    var client = ref.watch(clientRegister);
 
     return Scaffold(
       body: Container(
@@ -64,16 +60,11 @@ class ClientRegisterTwo extends HookConsumerWidget {
             ButtonNextRegister(
               button: MaterialButton(
                 onPressed: () {
-                  clientProvider.validCpf(cpfControler.text);
-                  clientProvider.validCep(cepControler.text);
-
+                  client.cep = cepControler.text;
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => ClientRegisterThree(
-                            clientProvider: clientProvider,
-                            userParams: userParams,
-                          )),
+                      builder: ((context) => ClientRegisterThree()),
                     ),
                   );
                 },

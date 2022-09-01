@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'presenter/ui/splash/splashscreen.dart';
 
 void main() {
@@ -16,12 +15,6 @@ void main() {
     ),
   );
 }
-
-// void main() {
-//   runApp(
-//     const MyApp(),
-//   );
-//}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

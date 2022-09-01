@@ -5,7 +5,6 @@ class ClientEntity {
   final String password;
   final String email;
   final String cep;
-  final String cpf;
 
   ClientEntity({
     required this.id,
@@ -13,6 +12,13 @@ class ClientEntity {
     required this.password,
     required this.email,
     required this.cep,
-    required this.cpf,
   });
+}
+
+class ClientModel {
+  int? id;
+  String? name;
+  String? password;
+  String? email;
+  String? cep;
 }

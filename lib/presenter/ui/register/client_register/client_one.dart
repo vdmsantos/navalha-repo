@@ -6,28 +6,18 @@ import '../../../../core/assets.dart';
 import '../widgets/button_next_register_widget.dart';
 import '../widgets/label_register.dart';
 import '../widgets/text_field_register.dart';
-import 'client_register_controller.dart';
 import 'client_two.dart';
 
 class ClientRegisterOne1 extends HookConsumerWidget {
   final nameControler = TextEditingController();
   final emailControler = TextEditingController();
 
-  final Map<String, dynamic> userParams = {
-    'id': null,
-    'name': null,
-    'email': null,
-    'password': null,
-    'cpf': null,
-    'cep': null
-  };
-
   ClientRegisterOne1({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
-    ClientRegisterController clientControler = ClientRegisterController();
+    var client = ref.watch(clientRegister);
 
     return Scaffold(
       body: Container(
@@ -69,15 +59,13 @@ class ClientRegisterOne1 extends HookConsumerWidget {
                 // splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onPressed: () {
-                  clientControler.validName(nameControler.text);
-                  clientControler.validEmail(emailControler.text);
+                  client.name = nameControler.text;
+                  client.email = emailControler.text;
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => ClientRegisterTwo(
-                            clientProvider: clientControler,
-                            userParams: userParams,
-                          )),
+                      builder: ((context) => ClientRegisterTwo()),
                     ),
                   );
                 },

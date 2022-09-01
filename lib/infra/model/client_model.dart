@@ -19,12 +19,12 @@ class ClientModel extends ClientEntity {
     this.cep,
     this.cpf,
   ) : super(
-            id: id,
-            name: name,
-            password: password,
-            cep: cep,
-            email: email,
-            cpf: cpf);
+          id: id,
+          name: name,
+          password: password,
+          cep: cep,
+          email: email,
+        );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -17,8 +17,6 @@ class BodyHome extends HookConsumerWidget {
     Size size = MediaQuery.of(context).size;
     final darkMode = ref.watch(darkModeProvider);
 
-    // UsuarioModel usuario = GetIt.I.get<UsuarioModel>();
-
     return SafeArea(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         TopBarWidget(userName: clientControler.client!.name),

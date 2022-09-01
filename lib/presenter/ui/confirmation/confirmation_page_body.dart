@@ -5,7 +5,6 @@ import 'package:projeto_1/presenter/ui/schedule/schedule_page.dart';
 
 import '../../../core/assets.dart';
 import '../../../core/providers.dart';
-import '../home/home_page.dart';
 import '../schedule/widgets/row_details_schedule.dart';
 import '../widgets/shared/alert_dialog.dart';
 import '../widgets/shared/row_details.dart';

@@ -3,31 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/core/providers.dart';
+import 'package:projeto_1/domain/entities/client_entity.dart';
+import 'package:projeto_1/presenter/controller/register_controller.dart';
 import 'package:projeto_1/presenter/ui/login/login_page.dart';
 import 'package:projeto_1/presenter/ui/register/widgets/text_field_password.dart';
 import '../../../../infra/data_sources_deprecated/data_source.dart';
-import '../../widgets/shared/alert_dialog.dart';
 import '../widgets/button_next_register_widget.dart';
 import '../widgets/label_register.dart';
-import '../widgets/text_field_register.dart';
-import 'client_register_controller.dart';
 
 class ClientRegisterThree extends HookConsumerWidget {
   final daofactory = DataAccess();
   final passwordControler = TextEditingController();
   final passwordConfirmControler = TextEditingController();
-  final ClientRegisterController clientProvider;
-  final Map<String, dynamic> userParams;
 
   ClientRegisterThree({
     Key? key,
-    required this.clientProvider,
-    required this.userParams,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
+    var client = ref.watch(clientRegister);
 
     return Scaffold(
       body: Container(
@@ -60,32 +56,25 @@ class ClientRegisterThree extends HookConsumerWidget {
                     TextFieldPassword(input: passwordConfirmControler),
                   ],
                 ),
-
-                //Botao proximo daqui pra baixo
               ],
             ),
             ButtonNextRegister(
               button: MaterialButton(
-                onPressed: () {
-                  if (clientProvider.validPassword(passwordControler.text)) {
-                    AlertDialogBarber(
-                            page: Login(),
-                            buttonColor: Colors.greenAccent,
-                            icon: Icons.check_circle_outline_outlined,
-                            textbutton: 'Ok',
-                            text: 'Cadastro realizado com sucesso!',
-                            iconColor: Colors.green)
-                        .showCustomDialog(context);
+                onPressed: () async {
+                  client.password = passwordControler.text;
+                  print("${client.email}  ${client.password!}");
+                  RegisterController register = RegisterController();
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    );
-                  }
+                  print(await register.addClient(client));
+                  //executar metodo post da api
 
-                  // daofactory.clientdao.delete(1);
+                  // ignore: use_build_context_synchronously
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => Login()),
+                    ),
+                  );
                 },
                 child: Text(
                   "Próximo",
