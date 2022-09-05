@@ -38,11 +38,12 @@ class BodyHomeState extends ConsumerState<BodyHome> {
     void distanceOrder() {
       if (!kmOrder) {
         setState(() {
-          kmOrder = true;
           barberShopList.sort((BarbershopModel ppl1, BarbershopModel ppl2) {
             return ppl1.distancia.compareTo(ppl2.distancia);
           });
           kmOrder = true;
+          noteOrder = false;
+          valueOrder = false;
         });
       } else {
         setState(() {
@@ -55,11 +56,12 @@ class BodyHomeState extends ConsumerState<BodyHome> {
     void starOrder() {
       if (!noteOrder) {
         setState(() {
-          noteOrder = true;
           barberShopList.sort((BarbershopModel ppl1, BarbershopModel ppl2) {
             return ppl1.star.compareTo(ppl2.star);
           });
           noteOrder = true;
+          kmOrder = false;
+          valueOrder = false;
         });
       } else {
         setState(() {
@@ -76,6 +78,8 @@ class BodyHomeState extends ConsumerState<BodyHome> {
             return ppl1.beardPrice.compareTo(ppl2.beardPrice);
           });
           valueOrder = true;
+          kmOrder = false;
+          noteOrder = false;
         });
       } else {
         setState(() {
