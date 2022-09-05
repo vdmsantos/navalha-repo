@@ -5,6 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'presenter/ui/splash/splashscreen.dart';
 
+// void main() {
+//   runApp(
+//     const ProviderScope(
+//       child:  MyApp(),
+//     ),
+//   );
+// }
 void main() {
   runApp(
     ProviderScope(

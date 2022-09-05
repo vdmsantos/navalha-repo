@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/core/providers.dart';
-import 'package:projeto_1/domain/entities/client_entity.dart';
 import 'package:projeto_1/presenter/controller/register_controller.dart';
 import 'package:projeto_1/presenter/ui/login/login_page.dart';
 import 'package:projeto_1/presenter/ui/register/widgets/text_field_password.dart';
@@ -66,7 +65,6 @@ class ClientRegisterThree extends HookConsumerWidget {
                   RegisterController register = RegisterController();
 
                   print(await register.addClient(client));
-                  //executar metodo post da api
 
                   // ignore: use_build_context_synchronously
                   Navigator.push(

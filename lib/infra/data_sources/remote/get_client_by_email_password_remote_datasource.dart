@@ -32,7 +32,8 @@ class GetClientByEmailPasswordLocalDatasource
       ClientEntity clientModel = ClientEntity(
           id: response.data["id"],
           name: response.data["name"],
-          password: response.data["password"],
+          // vitor - gambi pois traz o password criptografado -  password: response.data["password"],
+          password: password,
           email: response.data["email"],
           cep: response.data["cep"]);
       return clientModel;
