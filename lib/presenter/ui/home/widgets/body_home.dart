@@ -3,19 +3,87 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_1/core/assets.dart';
 import 'package:projeto_1/core/providers.dart';
+import 'package:projeto_1/infra/model/barbershop_model.dart';
+import 'package:projeto_1/presenter/controller/barber_shop_controller.dart';
 import 'card_barber_shop.dart';
 import 'container_filter.dart';
 import 'image_container.dart';
 import 'topbar_widget.dart';
 
-class BodyHome extends HookConsumerWidget {
+class BodyHome extends ConsumerStatefulWidget {
   const BodyHome({Key? key}) : super(key: key);
+  @override
+  BodyHomeState createState() => BodyHomeState();
+}
+
+class BodyHomeState extends ConsumerState<BodyHome> {
+  BarberShopController barberRepo = BarberShopController();
+
+  late List<BarbershopModel> barberShopList;
+  late bool valueOrder = false;
+  late bool noteOrder = false;
+  late bool kmOrder = false;
+  @override
+  void initState() {
+    super.initState();
+    barberShopList = barberRepo.getAllUsers();
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final clientControler = ref.watch(clientProvider);
     Size size = MediaQuery.of(context).size;
     final darkMode = ref.watch(darkModeProvider);
+
+    void distanceOrder() {
+      if (!kmOrder) {
+        setState(() {
+          kmOrder = true;
+          barberShopList.sort((BarbershopModel ppl1, BarbershopModel ppl2) {
+            return ppl1.distancia.compareTo(ppl2.distancia);
+          });
+          kmOrder = true;
+        });
+      } else {
+        setState(() {
+          barberShopList = barberShopList.reversed.toList();
+          kmOrder = false;
+        });
+      }
+    }
+
+    void starOrder() {
+      if (!noteOrder) {
+        setState(() {
+          noteOrder = true;
+          barberShopList.sort((BarbershopModel ppl1, BarbershopModel ppl2) {
+            return ppl1.star.compareTo(ppl2.star);
+          });
+          noteOrder = true;
+        });
+      } else {
+        setState(() {
+          barberShopList = barberShopList.reversed.toList();
+          noteOrder = false;
+        });
+      }
+    }
+
+    void priceOrder() {
+      if (!valueOrder) {
+        setState(() {
+          barberShopList.sort((BarbershopModel ppl1, BarbershopModel ppl2) {
+            return ppl1.beardPrice.compareTo(ppl2.beardPrice);
+          });
+          valueOrder = true;
+        });
+      } else {
+        setState(() {
+          barberShopList = barberShopList.reversed.toList();
+          valueOrder = false;
+        });
+      }
+    }
 
     return SafeArea(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -75,23 +143,42 @@ class BodyHome extends HookConsumerWidget {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        priceOrder();
+                                      },
                                       child: ContainerFilterIcon(
-                                          filterName: 'Preço')),
-                                  SizedBox(
+                                          cima: valueOrder,
+                                          filterName: 'Preço'),
+                                    ),
+                                  ),
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   Expanded(
-                                    child: ContainerFilterIcon(
-                                        filterName: 'Avaliação'),
+                                    child: InkWell(
+                                      onTap: () {
+                                        starOrder();
+                                      },
+                                      child: ContainerFilterIcon(
+                                          cima: noteOrder,
+                                          filterName: 'Avaliação'),
+                                    ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   Expanded(
-                                    child: ContainerFilterIcon(
-                                        filterName: 'Distância'),
+                                    child: InkWell(
+                                      onTap: () {
+                                        distanceOrder();
+                                      },
+                                      child: ContainerFilterIcon(
+                                          cima: kmOrder,
+                                          filterName: 'Distância'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -111,59 +198,23 @@ class BodyHome extends HookConsumerWidget {
                                   onRefresh: () => _reloadListItem(),
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 15),
-                                    child: ListView(
-                                      physics: const BouncingScrollPhysics(),
-                                      children: const [
-                                        CardBarberShop(
-                                          barberShopName: 'Outside Barber',
-                                          star: 5,
-                                          distance: 4.6,
-                                          barbercutPrice: 16,
-                                          haircutPrice: 20,
-                                          imgBarberShop: imgBarberFelipe,
-                                        ),
-                                        CardBarberShop(
-                                          barberShopName: 'Packers Barbearia',
-                                          star: 4,
-                                          distance: 10.6,
-                                          barbercutPrice: 25,
-                                          haircutPrice: 20,
-                                          imgBarberShop: imgBarberFelipe,
-                                        ),
-                                        CardBarberShop(
+                                    child: ListView.builder(
+                                      itemCount: barberShopList.length,
+                                      itemBuilder: (context, index) {
+                                        return CardBarberShop(
                                           barberShopName:
-                                              'Black dog barbershop',
-                                          star: 3,
-                                          distance: 16.6,
-                                          barbercutPrice: 30,
-                                          haircutPrice: 25,
+                                              barberShopList[index].name,
+                                          star: barberShopList[index].star,
+                                          distance:
+                                              barberShopList[index].distancia,
+                                          barbercutPrice:
+                                              barberShopList[index].beardPrice,
+                                          haircutPrice:
+                                              barberShopList[index].hairPrice,
                                           imgBarberShop: imgBarberFelipe,
-                                        ),
-                                        CardBarberShop(
-                                          barberShopName: 'El Chape Barbearia',
-                                          star: 2,
-                                          distance: 24.6,
-                                          barbercutPrice: 35,
-                                          haircutPrice: 30,
-                                          imgBarberShop: imgBarberFelipe,
-                                        ),
-                                        CardBarberShop(
-                                          barberShopName: 'Royal Barbershop',
-                                          star: 1,
-                                          distance: 30.6,
-                                          barbercutPrice: 40,
-                                          haircutPrice: 35,
-                                          imgBarberShop: imgBarberFelipe,
-                                        ),
-                                        CardBarberShop(
-                                          barberShopName: 'Outsider barber',
-                                          star: 5,
-                                          distance: 35.6,
-                                          barbercutPrice: 43,
-                                          haircutPrice: 38,
-                                          imgBarberShop: imgBarberFelipe,
-                                        ),
-                                      ],
+                                        );
+                                      },
+                                      physics: const BouncingScrollPhysics(),
                                     ),
                                   ),
                                 ),

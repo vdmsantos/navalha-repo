@@ -5,6 +5,7 @@ import 'package:projeto_1/domain/usescases/get_client_by_email_password_usecase.
 import 'package:projeto_1/infra/data_sources/remote/get_client_by_email_password_remote_datasource.dart';
 import 'package:projeto_1/infra/repositories/get_client_adress_by_cep.dart';
 import 'package:projeto_1/infra/repositories/get_client_by_email_password_repository_imp.dart';
+import 'package:projeto_1/presenter/controller/barber_shop_controller.dart';
 import 'package:projeto_1/presenter/controller/client_controler.dart';
 
 import '../presenter/controller/current_index_controller.dart';
@@ -27,6 +28,9 @@ final clientProvider = StateProvider<ClientControler>(
 
 final clientRegister = StateProvider(
   (ref) => ClientModel(),
+);
+final barberList = StateProvider(
+  (ref) => BarberShopController(),
 );
 
 final darkModeProvider = ChangeNotifierProvider(

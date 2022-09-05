@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -7,8 +8,10 @@ class ContainerFilterIcon extends HookConsumerWidget {
   const ContainerFilterIcon({
     Key? key,
     required this.filterName,
+    required this.cima,
   }) : super(key: key);
   final String filterName;
+  final bool cima;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
@@ -38,7 +41,7 @@ class ContainerFilterIcon extends HookConsumerWidget {
               ),
             ),
             Icon(
-              Icons.arrow_drop_down_sharp,
+              !cima ? Icons.arrow_drop_down_sharp : Icons.arrow_drop_up_sharp,
               color: darkMode.darkMode ? Colors.white : Colors.black,
             )
           ],

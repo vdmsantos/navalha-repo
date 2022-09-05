@@ -1,31 +1,49 @@
-
 import 'package:flutter/material.dart';
+import 'package:projeto_1/infra/model/barbershop_model.dart';
 
 class BarberShopController extends ChangeNotifier {
   int currentIndex = 0;
 
+  List<BarbershopModel> barberShopList = [];
+  List<BarbershopModel> getAllUsers() {
+    barberShopList.add(BarbershopModel(
+        name: "Outsider Barber",
+        beardPrice: 16,
+        hairPrice: 20,
+        star: 5,
+        distancia: 4.5));
+    barberShopList.add(BarbershopModel(
+        name: "Packers Barbearia",
+        beardPrice: 25,
+        hairPrice: 20,
+        star: 4,
+        distancia: 10.6));
+    barberShopList.add(BarbershopModel(
+        name: "Black dog barbershop",
+        beardPrice: 30,
+        hairPrice: 20,
+        star: 3,
+        distancia: 16.6));
+    barberShopList.add(BarbershopModel(
+        name: "El Chape Barbearia",
+        beardPrice: 35,
+        hairPrice: 30,
+        star: 2,
+        distancia: 24.6));
+    barberShopList.add(BarbershopModel(
+        name: "Outside",
+        beardPrice: 16,
+        hairPrice: 20,
+        star: 5,
+        distancia: 4.5));
+    barberShopList.add(BarbershopModel(
+        name: "Royal Barbershop",
+        beardPrice: 40,
+        hairPrice: 30,
+        star: 1,
+        distancia: 30.6));
 
-  // List<PessoaModel> ppl = [];
-  // List<PessoaModel> getAllUsers() {
-  //   ppl.add(PessoaModel(
-  //       nome: "Vitor Daniel mendes dos Santos", nota: 8, price: 15.4));
-  //   ppl.add(
-  //       PessoaModel(nome: "Mariana Mendes dos Santos", nota: 10, price: 6.4));
-  //   ppl.add(PessoaModel(
-  //       nome: "Valenthine Nascimento Stammerjohan", nota: 3, price: 102.4));
-  //   ppl.add(
-  //       PessoaModel(nome: "Shirley Mendes dos Santos", nota: 9, price: 52.4));
-  //   ppl.add(PessoaModel(nome: "Amauri Jesus dos Santos", nota: 11, price: 15));
-  //   ppl.add(PessoaModel(
-  //       nome: "Christian Lucas Mendes dos Santos", nota: 5, price: 1.4));
-  //   ppl.add(PessoaModel(nome: "Joao Maria José", nota: 6, price: 5.4));
-  //   ppl.add(PessoaModel(nome: "Rafaela mendes", nota: 7, price: 0.4));
-
-  //   return ppl;
-  // }
-
-  void setBottomBarIndex(int index) {
-    currentIndex = index;
     notifyListeners();
+    return barberShopList;
   }
 }
